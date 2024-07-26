@@ -2,10 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    container: {
+      center: true,
+      padding: "1rem",
+    },
     extend: {
-      fontFamily: {
-        custom: ["Bebas Neue", "sans-serif"],
-      },
+      fontFamily: {},
+
       colors: {
         main: "#38bdf8",
       },
@@ -22,6 +25,17 @@ export default {
             width: "100%",
           },
         },
+        "smooth-show": {
+          "0%": {
+            opacity: "0",
+            transform: "translate(-500px,-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translate(0,0)",
+          },
+        },
+
         "background-change": {
           "0%": {
             backgroundColor: "",
@@ -34,8 +48,9 @@ export default {
         },
       },
       animation: {
-        "fill-to-right": "fill-to-right 0.7s ease-in-out 1 forwards",
+        "fill-to-right": "fill-to-right 0.5s ease-in-out 1 forwards",
         "background-change": "background-change 0.7s ease-in-out 1 forwards",
+        "smooth-show": "smooth-show 0.9s ease-in-out 1 forwards",
       },
     },
   },

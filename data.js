@@ -1,4 +1,4 @@
-import { egypt, kingdom } from "@/assets";
+import { egypt, kingdom, slide1, slide2, slide3 } from "@/assets";
 
 export const links = [
   {
@@ -28,5 +28,21 @@ export const languages = [
   {
     name: "AR",
     icon: egypt,
+  },
+];
+export const languageImages = {
+  EN: kingdom,
+  AR: egypt,
+};
+
+export const heroSliderImages = [
+  {
+    img: slide1,
+  },
+  {
+    img: slide2,
+  },
+  {
+    img: slide3,
   },
 ];

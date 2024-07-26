@@ -1,5 +1,4 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import { Footer, HeroSection, Navbar } from "@/components";
 import { Outlet } from "react-router-dom";
 
 const RootLayout = () => {
@@ -7,7 +6,7 @@ const RootLayout = () => {
     <div className="min-h-screen ">
       <Navbar />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

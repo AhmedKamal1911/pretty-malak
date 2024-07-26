@@ -1,5 +1,6 @@
 import RootLayout from "@/layout/RootLayout";
 import AboutUs from "@/pages/AboutUs";
+import Home from "@/pages/Home";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -9,8 +10,8 @@ import {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route path="/about" element={<AboutUs />} />
+    <Route errorElement={<p>erorrrrrrrrr</p>} element={<RootLayout />}>
+      <Route path="/" element={<Home />} />
     </Route>
   )
 );
