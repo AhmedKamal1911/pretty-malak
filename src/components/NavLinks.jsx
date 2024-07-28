@@ -8,7 +8,7 @@ const NavLinks = ({ className }) => {
     <nav>
       <ul className={twMerge("flex gap-6 animate-smooth-show", className)}>
         {links.map(({ to, name }) => (
-          <li className="text-black" key={name}>
+          <li className="text-white" key={name}>
             <NavLink
               to={to}
               key={name}

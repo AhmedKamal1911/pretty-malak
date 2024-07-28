@@ -1,4 +1,3 @@
-import { logo } from "@/assets";
 import React from "react";
 
 import useMediaQuery from "@/hooks/useMediaQuery";
@@ -10,11 +9,12 @@ const Navbar = () => {
   console.log(isLargeScreen);
   const isMatched = useMediaQuery("(max-width: 767px)");
   return (
-    <header className="shadow-sm  shadow-[#848485] py-4 h-[75.97px] flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-[999] py-4 flex items-center">
       <div className="container">
         <div className="flex justify-between items-center ">
           <div>
-            <img src={logo} alt="logo" className="w-[200px] md:w-[250px]" />
+            {/* <img src={logo} alt="logo" className="w-[200px] md:w-[250px]" /> */}
+            <h2 className="text-3xl text-white">SeaCrow</h2>
           </div>
           <div className="flex gap-16 items-center">
             {isMatched ? (

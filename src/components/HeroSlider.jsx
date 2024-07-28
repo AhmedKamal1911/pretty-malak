@@ -1,6 +1,4 @@
-import { slide1 } from "@/assets";
 import {
-  Navigation,
   Pagination,
   Scrollbar,
   A11y,
@@ -11,21 +9,17 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
-import { SlideButton } from ".";
+
 import { heroSliderImages } from "../../data";
+import useMediaQuery from "@/hooks/useMediaQuery";
 const HeroSlider = () => {
+  const isMedScreen = useMediaQuery("(max-width: 767px)");
+  console.log(isMedScreen, "in small media");
   return (
     <div className="h-full">
       <Swiper
         className="select-none h-full "
-        modules={[
-          Navigation,
-          Pagination,
-          Scrollbar,
-          A11y,
-          EffectFade,
-          Autoplay,
-        ]}
+        modules={[Pagination, Scrollbar, A11y, EffectFade, Autoplay]}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
@@ -33,27 +27,29 @@ const HeroSlider = () => {
         speed={1400}
         loop
         slidesPerView={1}
-        navigation={{
-          nextEl: ".swiper-button-right",
-          prevEl: ".swiper-button-left",
-        }}
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         effect="fade"
-        // onSlideChange={() => console.log("slide change")}
-        // onSwiper={(swiper) => console.log(swiper)}
       >
-        {heroSliderImages.map(({ img }, i) => (
+        {heroSliderImages.map((img, i) => (
           <SwiperSlide
             key={i}
-            className="w-full swiper-slide-opacity before:absolute before:bg-[#1111116e] before:inset-0 before:z-[5]"
+            className="w-full swiper-slide-opacity before:absolute before:bg-[#0a0a0a49] before:inset-0 before:z-[5]"
           >
-            <img src={img} className="w-full h-full object-cover" alt="" />
+            <img
+              src={isMedScreen ? img.small : img.large}
+              className={`w-full h-full animate-smoothScale ${
+                i === 0
+                  ? "object-[-600px_center]"
+                  : i === 1
+                  ? ""
+                  : "object-[-350px_center]"
+              } sm:object-center object-cover`}
+              alt=""
+            />
           </SwiperSlide>
         ))}
       </Swiper>
-      <SlideButton type="left" />
-      <SlideButton type="right" />
     </div>
   );
 };

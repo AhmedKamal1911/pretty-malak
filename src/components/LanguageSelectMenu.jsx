@@ -2,16 +2,23 @@ import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { languageImages, languages } from "../../data";
 const LanguageSelectMenu = () => {
-  const [showSelectMenu, setShowSelectMenu] = useState(true);
-  const [selectedLanguage, setSelectedLanguage] = useState("EN");
+  const [showSelectMenu, setShowSelectMenu] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    () => localStorage.getItem("lang") ?? "EN"
+  );
   const componentRef = useRef(null);
   const listRef = useRef(null);
-
+  const [isMounted, setIsMounted] = useState(true);
+  console.log(showSelectMenu, "show slect menu");
   const handleLanguageSelect = (name) => {
+    setIsMounted(false);
     setSelectedLanguage(name);
-    setShowSelectMenu(true);
+    console.log("selected");
+    localStorage.setItem("lang", name);
+    setShowSelectMenu(false);
   };
   const handleShowSelectMenu = (e) => {
+    setIsMounted(false);
     setShowSelectMenu((prev) => !prev);
   };
   const handleClickOutside = (e) => {
@@ -19,20 +26,27 @@ const LanguageSelectMenu = () => {
       !componentRef.current.contains(e.target) &&
       !listRef.current.contains(e.target)
     ) {
-      setShowSelectMenu(true);
+      console.log("click out side");
+      setShowSelectMenu(false);
     }
+    console.log(e);
   };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+  const activeMenuClass =
+    (!isMounted &&
+      (showSelectMenu ? "animate-fadeInUp" : "animate-fadeOutUp")) ||
+    "hidden";
+
   return (
     <div className="relative select-none">
       <div
-        className="border border-[#a1a0a0ab] bg-white rounded-md overflow-hidden"
+        className="border backdrop-blur-[0px] text-white border-[#dfdfdf5d] bg-transparent rounded-md overflow-hidden lg:w-[90px]"
         ref={componentRef}
       >
         <button
@@ -45,16 +59,14 @@ const LanguageSelectMenu = () => {
             alt=""
             className="w-[20px] h-[20px]"
           />
-          <span className="absolute top-1/2 -translate-y-1/2 right-[10px]">
+          <span className="absolute top-1/2 -translate-y-1/2 right-[10px] pointer-events-none">
             {showSelectMenu ? <IoIosArrowDown /> : <IoIosArrowUp />}
           </span>
         </button>
       </div>
       <ul
         ref={listRef}
-        className={`bg-white border rounded-sm w-full absolute z-[999] top-[calc(100%+5px)] ${
-          showSelectMenu ? "hidden" : "block"
-        }`}
+        className={`bg-white border rounded-sm w-full absolute z-[999] top-[calc(100%+5px)] ${activeMenuClass}`}
       >
         {languages.map(({ name, icon }) => (
           <li key={name}>

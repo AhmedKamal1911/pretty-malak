@@ -1,9 +1,10 @@
-import { HeroSection } from "@/components";
+import { HeroSection, IntroSection } from "@/components";
 
 const Home = () => {
   return (
     <div>
       <HeroSection />
+      <IntroSection />
     </div>
   );
 };

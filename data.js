@@ -1,4 +1,13 @@
-import { egypt, kingdom, slide1, slide2, slide3 } from "@/assets";
+import {
+  egypt,
+  kingdom,
+  slideImg1,
+  slideImg2,
+  slideImg3,
+  smallSlideImg1,
+  smallSlideImg2,
+  smallSlideImg3,
+} from "@/assets";
 
 export const links = [
   {
@@ -37,12 +46,15 @@ export const languageImages = {
 
 export const heroSliderImages = [
   {
-    img: slide1,
+    large: slideImg1,
+    small: smallSlideImg1,
   },
   {
-    img: slide2,
+    large: slideImg2,
+    small: smallSlideImg2,
   },
   {
-    img: slide3,
+    large: slideImg3,
+    small: smallSlideImg3,
   },
 ];
