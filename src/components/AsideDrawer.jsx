@@ -2,45 +2,61 @@ import { createPortal } from "react-dom";
 import NavLinks from "./NavLinks";
 import { LuMenu } from "react-icons/lu";
 import { RxCrossCircled } from "react-icons/rx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LanguageSelectMenu from "./LanguageSelectMenu";
+const rootElement = document.getElementById("root");
 const AsideDrawer = () => {
   const [showDrawer, setShowDrawer] = useState(false);
-  const [isMounted, setIsMounted] = useState(true);
+  const [isAnimateDrawerLinks, setIsAnimateDrawerLinks] = useState(false);
+
   const toggleShowAside = () => {
     setShowDrawer((prev) => !prev);
-    setIsMounted(false);
   };
-  const activeMenuClass =
-    !isMounted && showDrawer
-      ? "animate-fill-to-right"
-      : "animate-fillOut-to-left";
 
+  useEffect(() => {
+    if (!showDrawer) {
+      setIsAnimateDrawerLinks(false);
+      return;
+    }
+    const startDrawerLinksAnimation = () => {
+      setIsAnimateDrawerLinks(true);
+    };
+    const timeoutId = setTimeout(startDrawerLinksAnimation, 600);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [showDrawer]);
   return (
     <>
       <button onClick={toggleShowAside}>
         <LuMenu size="25px" className="text-white" />
       </button>
-      <aside
-        className={`${
-          isMounted ? "-left-full" : ""
-        } ${activeMenuClass} fixed inset-0 z-[999] h-screen bg-[rgba(27,27,27,0.25)] backdrop-blur-[10px] flex justify-center items-center`}
-      >
-        <button
-          onClick={toggleShowAside}
-          className="absolute right-2 top-2 rounded-full w-[40px] h-[40px] z-[999]"
+      {createPortal(
+        <aside
+          className={`${
+            showDrawer ? "translate-x-0" : "-translate-x-full"
+          } transition-transform duration-500 fixed inset-0 z-[2000]  bg-[rgba(27,27,27,0.25)] backdrop-blur-[10px] flex justify-center items-center`}
         >
-          <RxCrossCircled size="40px" className="text-[#ec3939]" />
-        </button>
-        <div>
-          <NavLinks
-            className={`flex-col items-center ${
-              showDrawer && "animate-smooth-show"
-            } mb-5`}
-          />
-          <LanguageSelectMenu />
-        </div>
-      </aside>
+          <button
+            onClick={toggleShowAside}
+            className="absolute right-2 top-2 rounded-full w-[40px] h-[40px] z-[999]"
+          >
+            <RxCrossCircled size="40px" className="text-[#ec3939]" />
+          </button>
+          <div>
+            <div className="overflow-hidden">
+              <NavLinks
+                disableInitialAnimation
+                className={`flex-col transition-transform duration-1000 items-center -translate-y-full ${
+                  isAnimateDrawerLinks ? "translate-y-0" : "-translate-y-full"
+                } mb-5`}
+              />
+            </div>
+            <LanguageSelectMenu />
+          </div>
+        </aside>,
+        rootElement
+      )}
     </>
   );
 };

@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
-import { heroSliderImages } from "../../data";
+import { heroSliderImages } from "@/data";
 import useMediaQuery from "@/hooks/useMediaQuery";
 const HeroSlider = () => {
   const isMedScreen = useMediaQuery("(max-width: 767px)");

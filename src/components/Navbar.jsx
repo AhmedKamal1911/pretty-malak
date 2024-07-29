@@ -1,5 +1,3 @@
-import React from "react";
-
 import useMediaQuery from "@/hooks/useMediaQuery";
 import AsideDrawer from "./AsideDrawer";
 import { LanguageSelectMenu, NavLinks } from ".";
@@ -13,8 +11,9 @@ const Navbar = () => {
       <div className="container">
         <div className="flex justify-between items-center ">
           <div>
-            {/* <img src={logo} alt="logo" className="w-[200px] md:w-[250px]" /> */}
-            <h2 className="text-3xl text-white">SeaCrow</h2>
+            <h2 className="text-3xl text-white font-logoFont uppercase">
+              SeaCrow
+            </h2>
           </div>
           <div className="flex gap-16 items-center">
             {isMatched ? (

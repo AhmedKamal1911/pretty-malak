@@ -1,5 +1,6 @@
 export { default as SlideButton } from "@/components/SlideButton";
 export { default as HeroSlider } from "@/components/HeroSlider";
+export { default as SectionHeader } from "@/components/SectionHeader";
 // Header collection
 export { default as Navbar } from "@/components/Navbar";
 export { default as NavLinks } from "@/components/NavLinks";

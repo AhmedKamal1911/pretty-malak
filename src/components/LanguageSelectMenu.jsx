@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { languageImages, languages } from "../../data";
+import { languageImages, languages } from "@/data";
 const LanguageSelectMenu = () => {
   const [showSelectMenu, setShowSelectMenu] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(
@@ -38,10 +38,10 @@ const LanguageSelectMenu = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-  const activeMenuClass =
-    (!isMounted &&
-      (showSelectMenu ? "animate-fadeInUp" : "animate-fadeOutUp")) ||
-    "hidden";
+  // const activeMenuClass =
+  //   (!isMounted &&
+  //     (showSelectMenu ? "animate-fadeInUp" : "animate-fadeOutUp")) ||
+  //   "hidden";
 
   return (
     <div className="relative select-none">
@@ -66,14 +66,16 @@ const LanguageSelectMenu = () => {
       </div>
       <ul
         ref={listRef}
-        className={`bg-white border rounded-sm w-full absolute z-[999] top-[calc(100%+5px)] ${activeMenuClass}`}
+        className={`bg-white border rounded-sm w-full absolute z-[999] top-[calc(100%+5px)] transition-all duration-500 opacity-0 pointer-events-none  translate-y-[-20px] ${
+          showSelectMenu && "translate-y-[0] opacity-[1] pointer-events-auto"
+        } `}
       >
         {languages.map(({ name, icon }) => (
           <li key={name}>
             <a
               onClick={() => handleLanguageSelect(name)}
               key={name}
-              className="flex gap-1 items-center cursor-pointer hover:animate-background-change justify-center p-3 relative hover:after:animate-fill-to-right after:absolute after:bottom-0 after:left-0 after:h-[2px] after:content-[''] after:bg-gradient-to-r after:from-main after:to-transparent"
+              className="flex gap-1 items-center cursor-pointer transition-colors duration-1000 hover:bg-[#ededed] hover:text-main justify-center p-3 relative after:w-0 hover:after:w-full after:transition-all after:duration-700 after:absolute after:bottom-0 after:left-0 after:h-[3px]  after:bg-gradient-to-r after:from-main after:to-white"
             >
               {name}
               <img src={icon} alt="" className="w-[20px] h-[20px]" />
