@@ -4,6 +4,10 @@ export { default as kingdom } from "@/assets/kingdom.svg";
 export { default as yacht } from "@/assets/yacht.svg";
 export { default as camp } from "@/assets/camp.svg";
 export { default as diving } from "@/assets/diving.svg";
+export { default as mapBackground } from "@/assets/map-background.png";
+export { default as waveBg } from "@/assets/waves-background.png";
+export { default as wheel } from "@/assets/wheel.png";
+export { default as realYacht } from "@/assets/real-yacht.png";
 
 // HeroSlider
 export { default as slideImg1 } from "@/assets/slide-1.jpg";

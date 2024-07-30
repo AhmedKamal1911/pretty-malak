@@ -9,5 +9,6 @@ export { default as LanguageSelectMenu } from "@/components/LanguageSelectMenu";
 // Sections
 export { default as HeroSection } from "@/components/sections/HeroSection";
 export { default as IntroSection } from "@/components/sections/IntroSection";
+export { default as AboutUsSection } from "@/components/sections/AboutUsSection";
 // Footer
 export { default as Footer } from "@/components/Footer";

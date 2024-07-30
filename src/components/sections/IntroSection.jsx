@@ -2,11 +2,17 @@ import { features } from "@/data";
 import { SectionHeader } from "..";
 
 import FeaturesList from "../FeaturesList";
+import { mapBackground } from "@/assets";
 
 const IntroSection = () => {
   return (
     <section className="py-[120px] bg-light relative z-10">
-      <div className="bg-[url('./assets/map-backround.png')] h-[935px] absolute left-0 top-0 w-full bg-[50%] bg-no-repeat z-[-1] bg-cover" />
+      <div
+        style={{
+          backgroundImage: `url('${mapBackground}')`,
+        }}
+        className="h-[935px] absolute left-0 top-0 w-full bg-[50%] bg-no-repeat z-[-1] bg-cover"
+      />
       <div className="container">
         <div className="flex flex-col lg:flex-row justify-center gap-10 md:gap-0">
           <div className="text-center flex-1 md:pr-[100px]">

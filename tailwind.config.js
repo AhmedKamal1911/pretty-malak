@@ -20,8 +20,8 @@ export default {
         lightGray: "#e1e1e1",
       },
       backgroundColor: {
-        main: "#38bdf8",
-        light: "white",
+        main: "#bfa888",
+        light: "#f5f5f5",
       },
 
       keyframes: {
@@ -35,7 +35,6 @@ export default {
             transform: "translate(0,0)",
           },
         },
-
         smoothScale: {
           "0%, 100%": {
             transform: "scale(1)",
@@ -44,9 +43,18 @@ export default {
             transform: "scale(1.1)",
           },
         },
+        "infinite-spin": {
+          "0%": {
+            transform: "rotate(0deg)",
+          },
+          "100%": {
+            transform: "rotate(360deg)",
+          },
+        },
       },
       animation: {
         "smooth-show": "smooth-show 0.9s ease-in-out 1 forwards",
+        "infinite-spin": "infinite-spin 18s linear infinite forwards",
         smoothScale: "smoothScale 18s linear infinite alternate",
       },
     },

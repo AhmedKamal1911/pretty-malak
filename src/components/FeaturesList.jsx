@@ -27,14 +27,17 @@ function FeatureListItem({ feature }) {
       <div>
         <img
           src={feature.icon}
-          className="w-[70px] transition-transform duration-500 group-hover:scale-x-[-1]"
+          className="w-[70px] z-[-1] transition-transform duration-500 group-hover:scale-x-[-1]"
           alt=""
         />
       </div>
       <div className="relative flex md:flex-col flex-row gap-2 items-center">
         <div>
           <h5>{feature.title}</h5>
-          <NavLink className="text-gray-400" to={feature.url}>
+          <NavLink
+            className="text-main z-50 hover:text-black transition-colors duration-700 relative after:absolute after:-right-7 after:bottom-1/2 after:w-[0px] after:hover:w-[25px] after:transition-all after:duration-700 after:h-[2px] after:bg-black after:rounded-3xl before:absolute before:-right-7 before:bottom-1/2 before:w-[25px] before:h-[2px] before:bg-main before:rounded-3xl "
+            to={feature.url}
+          >
             Learn More
           </NavLink>
         </div>
