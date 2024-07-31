@@ -51,11 +51,26 @@ export default {
             transform: "rotate(360deg)",
           },
         },
+        smoothAlternate: {
+          "0%": {
+            transform: "translate(0,0)",
+          },
+          "100%": {
+            transform: "translate(30px,0)",
+          },
+        },
+        infiniteSlide: {
+          to: {
+            transform: "translate(calc(-50% - 25px))",
+          },
+        },
       },
       animation: {
         "smooth-show": "smooth-show 0.9s ease-in-out 1 forwards",
         "infinite-spin": "infinite-spin 18s linear infinite forwards",
         smoothScale: "smoothScale 18s linear infinite alternate",
+        smoothAlternate: "smoothAlternate 4s linear infinite alternate",
+        infiniteSlide: "infiniteSlide 35s linear infinite",
       },
     },
   },

@@ -5,3 +5,12 @@
 body {
   font-family: "Bebas Neue", "sans-serif";
 }
+
+.stroke-fill {
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 1px rgb(84, 89, 95);
+}
+
+.stroke-fill::after {
+  -webkit-text-fill-color: #bfa888;
+}
