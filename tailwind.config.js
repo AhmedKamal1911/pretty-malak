@@ -7,6 +7,10 @@ export default {
       padding: "1rem",
     },
     extend: {
+      backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(180deg, rgba(86, 97, 108, 0) 0%, rgba(33, 52, 69, 0.7) 100%)",
+      },
       fontFamily: {
         logoFont: "Audiowide",
         signature: "Playwrite CO",

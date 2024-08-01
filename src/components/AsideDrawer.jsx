@@ -1,9 +1,10 @@
 import { createPortal } from "react-dom";
 import NavLinks from "./NavLinks";
-import { LuMenu } from "react-icons/lu";
-import { RxCrossCircled } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import LanguageSelectMenu from "./LanguageSelectMenu";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+
 const rootElement = document.getElementById("root");
 const AsideDrawer = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -29,7 +30,7 @@ const AsideDrawer = () => {
   return (
     <>
       <button onClick={toggleShowAside}>
-        <LuMenu size="25px" className="text-white" />
+        <FontAwesomeIcon icon={faBars} className="text-white text-2xl" />
       </button>
       {createPortal(
         <aside
@@ -41,7 +42,7 @@ const AsideDrawer = () => {
             onClick={toggleShowAside}
             className="absolute right-2 top-2 rounded-full w-[40px] h-[40px] z-[999]"
           >
-            <RxCrossCircled size="40px" className="text-[#ec3939]" />
+            <FontAwesomeIcon icon={faXmark} className="text-white text-3xl" />
           </button>
           <div>
             <div className="overflow-hidden">

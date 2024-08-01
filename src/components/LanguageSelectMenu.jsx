@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+
 import { languageImages, languages } from "@/data";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 const LanguageSelectMenu = () => {
   const [showSelectMenu, setShowSelectMenu] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(
@@ -9,7 +11,7 @@ const LanguageSelectMenu = () => {
   const componentRef = useRef(null);
   const listRef = useRef(null);
   const [isMounted, setIsMounted] = useState(true);
-  console.log(showSelectMenu, "show slect menu");
+
   const handleLanguageSelect = (name) => {
     setIsMounted(false);
     setSelectedLanguage(name);
@@ -29,7 +31,6 @@ const LanguageSelectMenu = () => {
       console.log("click out side");
       setShowSelectMenu(false);
     }
-    console.log(e);
   };
 
   useEffect(() => {
@@ -60,7 +61,11 @@ const LanguageSelectMenu = () => {
             className="w-[20px] h-[20px]"
           />
           <span className="absolute top-1/2 -translate-y-1/2 right-[10px] pointer-events-none">
-            {showSelectMenu ? <IoIosArrowDown /> : <IoIosArrowUp />}
+            {showSelectMenu ? (
+              <FontAwesomeIcon icon={faAngleDown} className="text-white" />
+            ) : (
+              <FontAwesomeIcon icon={faAngleUp} className="text-white" />
+            )}
           </span>
         </button>
       </div>

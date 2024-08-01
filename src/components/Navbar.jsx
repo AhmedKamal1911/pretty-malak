@@ -3,8 +3,6 @@ import AsideDrawer from "./AsideDrawer";
 import { LanguageSelectMenu, NavLinks } from ".";
 
 const Navbar = () => {
-  const isLargeScreen = useMediaQuery("(max-width: 991px)");
-  console.log(isLargeScreen);
   const isMatched = useMediaQuery("(max-width: 767px)");
   return (
     <header className="fixed top-0 left-0 right-0 z-[999] py-4 flex items-center">
@@ -12,7 +10,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center ">
           <div>
             <h2 className="text-3xl text-white font-logoFont uppercase">
-              SeaCrow
+              SeaCrew
             </h2>
           </div>
           <div className="flex gap-16 items-center">

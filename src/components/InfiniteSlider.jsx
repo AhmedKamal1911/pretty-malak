@@ -7,7 +7,7 @@ const InfiniteSlider = ({ children }) => {
     })
   );
   return (
-    <div className="mb-9 overflow-hidden">
+    <div className="overflow-hidden">
       <div className="w-[max-content] animate-infiniteSlide py-10 bg-white flex gap-[50px]">
         {children}
         {childrenClone}

@@ -8,6 +8,9 @@ export { default as mapBackground } from "@/assets/map-background.png";
 export { default as waveBg } from "@/assets/waves-background.png";
 export { default as wheel } from "@/assets/wheel.png";
 export { default as realYacht } from "@/assets/real-yacht.png";
+export { default as unEvenWaves } from "@/assets/Uneven-waves.png";
+export { default as lineWaves } from "@/assets/wave-lines.png";
+export { default as dashedLines } from "@/assets/dashed-lines.png";
 
 // HeroSlider
 export { default as slideImg1 } from "@/assets/slide-1.jpg";
