@@ -1,4 +1,5 @@
-import { SectionHeader, SpecialOffersSlider } from "..";
+import { specialOffers } from "@/data";
+import { SectionHeader, TripsSlider } from "..";
 
 const SpecialOffersSection = () => {
   return (
@@ -10,7 +11,7 @@ const SpecialOffersSection = () => {
           introText="Get very special offers on trips"
         />
         <div className="mt-10">
-          <SpecialOffersSlider />
+          <TripsSlider className="h-[400px]" tripsList={specialOffers} />
         </div>
       </div>
     </section>

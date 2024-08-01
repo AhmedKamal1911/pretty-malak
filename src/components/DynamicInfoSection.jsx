@@ -6,7 +6,10 @@ const DynamicInfoSection = ({ infoList }) => {
       <ul className="flex flex-col gap-3">
         {infoList.map(({ icon, name, to }, i) => (
           <li className="flex items-center gap-2" key={i}>
-            <FontAwesomeIcon icon={icon} className="text-main text-[17px]" />
+            <FontAwesomeIcon
+              icon={icon}
+              className="text-main text-[17px] z-50"
+            />
 
             <a
               href={`${to}${name}`}

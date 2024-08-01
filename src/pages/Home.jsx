@@ -3,6 +3,7 @@ import {
   HeroSection,
   IntroSection,
   SpecialOffersSection,
+  TravelsSection,
 } from "@/components";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
       <IntroSection />
       <AboutUsSection />
       <SpecialOffersSection />
+      <TravelsSection />
     </main>
   );
 };

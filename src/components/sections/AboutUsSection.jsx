@@ -1,11 +1,11 @@
 import { realYacht, smallSlideImg1, waveBg, wheel } from "@/assets";
-import { InfiniteSlider, SectionHeader } from "..";
 import { NavLink } from "react-router-dom";
+import { InfiniteSlider, SectionHeader } from "..";
 
 const AboutUsSection = () => {
   return (
-    <section className="bg-light">
-      <div className="relative px-4 min-[1400px]:ms-auto min-[1400px]:w-8/12 z-[1] overflow-hidden lg:overflow-visible">
+    <section className="bg-light overflow-hidden">
+      <div className="relative px-4 min-[1400px]:ms-auto min-[1400px]:w-8/12 z-[1]  lg:overflow-visible">
         <div className="rounded-lg relative p-4 md:p-12 min-[1400px]:pl-[399px] min-[1400px]:py-28 min-[1400px]:pr-[100px] min-[1400px]:pb-[89px] h-full border border-1 min-[1400px]:w-fit bg-[#f4efec] outline-offset-[-20px] outline-main outline-[10px] outline-none">
           <div className="relative z-10 p-2 md:p-0">
             <SectionHeader

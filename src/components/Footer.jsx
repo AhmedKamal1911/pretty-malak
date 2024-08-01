@@ -1,16 +1,18 @@
-import React from "react";
 import { DynamicInfoSection, FooterSectionHeader } from ".";
 import { NavLink } from "react-router-dom";
 import { contactWays, links } from "@/data";
 import { dashedLines, unEvenWaves } from "@/assets";
 
+import { fa3 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const Footer = () => {
   return (
-    <footer className="bg-[#010f25] relative h-[50vh]">
+    <footer className="bg-[#010f25] relative min-h-[50vh] overflow-hidden">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-16">
           <div
-            className="absolute w-[494px] h-[465px] left-[-100px] top-0 bottom-0"
+            className="absolute w-[494px] h-[465px] left-[-100px] top-0 bottom-0 "
             style={{ backgroundImage: `url(${unEvenWaves})` }}
             alt=""
           />
@@ -46,6 +48,14 @@ const Footer = () => {
               desc="We strongly support best
 practice sharing across our operations"
             />
+          </div>
+        </div>
+        <div className="relative p-8 bg-[#363d5371] flex justify-between items-center">
+          <p className="text-main text-xl">
+            &copy; Copyrights reserved by Ahmed Kamal
+          </p>
+          <div>
+            <FontAwesomeIcon icon={fa3} />
           </div>
         </div>
       </div>
