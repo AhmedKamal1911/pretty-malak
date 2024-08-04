@@ -17,6 +17,7 @@ const TripsSlider = ({
   speed = 1000,
   direction = "horizontal",
   isAutoPlay = true,
+  isPaginated = false,
 }) => {
   return (
     <div className={className}>
@@ -31,7 +32,11 @@ const TripsSlider = ({
           },
         })}
         loop
-        pagination
+        {...(isPaginated && {
+          pagination: {
+            clickable: true,
+          },
+        })}
         speed={speed}
         modules={[Pagination, Autoplay]}
         className="mySwiper h-full w-full"

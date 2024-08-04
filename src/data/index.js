@@ -11,35 +11,29 @@ import {
   smallSlideImg3,
   yacht,
 } from "@/assets";
-import {
-  faAnglesRight,
-  faEnvelope,
-  faLocationDot,
-  faMobile,
-} from "@fortawesome/free-solid-svg-icons";
 
 export const links = [
   {
     name: "Home",
     to: "/",
-    icon: faAnglesRight,
+  },
+  {
+    name: "Trips",
+    to: "/Trips",
   },
   {
     name: "FAQs",
     to: "/faqs",
-    icon: faAnglesRight,
   },
 
   {
     name: "About Us",
     to: "/about",
-    icon: faAnglesRight,
   },
 
   {
     name: "Contact Us",
     to: "/contact-us",
-    icon: faAnglesRight,
   },
 ];
 export const languages = [
@@ -227,17 +221,14 @@ export const contactWays = [
   {
     to: "tel:",
     name: "01054818953",
-    icon: faMobile,
   },
   {
     to: "mailto:",
     name: "mohameD@gmail.com",
-    icon: faEnvelope,
   },
   {
     to: "location",
     name: "30 Commercial Road Fratton, Australia",
-    icon: faLocationDot,
   },
 ];
 

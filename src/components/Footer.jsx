@@ -2,13 +2,12 @@ import { DynamicInfoSection, FooterSectionHeader } from ".";
 import { NavLink } from "react-router-dom";
 import { contactWays, links } from "@/data";
 import { dashedLines, unEvenWaves } from "@/assets";
-
-import { fa3 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaFacebookSquare } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io5";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#010f25] relative min-h-[50vh] overflow-hidden">
+    <footer className="bg-[#050a16] relative min-h-[50vh] overflow-hidden">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-16">
           <div
@@ -54,8 +53,13 @@ practice sharing across our operations"
           <p className="text-main text-xl">
             &copy; Copyrights reserved by Ahmed Kamal
           </p>
-          <div>
-            <FontAwesomeIcon icon={fa3} />
+          <div className="flex items-center gap-5">
+            <NavLink to="" className=" bg-white">
+              <FaFacebookSquare size="30px" color="#1877F2" />
+            </NavLink>
+            <NavLink to="tel:01450151145">
+              <IoLogoWhatsapp color="#25d366" size="30px" />
+            </NavLink>
           </div>
         </div>
       </div>

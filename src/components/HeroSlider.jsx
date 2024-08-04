@@ -1,10 +1,4 @@
-import {
-  Pagination,
-  Scrollbar,
-  A11y,
-  EffectFade,
-  Autoplay,
-} from "swiper/modules";
+import { Scrollbar, A11y, EffectFade, Autoplay } from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -14,12 +8,12 @@ import { heroSliderImages } from "@/data";
 import useMediaQuery from "@/hooks/useMediaQuery";
 const HeroSlider = () => {
   const isMedScreen = useMediaQuery("(max-width: 767px)");
-  console.log(isMedScreen, "in small media");
+
   return (
     <div className="h-full">
       <Swiper
         className="select-none h-full "
-        modules={[Pagination, Scrollbar, A11y, EffectFade, Autoplay]}
+        modules={[Scrollbar, A11y, EffectFade, Autoplay]}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
@@ -27,7 +21,6 @@ const HeroSlider = () => {
         speed={1400}
         loop
         slidesPerView={1}
-        pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
         effect="fade"
       >

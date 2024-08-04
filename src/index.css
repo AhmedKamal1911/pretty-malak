@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 body {
   font-family: "Bebas Neue", "sans-serif";
 }
@@ -13,4 +14,27 @@ body {
 
 .stroke-fill::after {
   -webkit-text-fill-color: #bfa888;
+}
+.swiper-pagination {
+  background-color: rgba(218, 218, 218, 0.493);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0 !important;
+}
+.swiper-pagination-vertical {
+  display: flex;
+  height: fit-content;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+.swiper-pagination-bullet {
+  flex-shrink: 0;
+  display: block !important;
+  width: 15px !important;
+  height: 15px !important;
+  background-color: #000000 !important;
 }

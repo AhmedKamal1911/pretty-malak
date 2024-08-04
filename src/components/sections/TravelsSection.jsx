@@ -15,6 +15,7 @@ const TravelsSection = () => {
             <TripsSlider
               className="h-[700px] lg:h-[900px]"
               direction="vertical"
+              isPaginated={true}
               isAutoPlay={false}
               tripsList={specialOffers}
             />
@@ -36,6 +37,7 @@ const TravelsSection = () => {
               isAutoPlay={false}
               className="h-[700px] lg:h-[900px]"
               direction="vertical"
+              isPaginated={true}
               isReversed={true}
               tripsList={specialOffers}
             />

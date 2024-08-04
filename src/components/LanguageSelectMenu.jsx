@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 
 import { languageImages, languages } from "@/data";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  MdOutlineKeyboardArrowDown,
+  MdOutlineKeyboardArrowUp,
+} from "react-icons/md";
+
 const LanguageSelectMenu = () => {
   const [showSelectMenu, setShowSelectMenu] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(
@@ -15,7 +18,7 @@ const LanguageSelectMenu = () => {
   const handleLanguageSelect = (name) => {
     setIsMounted(false);
     setSelectedLanguage(name);
-    console.log("selected");
+
     localStorage.setItem("lang", name);
     setShowSelectMenu(false);
   };
@@ -28,7 +31,6 @@ const LanguageSelectMenu = () => {
       !componentRef.current.contains(e.target) &&
       !listRef.current.contains(e.target)
     ) {
-      console.log("click out side");
       setShowSelectMenu(false);
     }
   };
@@ -39,10 +41,6 @@ const LanguageSelectMenu = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-  // const activeMenuClass =
-  //   (!isMounted &&
-  //     (showSelectMenu ? "animate-fadeInUp" : "animate-fadeOutUp")) ||
-  //   "hidden";
 
   return (
     <div className="relative select-none">
@@ -62,9 +60,9 @@ const LanguageSelectMenu = () => {
           />
           <span className="absolute top-1/2 -translate-y-1/2 right-[10px] pointer-events-none">
             {showSelectMenu ? (
-              <FontAwesomeIcon icon={faAngleDown} className="text-white" />
+              <MdOutlineKeyboardArrowUp />
             ) : (
-              <FontAwesomeIcon icon={faAngleUp} className="text-white" />
+              <MdOutlineKeyboardArrowDown />
             )}
           </span>
         </button>

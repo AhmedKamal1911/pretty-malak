@@ -68,6 +68,14 @@ export default {
             transform: "translate(calc(-50% - 25px))",
           },
         },
+        fadeDown: {
+          "0%": {
+            transform: "translateY(-25px)",
+          },
+          "100%": {
+            transform: "translateY(0)",
+          },
+        },
       },
       animation: {
         "smooth-show": "smooth-show 0.9s ease-in-out 1 forwards",
@@ -75,6 +83,7 @@ export default {
         smoothScale: "smoothScale 18s linear infinite alternate",
         smoothAlternate: "smoothAlternate 4s linear infinite alternate",
         infiniteSlide: "infiniteSlide 35s linear infinite",
+        fadeDown: "fadeDown 0.2s linear forwards",
       },
     },
   },
