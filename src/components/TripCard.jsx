@@ -1,15 +1,23 @@
 import { NavLink } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const TripCard = ({ title, offer, price, img, time, id }) => {
   return (
-    <NavLink
-      to="/"
-      className="relative select-none block group h-full bg-cover bg-[80%] after:absolute after:inset-0 after:bg-[#12131233] before:absolute before:inset-0 before:opacity-0 hover:before:bg-custom-gradient hover:before:opacity-[1] before:transition-all before:duration-700"
-      style={{
-        backgroundImage: `url('${img}')`,
-      }}
+    <motion.div
+      key={id}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      layout
+      className="h-full"
     >
-      <div className="h-full">
+      <NavLink
+        to={`trip/${id}`}
+        className="relative overflow-hidden select-none block group h-full bg-cover bg-[80%] after:absolute after:inset-0 after:bg-[#12131233] before:absolute before:inset-0 before:opacity-0 hover:before:bg-custom-gradient hover:before:opacity-[1] before:transition-all before:duration-700"
+        style={{
+          backgroundImage: `url('${img}')`,
+        }}
+      >
         {offer && (
           <div className="absolute text-white text-2xl right-2 top-2 bg-main w-[50px] h-[50px] rounded-full z-50 flex justify-center items-center">
             {offer}
@@ -30,8 +38,8 @@ const TripCard = ({ title, offer, price, img, time, id }) => {
             Explore
           </button>
         </div>
-      </div>
-    </NavLink>
+      </NavLink>
+    </motion.div>
   );
 };
 

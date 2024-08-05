@@ -1,8 +1,7 @@
-import { SectionHeader, TripsSlider } from "..";
+import { allTrips } from "@/data";
+import { LinkButton, SectionHeader, TripsSlider } from "..";
 
-import { specialOffers } from "@/data";
-
-const TravelsSection = () => {
+const TripsSection = () => {
   return (
     <section className="py-20">
       <div className="container h-full">
@@ -10,6 +9,7 @@ const TravelsSection = () => {
           subTitle="our trips"
           introText="take a look to our trips"
         />
+        <LinkButton text="Show All" />
         <div className="flex flex-col xl:flex-row  gap-10 mt-20 justify-center overflow-hidden h-full">
           <div className="xl:w-[300px]">
             <TripsSlider
@@ -17,17 +17,17 @@ const TravelsSection = () => {
               direction="vertical"
               isPaginated={true}
               isAutoPlay={false}
-              tripsList={specialOffers}
+              tripsList={allTrips}
             />
           </div>
           <div className="flex flex-col flex-1 gap-5 justify-center">
             <div className="h-[400px] w-full  xl:w-[824px]">
-              <TripsSlider className="h-full" tripsList={specialOffers} />
+              <TripsSlider className="h-full" tripsList={allTrips} />
             </div>
             <div className="h-[400px] w-full xl:w-[824px]">
               <TripsSlider
                 className="h-full"
-                tripsList={specialOffers}
+                tripsList={allTrips}
                 isReversed={true}
               />
             </div>
@@ -39,7 +39,7 @@ const TravelsSection = () => {
               direction="vertical"
               isPaginated={true}
               isReversed={true}
-              tripsList={specialOffers}
+              tripsList={allTrips}
             />
           </div>
         </div>
@@ -48,4 +48,4 @@ const TravelsSection = () => {
   );
 };
 
-export default TravelsSection;
+export default TripsSection;

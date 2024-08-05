@@ -1,16 +1,55 @@
 import { TripCard } from "@/components";
-import { specialOffers } from "@/data";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/SelectMenu";
+
+import { allTrips, tripsTypes } from "@/data";
+import { AnimatePresence } from "framer-motion";
+
+import { useState } from "react";
 
 const Trips = () => {
+  const [tripType, setTripType] = useState("");
+  const onTripValueChange = (value) => {
+    console.log(value);
+    setTripType(value);
+  };
   return (
     <div className="min-h-screen py-24">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {specialOffers.map((offer) => (
-            <div key={offer.id} className="h-[400px]">
-              <TripCard {...offer} />
-            </div>
-          ))}
+        <Select onValueChange={onTripValueChange}>
+          <SelectTrigger className="w-[180px] text-[17px]">
+            <SelectValue placeholder="Select Trip" />
+          </SelectTrigger>
+          <SelectContent className="bg-white">
+            {tripsTypes.map(({ label, value }, i) => (
+              <SelectItem key={i} value={value} className="text-[17px]">
+                {label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+          <AnimatePresence>
+            {tripType !== ""
+              ? allTrips
+                  .filter((offer) => offer.type === tripType)
+                  .map((offer) => (
+                    <div key={offer.id} className="h-[400px]">
+                      <TripCard {...offer} />
+                    </div>
+                  ))
+              : allTrips.map((offer) => (
+                  <div key={offer.id} className="h-[400px]">
+                    <TripCard {...offer} />
+                  </div>
+                ))}
+          </AnimatePresence>
         </div>
       </div>
     </div>

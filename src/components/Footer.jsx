@@ -1,4 +1,4 @@
-import { DynamicInfoSection, FooterSectionHeader } from ".";
+import { DynamicInfoSection, FooterSectionHeader, LinkButton } from ".";
 import { NavLink } from "react-router-dom";
 import { contactWays, links } from "@/data";
 import { dashedLines, unEvenWaves } from "@/assets";
@@ -26,12 +26,7 @@ const Footer = () => {
               desc="  We strongly support best practice sharing across our operations around
           the world"
             />
-            <NavLink
-              to="/about-us"
-              className="relative block z-10 py-3 px-12 text-xl text-white bg-main mt-5 w-fit before:absolute before:top-0 before:bottom-0 before:right-0 before:bg-black before:z-[-1] before:w-0 hover:before:w-full before:transition-all before:duration-500 hover:before:left-0"
-            >
-              Book Now
-            </NavLink>
+            <LinkButton text="Book Now" />
           </div>
           <div>
             <FooterSectionHeader title="contact us" />

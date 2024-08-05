@@ -22,6 +22,10 @@ export default {
       colors: {
         main: "#bfa888",
         lightGray: "#e1e1e1",
+        destructive: {
+          DEFAULT: "#001f3f",
+          foreground: "#F5FAFF",
+        },
       },
       backgroundColor: {
         main: "#bfa888",
@@ -55,6 +59,14 @@ export default {
             transform: "rotate(360deg)",
           },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
         smoothAlternate: {
           "0%": {
             transform: "translate(0,0)",
@@ -70,7 +82,7 @@ export default {
         },
         fadeDown: {
           "0%": {
-            transform: "translateY(-25px)",
+            transform: "translateY(-50px)",
           },
           "100%": {
             transform: "translateY(0)",
@@ -80,10 +92,12 @@ export default {
       animation: {
         "smooth-show": "smooth-show 0.9s ease-in-out 1 forwards",
         "infinite-spin": "infinite-spin 18s linear infinite forwards",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
         smoothScale: "smoothScale 18s linear infinite alternate",
         smoothAlternate: "smoothAlternate 4s linear infinite alternate",
         infiniteSlide: "infiniteSlide 35s linear infinite",
-        fadeDown: "fadeDown 0.2s linear forwards",
+        fadeDown: "fadeDown 0.5s linear forwards",
       },
     },
   },

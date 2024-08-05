@@ -93,54 +93,60 @@ export const features = [
   },
 ];
 
-export const specialOffers = [
+export const allTrips = [
   {
     id: 1,
     time: "One Day",
-    offer: "10%",
+
     price: 135,
     img: slideImg1,
+    type: "safari",
     title:
       "Hurghada To Luxor Day Trip + Air Ballonsssssssssssssssssssssssssssssssssssssssssss",
   },
   {
     id: 2,
     time: "One Day",
-    offer: "10%",
+
     price: 135,
     img: slideImg2,
+    type: "safari",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
     id: 3,
     time: "One Day",
-    offer: "10%",
+
     price: 135,
     img: slideImg3,
+    type: "safari",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
     id: 4,
     time: "One Day",
-    offer: "10%",
+
     price: 135,
     img: slideImg1,
+    type: "safari",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
     id: 5,
     time: "One Day",
-    offer: "10%",
+
     price: 135,
     img: slideImg1,
+    type: "safari",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
     id: 6,
     time: "One Day",
-    offer: "10%",
+
     price: 135,
     img: slideImg1,
+    type: "safari",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
@@ -149,6 +155,7 @@ export const specialOffers = [
     offer: "10%",
     price: 135,
     img: slideImg1,
+    type: "safari",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
@@ -157,6 +164,7 @@ export const specialOffers = [
     offer: "10%",
     price: 135,
     img: slideImg1,
+    type: "sea",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
@@ -165,6 +173,7 @@ export const specialOffers = [
     offer: "10%",
     price: 135,
     img: slideImg1,
+    type: "sea",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
@@ -173,6 +182,7 @@ export const specialOffers = [
     offer: "10%",
     price: 135,
     img: slideImg1,
+    type: "sea",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
@@ -181,6 +191,7 @@ export const specialOffers = [
     offer: "10%",
     price: 135,
     img: slideImg1,
+    type: "sea",
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
   {
@@ -216,7 +227,7 @@ export const specialOffers = [
     title: "Hurghada To Luxor Day Trip + Air Ballon",
   },
 ];
-
+export const specialTrips = allTrips.filter((trip) => trip.offer);
 export const contactWays = [
   {
     to: "tel:",
@@ -254,3 +265,71 @@ export const sliderBreakPoints = {
     spaceBetween: 20,
   },
 };
+
+export const tripsTypes = [
+  {
+    value: "sea",
+    label: "Sea",
+  },
+  {
+    value: "safari",
+    label: "Safari",
+  },
+];
+
+export const travelCategories = [
+  { value: "Adventure" },
+  { value: "Beach" },
+  { value: "Cultural" },
+  { value: "Family" },
+  { value: "Luxury" },
+  { value: "Nature" },
+  { value: "Road Trip" },
+  { value: "Romantic" },
+  { value: "Skiing" },
+  { value: "Safari" },
+];
+
+export const clientQuestions = [
+  {
+    id: 1,
+    question: "is it accessible?",
+    answer: "yes it is",
+  },
+  {
+    id: 2,
+    question: "is it accessible?",
+    answer: "yes it is",
+  },
+  {
+    id: 3,
+    question: "is it accessible?",
+    answer: "yes it is",
+  },
+  {
+    id: 4,
+    question: "is it accessible?",
+    answer: "yes it is",
+  },
+  {
+    id: 5,
+    question: "is it accessible?",
+    answer: "yes it is",
+  },
+  {
+    id: 6,
+    question: "is it accessible?",
+    answer: "yes it is",
+  },
+  {
+    id: 7,
+    question: "is it accessible?",
+    answer:
+      "yes it is sdfasfas fas fasfasf asfasasfasfasfasfasfasfasfsfssssssssssssssssssssssssssssssssssssssssssssssssssf asfasffffffssssssssssssss ssssssssssssssssssss sssssssss ssssssssss ssssss ssss sssss ssssss ssssss ssssss ssssssss sss ssss  sssssssss s sssss sssss sssss sss ssssss ssssssss ssssss ssss sssssss sssssss sssss sssssss sssssss   sssssssssssss ssssss sss sssssssssss sssss ssssssss ssssss sssssss ssss sssss ssssss ssssss ssss sssssssssssss ssssssss ssssss sssssss ssss ssssssssss",
+  },
+  {
+    id: 8,
+    question: "is it accessible?",
+    answer: "yes it is",
+  },
+];
