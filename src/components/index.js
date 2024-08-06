@@ -7,6 +7,10 @@ export { default as FooterSectionHeader } from "@/components/FooterSectionHeader
 export { default as DynamicInfoSection } from "@/components/DynamicInfoSection";
 export { default as LinkButton } from "@/components/LinkButton";
 export { default as FaqFormField } from "@/components/FaqFormField";
+export { default as FaqInput } from "@/components/FaqInput";
+// Forms
+export { default as FaqForm } from "@/components/forms/FaqForm";
+
 // Header collection
 export { default as Navbar } from "@/components/Navbar";
 export { default as NavLinks } from "@/components/NavLinks";
