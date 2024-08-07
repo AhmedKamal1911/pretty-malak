@@ -1,5 +1,7 @@
 import { allTrips } from "@/data";
-import { LinkButton, SectionHeader, TripsSlider } from "..";
+import { SectionHeader, TripsSlider } from "..";
+import { NavLink } from "react-router-dom";
+import { Button } from "../ui/Button";
 
 const TripsSection = () => {
   return (
@@ -9,7 +11,10 @@ const TripsSection = () => {
           subTitle="our trips"
           introText="take a look to our trips"
         />
-        <LinkButton text="Show All" />
+        <Button asChild variant="primary">
+          <NavLink to="/trips">Show All</NavLink>
+        </Button>
+
         <div className="flex flex-col xl:flex-row  gap-10 mt-20 justify-center overflow-hidden h-full">
           <div className="xl:w-[300px]">
             <TripsSlider

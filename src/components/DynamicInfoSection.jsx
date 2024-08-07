@@ -1,11 +1,9 @@
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
-import { FaMobileAlt } from "react-icons/fa";
-import { MdMail } from "react-icons/md";
-import { IoLocationSharp } from "react-icons/io5";
+
 const DynamicInfoSection = ({ infoList }) => {
   return (
     <div>
-      <ul className="flex flex-col gap-3">
+      <ul className="flex flex-col gap-3 z-40 relative">
         {infoList.map(({ name, to }, i) => (
           <li className="flex items-center gap-2" key={i}>
             <MdOutlineKeyboardDoubleArrowRight className="text-main" />

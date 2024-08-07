@@ -28,7 +28,7 @@ export const links = [
 
   {
     name: "About Us",
-    to: "/about",
+    to: "/about-us",
   },
 
   {
@@ -102,7 +102,7 @@ export const allTrips = [
     img: slideImg1,
     type: "safari",
     title:
-      "Hurghada To Luxor Day Trip + Air Ballonsssssssssssssssssssssssssssssssssssssssssss",
+      "Hurghada To Luxor Day Trip + Air Ballonsssss sssss sssssss sssssss ssssssssss ssssss sss",
   },
   {
     id: 2,
@@ -325,7 +325,7 @@ export const clientQuestions = [
     id: 7,
     question: "is it accessible?",
     answer:
-      "yes it is sdfasfas fas fasfasf asfasasfasfasfasfasfasfasfsfssssssssssssssssssssssssssssssssssssssssssssssssssf asfasffffffssssssssssssss ssssssssssssssssssss sssssssss ssssssssss ssssss ssss sssss ssssss ssssss ssssss ssssssss sss ssss  sssssssss s sssss sssss sssss sss ssssss ssssssss ssssss ssss sssssss sssssss sssss sssssss sssssss   sssssssssssss ssssss sss sssssssssss sssss ssssssss ssssss sssssss ssss sssss ssssss ssssss ssss sssssssssssss ssssssss ssssss sssssss ssss ssssssssss",
+      "yes it is sdfasfas fas fasfasf asfasas sss ssssf asfasffffffssssssssssssss ssssssssssssssssssss sssssssss ssssssssss ssssss ssss sssss ssssss ssssss ssssss ssssssss sss ssss  sssssssss s sssss sssss sssss sss ssssss ssssssss ssssss ssss sssssss sssssss sssss sssssss sssssss   sssssssssssss ssssss sss sssssssssss sssss ssssssss ssssss sssssss ssss sssss ssssss ssssss ssss sssssssssssss ssssssss ssssss sssssss ssss ssssssssss",
   },
   {
     id: 8,

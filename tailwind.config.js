@@ -67,6 +67,15 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "slide-in": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(0)" },
+        },
+        "slide-out": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+
         smoothAlternate: {
           "0%": {
             transform: "translate(0,0)",
@@ -94,6 +103,8 @@ export default {
         "infinite-spin": "infinite-spin 18s linear infinite forwards",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "slide-in": "slide-in 0.2s ease-out",
+        "slide-out": "slide-out 0.1s ease-in",
         smoothScale: "smoothScale 18s linear infinite alternate",
         smoothAlternate: "smoothAlternate 4s linear infinite alternate",
         infiniteSlide: "infiniteSlide 35s linear infinite",

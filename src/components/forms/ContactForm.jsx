@@ -18,7 +18,7 @@ import { TbReload } from "react-icons/tb";
 import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
 
-const FaqForm = () => {
+const ContactForm = () => {
   const formRef = useRef();
   const { toast } = useToast();
   const publicKey = import.meta.env.VITE_EMAILJS_FAQ_FORM_PUBLIC_KEY;
@@ -73,9 +73,9 @@ const FaqForm = () => {
       <form
         ref={formRef}
         onSubmit={handleSubmit(onSubmit)}
-        className="border-[#cac8c85d] border rounded-md shadow-md"
+        className="border-[#cac8c85d] border rounded-md shadow-md lg:h-[628px]"
       >
-        <div className="flex flex-col gap-8  p-8">
+        <div className="flex flex-col gap-8  p-3 md:p-8">
           <div className="flex flex-col md:flex-row justify-between gap-6">
             <FaqInput
               control={control}
@@ -138,4 +138,4 @@ const FaqForm = () => {
   );
 };
 
-export default FaqForm;
+export default ContactForm;

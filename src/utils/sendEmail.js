@@ -1,7 +1,7 @@
 import emailjs from "@emailjs/browser";
 
 const sendEmail = (form, serviceId, templateId, publicKey) => {
-  emailjs
+  return emailjs
     .sendForm(serviceId, templateId, form.current, {
       publicKey: publicKey,
     })

@@ -10,6 +10,7 @@ export { default as FaqFormField } from "@/components/FaqFormField";
 export { default as FaqInput } from "@/components/FaqInput";
 // Forms
 export { default as FaqForm } from "@/components/forms/FaqForm";
+export { default as ContactForm } from "@/components/forms/ContactForm";
 
 // Header collection
 export { default as Navbar } from "@/components/Navbar";

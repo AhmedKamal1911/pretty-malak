@@ -1,4 +1,4 @@
-import { TripCard } from "@/components";
+import { SectionHeader, TripCard } from "@/components";
 import {
   Select,
   SelectContent,
@@ -21,18 +21,25 @@ const Trips = () => {
   return (
     <div className="min-h-screen py-24">
       <div className="container">
-        <Select onValueChange={onTripValueChange}>
-          <SelectTrigger className="w-[180px] text-[17px]">
-            <SelectValue placeholder="Select Trip" />
-          </SelectTrigger>
-          <SelectContent className="bg-white">
-            {tripsTypes.map(({ label, value }, i) => (
-              <SelectItem key={i} value={value} className="text-[17px]">
-                {label}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between">
+          <SectionHeader subTitle="All Trips" introText="Explore Our Trips" />
+          <Select onValueChange={onTripValueChange}>
+            <SelectTrigger className="w-[180px] text-[17px]">
+              <SelectValue placeholder="Select Trip" />
+            </SelectTrigger>
+            <SelectContent className="bg-white">
+              {tripsTypes.map(({ label, value }, i) => (
+                <SelectItem
+                  key={i}
+                  value={value}
+                  className="text-[17px] cursor-pointer hover:bg-[#ebeaea] transition-all"
+                >
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
           <AnimatePresence>

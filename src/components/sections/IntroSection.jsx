@@ -3,10 +3,22 @@ import { SectionHeader } from "..";
 
 import FeaturesList from "../FeaturesList";
 import { mapBackground } from "@/assets";
-
+import { useEffect, useRef } from "react";
+import { useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 const IntroSection = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef);
+  const mainControls = useAnimation();
+
+  console.log(isInView, "inview");
+  useEffect(() => {
+    if (isInView) {
+      mainControls.start("visible");
+    }
+  }, [isInView]);
   return (
-    <section className="py-[120px] bg-light relative z-10">
+    <section className="py-[120px] bg-light relative z-10" ref={sectionRef}>
       <div
         style={{
           backgroundImage: `url('${mapBackground}')`,
@@ -15,7 +27,20 @@ const IntroSection = () => {
       />
       <div className="container">
         <div className="flex flex-col lg:flex-row justify-center gap-10 md:gap-0">
-          <div className="text-center flex-1 md:pr-[100px]">
+          <motion.div
+            className="text-center flex-1 md:pr-[100px]"
+            animate={mainControls}
+            initial="hidden"
+            variants={{
+              hidden: { opacity: 0, x: 100 },
+              visible: {
+                opacity: 1,
+                x: 0,
+              },
+            }}
+            exit="hidden"
+            transition={{ delay: 2 }}
+          >
             <SectionHeader
               className="lg:w-[400px] mx-auto"
               subTitle="Travel experience"
@@ -27,7 +52,7 @@ const IntroSection = () => {
               <h6 className="text-xl">Seif Haraz</h6>
               <span className="text-gray-500">CEO</span>
             </div>
-          </div>
+          </motion.div>
           <FeaturesList className="flex-1" features={features} />
         </div>
       </div>

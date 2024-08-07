@@ -7,9 +7,8 @@ const FaqInput = ({ control, name, placeholder, type }) => {
       control={control}
       name={name}
       render={({ field }) => {
-        console.log(field, "field");
         return (
-          <FormItem className="flex-1">
+          <FormItem className="w-full">
             <FormControl>
               <FaqFormField type={type} placeholder={placeholder} {...field} />
             </FormControl>

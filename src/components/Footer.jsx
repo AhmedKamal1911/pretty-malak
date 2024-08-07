@@ -1,9 +1,10 @@
-import { DynamicInfoSection, FooterSectionHeader, LinkButton } from ".";
+import { DynamicInfoSection, FooterSectionHeader } from ".";
 import { NavLink } from "react-router-dom";
 import { contactWays, links } from "@/data";
 import { dashedLines, unEvenWaves } from "@/assets";
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io5";
+import { Button } from "./ui/Button";
 
 const Footer = () => {
   return (
@@ -26,7 +27,9 @@ const Footer = () => {
               desc="  We strongly support best practice sharing across our operations around
           the world"
             />
-            <LinkButton text="Book Now" />
+            <Button asChild variant="primary" className="py-6 px-7">
+              <NavLink to="/about-us">Book Now</NavLink>
+            </Button>
           </div>
           <div>
             <FooterSectionHeader title="contact us" />
@@ -44,8 +47,8 @@ practice sharing across our operations"
             />
           </div>
         </div>
-        <div className="relative p-8 bg-[#363d5371] flex justify-between items-center">
-          <p className="text-main text-xl">
+        <div className="relative p-8 bg-[#363d5371] flex flex-col gap-5 md:flex-row justify-between items-center">
+          <p className="text-main text-xl text-center md:text-left">
             &copy; Copyrights reserved by Ahmed Kamal
           </p>
           <div className="flex items-center gap-5">
