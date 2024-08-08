@@ -2,7 +2,7 @@ import useMediaQuery from "@/hooks/useMediaQuery";
 import AsideDrawer from "./AsideDrawer";
 import { LanguageSelectMenu, NavLinks } from ".";
 import { useEffect, useRef, useState } from "react";
-import { useMatch } from "react-router-dom";
+import { NavLink, useMatch } from "react-router-dom";
 import { cn } from "@/utils/cn";
 
 const Navbar = () => {
@@ -45,9 +45,11 @@ const Navbar = () => {
         <div className="container">
           <div className="flex justify-between items-center ">
             <div>
-              <h2 className="text-3xl text-white font-logoFont uppercase">
-                SeaCrew
-              </h2>
+              <NavLink to="/">
+                <h2 className="text-3xl text-white font-logoFont uppercase">
+                  SeaCrew
+                </h2>
+              </NavLink>
             </div>
             <div className="flex gap-16 items-center">
               {isMatched ? (

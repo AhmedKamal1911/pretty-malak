@@ -1,7 +1,7 @@
 import { realYacht, smallSlideImg1, waveBg, wheel } from "@/assets";
 import { NavLink } from "react-router-dom";
 import { InfiniteSlider, SectionHeader } from "..";
-import { travelCategories, tripsTypes } from "@/data";
+import { travelCategories } from "@/data";
 
 const AboutUsSection = () => {
   return (

@@ -4,6 +4,7 @@ import {
   IntroSection,
   SpecialOffersSection,
   TripsSection,
+  WhyChooseUsSection,
 } from "@/components";
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
       <IntroSection />
       <AboutUsSection />
       <SpecialOffersSection />
+      <WhyChooseUsSection />
       <TripsSection />
     </main>
   );

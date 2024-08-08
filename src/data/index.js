@@ -1,16 +1,26 @@
 import {
   camp,
+  clientReviews,
+  customExperince,
   diving,
   egypt,
   kingdom,
+  seaLocations,
   slideImg1,
   slideImg2,
   slideImg3,
   smallSlideImg1,
   smallSlideImg2,
   smallSlideImg3,
+  trophy,
   yacht,
 } from "@/assets";
+import {
+  FaBookOpen,
+  FaHandsHelping,
+  FaRegCompass,
+  FaStar,
+} from "react-icons/fa";
 
 export const links = [
   {
@@ -331,5 +341,59 @@ export const clientQuestions = [
     id: 8,
     question: "is it accessible?",
     answer: "yes it is",
+  },
+];
+
+export const aboutInfoList = [
+  {
+    id: 1,
+    img: customExperince,
+    count: "700",
+    about: "Customers",
+  },
+  {
+    id: 2,
+    img: seaLocations,
+    count: "30",
+    about: "Locations",
+  },
+  {
+    id: 3,
+    img: trophy,
+    count: "40",
+    about: "our awards",
+  },
+  {
+    id: 4,
+    img: clientReviews,
+    count: "800",
+    about: "Reviews",
+  },
+];
+
+export const ourServices = [
+  {
+    id: 1,
+    icon: FaBookOpen,
+    name: "Expert Knowledge",
+    desc: "With extensive experience and a profound understanding of Egypt's heritage, our team offers insights and access to hidden gems that fewothers can.",
+  },
+  {
+    id: 2,
+    icon: FaRegCompass,
+    name: "Customized Experiences",
+    desc: "We believe every traveler is unique. Our personalized itineraries are designed to cater to your specific desires whether youre an adventurer, a history buff, or a luxury seeker.",
+  },
+  {
+    id: 3,
+    icon: FaStar,
+    name: "Quality and Comfort",
+    desc: "From handpicked accommodations to comfortable transportation and top-notch customer service, we prioritize your comfort and satisfaction at every step of your journey.",
+  },
+  {
+    id: 4,
+    icon: FaHandsHelping,
+    name: "Client Service 24/7",
+    desc: " Our strong relationships with local communities and businesses allow us to offer authentic experiences and support sustainable tourism practices.",
   },
 ];

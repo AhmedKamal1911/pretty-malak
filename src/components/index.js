@@ -8,6 +8,8 @@ export { default as DynamicInfoSection } from "@/components/DynamicInfoSection";
 export { default as LinkButton } from "@/components/LinkButton";
 export { default as FaqFormField } from "@/components/FaqFormField";
 export { default as FaqInput } from "@/components/FaqInput";
+export { default as AboutInfoBox } from "@/components/AboutInfoBox";
+export { default as OurServiceBox } from "@/components/OurServiceBox";
 // Forms
 export { default as FaqForm } from "@/components/forms/FaqForm";
 export { default as ContactForm } from "@/components/forms/ContactForm";
@@ -22,6 +24,7 @@ export { default as HeroSection } from "@/components/sections/HeroSection";
 export { default as IntroSection } from "@/components/sections/IntroSection";
 export { default as AboutUsSection } from "@/components/sections/AboutUsSection";
 export { default as SpecialOffersSection } from "@/components/sections/SpecialOffersSection";
+export { default as WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 export { default as TripsSection } from "@/components/sections/TripsSection";
 // Footer
 export { default as Footer } from "@/components/Footer";

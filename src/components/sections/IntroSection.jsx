@@ -18,12 +18,15 @@ const IntroSection = () => {
     }
   }, [isInView]);
   return (
-    <section className="py-[120px] bg-light relative z-10" ref={sectionRef}>
+    <section
+      className="py-[120px] overflow-hidden bg-light relative z-10"
+      ref={sectionRef}
+    >
       <div
         style={{
           backgroundImage: `url('${mapBackground}')`,
         }}
-        className="h-[935px] absolute left-0 top-0 w-full bg-[50%] bg-no-repeat z-[-1] bg-cover"
+        className="h-[935px] absolute left-0 top-0  w-full bg-[50%] bg-no-repeat z-[-1] bg-cover"
       />
       <div className="container">
         <div className="flex flex-col lg:flex-row justify-center gap-10 md:gap-0">
