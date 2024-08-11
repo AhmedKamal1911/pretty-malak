@@ -11,8 +11,8 @@ import "swiper/css/thumbs";
 const TripSlider = ({ imagesList }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
-    <div className="select-none mb-10">
-      <div className="h-[150px] min-[367px]:h-[250px] min-[600px]:h-[500px] ">
+    <div className="select-none mb-10 max-w-">
+      <div className="h-[150px] min-[367px]:h-[250px] min-[600px]:h-[500px]">
         <Swiper
           style={{
             "--swiper-navigation-color": "#fff",
@@ -51,7 +51,7 @@ const TripSlider = ({ imagesList }) => {
           className="mySwiper h-full"
         >
           {imagesList.map((img, i) => (
-            <SwiperSlide key={i} className="opacity-slide">
+            <SwiperSlide key={i} className="opacity-slide active:cursor-grab">
               <img src={img} className="h-full object-cover w-full" />
             </SwiperSlide>
           ))}

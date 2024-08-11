@@ -18,11 +18,12 @@ const TripsSlider = ({
   direction = "horizontal",
   isAutoPlay = true,
   isPaginated = false,
+  BreakPoints = sliderBreakPoints,
 }) => {
   return (
     <div className={className}>
       <Swiper
-        breakpoints={sliderBreakPoints}
+        breakpoints={BreakPoints}
         direction={direction}
         {...(isAutoPlay && {
           autoplay: {

@@ -41,11 +41,6 @@ const ContactForm = () => {
     control,
     formState: { isSubmitting, isSubmitSuccessful },
   } = methods;
-  console.log({
-    isSubmitting: isSubmitting,
-
-    isSubmitSuccessful: isSubmitSuccessful,
-  });
 
   const onSubmit = async (data) => {
     try {
@@ -55,7 +50,7 @@ const ContactForm = () => {
         variant: "success",
         icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
       });
-      console.log(data);
+
       reset();
     } catch (error) {
       console.log(error);

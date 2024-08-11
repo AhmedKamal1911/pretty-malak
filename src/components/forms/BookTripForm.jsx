@@ -52,11 +52,6 @@ const BookTripForm = () => {
     control,
     formState: { isSubmitting, isSubmitSuccessful },
   } = methods;
-  console.log({
-    isSubmitting: isSubmitting,
-
-    isSubmitSuccessful: isSubmitSuccessful,
-  });
 
   const onSubmit = async (data) => {
     try {
@@ -66,7 +61,7 @@ const BookTripForm = () => {
         variant: "success",
         icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
       });
-      console.log(data);
+
       reset();
     } catch (error) {
       console.log(error);
@@ -132,7 +127,7 @@ const BookTripForm = () => {
             placeholder="Type your room number:"
           />
 
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-5 ">
+          <div className="flex flex-col xl:flex-row gap-8 lg:gap-5 ">
             <BookInput
               icon={FaDoorOpen}
               control={control}

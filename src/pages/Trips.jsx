@@ -15,7 +15,6 @@ import { useState } from "react";
 const Trips = () => {
   const [tripType, setTripType] = useState("");
   const onTripValueChange = (value) => {
-    console.log(value);
     setTripType(value);
   };
   return (

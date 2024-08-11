@@ -128,6 +128,7 @@ export const allTrips = [
       "Then you will go for lunch, then visiting natural oil shop. After that you will go to old Cairo for visiting the Hanging Church, Abi Sergius Church and Amr Ibn Al-Assa Mosque.",
       "At the end of the day, driving back to Hurghada, arriving to the hotel around 11:30 PM",
     ],
+
     highlights: [
       "Karnak Temples",
       "The Temple of Queen Hatshepsut",
@@ -361,7 +362,7 @@ export const allTrips = [
     maxGuests: 25,
     tourFrom: "tours From Hurghada",
     desc: "This program is for you if you've always wanted to discover more about the mysterious history of ancient Egypt.On this tour, you'll visit the biggest temple in the world, the Karnak Temple, the magnificent temple of Queen Hatshepsut, one of the strongest women who could rule Egypt for about 20 years, and has a beautiful temple with a unique female architecture on the west bank of luxor, especially designed for her by her famous architect the enormous Memnon Statues, two of the biggest ancient Egyptian statues with a height around 20 meters, belongs to the grandpa of king Tutankhamun.More and more secrets about ancient Pharaohs you will discover on this trip, don't miss it.",
-    type: "safari",
+    type: "sea",
     title: "Day Trip To Luxor From Hurghada",
     tour: "Day Trip From Hurghada To Luxor",
     price: {
@@ -506,10 +507,10 @@ export const allTrips = [
     departureTime: "Around 4:30 AM",
     tripDays: "Daily",
     returnTime: "Around 8:30 PM",
-    maxGuests: 25,
+    maxGuests: "25",
     tourFrom: "tours From Hurghada",
     desc: "This program is for you if you've always wanted to discover more about the mysterious history of ancient Egypt.On this tour, you'll visit the biggest temple in the world, the Karnak Temple, the magnificent temple of Queen Hatshepsut, one of the strongest women who could rule Egypt for about 20 years, and has a beautiful temple with a unique female architecture on the west bank of luxor, especially designed for her by her famous architect the enormous Memnon Statues, two of the biggest ancient Egyptian statues with a height around 20 meters, belongs to the grandpa of king Tutankhamun.More and more secrets about ancient Pharaohs you will discover on this trip, don't miss it.",
-    type: "safari",
+    type: "sea",
     title: "Day Trip To Luxor From Hurghada",
     tour: "Day Trip From Hurghada To Luxor",
     price: {
@@ -558,7 +559,7 @@ export const allTrips = [
     maxGuests: 25,
     tourFrom: "tours From Hurghada",
     desc: "This program is for you if you've always wanted to discover more about the mysterious history of ancient Egypt.On this tour, you'll visit the biggest temple in the world, the Karnak Temple, the magnificent temple of Queen Hatshepsut, one of the strongest women who could rule Egypt for about 20 years, and has a beautiful temple with a unique female architecture on the west bank of luxor, especially designed for her by her famous architect the enormous Memnon Statues, two of the biggest ancient Egyptian statues with a height around 20 meters, belongs to the grandpa of king Tutankhamun.More and more secrets about ancient Pharaohs you will discover on this trip, don't miss it.",
-    type: "safari",
+    type: "sea",
     title: "Day Trip To Luxor From Hurghada",
     tour: "Day Trip From Hurghada To Luxor",
     price: {
