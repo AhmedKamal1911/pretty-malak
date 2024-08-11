@@ -1,5 +1,5 @@
 import { links } from "@/data";
-import React from "react";
+
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
