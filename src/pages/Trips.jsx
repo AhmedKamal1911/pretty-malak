@@ -48,12 +48,12 @@ const Trips = () => {
                   .filter((offer) => offer.type === tripType)
                   .map((offer) => (
                     <div key={offer.id} className="h-[400px]">
-                      <TripCard {...offer} />
+                      <TripCard {...offer} img={offer.imgs[0]} />
                     </div>
                   ))
               : allTrips.map((offer) => (
                   <div key={offer.id} className="h-[400px]">
-                    <TripCard {...offer} />
+                    <TripCard {...offer} img={offer.imgs[0]} />
                   </div>
                 ))}
           </AnimatePresence>

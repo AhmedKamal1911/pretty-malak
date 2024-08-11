@@ -16,12 +16,12 @@ import {
 
 const WhyChooseUsSection = () => {
   return (
-    <section className="relative py-32 bg-light">
+    <section className="relative py-32 bg-light overflow-hidden">
       <div
         style={{
           backgroundImage: `url('${mapBackground}')`,
         }}
-        className="absolute inset-0 w-full bg-[50%] bg-no-repeat bg-cover"
+        className="absolute inset-0 w-full bg-[55%] bg-no-repeat bg-cover"
       />
       <div
         style={{

@@ -3,6 +3,7 @@ import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
 import Faqs from "@/pages/Faqs";
 import Home from "@/pages/Home";
+import Trip from "@/pages/Trip";
 import Trips from "@/pages/Trips";
 import {
   createBrowserRouter,
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="/faqs" element={<Faqs />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/trip/:id" element={<Trip />} />
     </Route>
   )
 );

@@ -43,7 +43,7 @@ const TripsSlider = ({
       >
         {tripsList.map((trip) => (
           <SwiperSlide key={trip.id}>
-            <TripCard {...trip} />
+            <TripCard {...trip} img={trip.imgs[0]} />
           </SwiperSlide>
         ))}
       </Swiper>

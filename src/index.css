@@ -38,3 +38,42 @@ body {
   height: 15px !important;
   background-color: #000000 !important;
 }
+.mySwiper .swiper-slide.opacity-slide {
+  opacity: 0.6;
+  filter: grayscale(0.4);
+}
+.mySwiper .swiper-slide.opacity-slide.swiper-slide-thumb-active {
+  opacity: 1;
+  filter: grayscale(0);
+}
+.mySwiper2 .swiper-button-prev,
+.mySwiper2 .swiper-button-next {
+  background-color: rgba(0, 0, 0, 0.671);
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+}
+@media (min-width: 767px) {
+  .mySwiper2 .swiper-button-prev,
+  .mySwiper2 .swiper-button-next {
+    display: none;
+
+    width: 40px;
+    height: 40px;
+  }
+}
+.mySwiper2:hover .swiper-button-prev,
+.mySwiper2:hover .swiper-button-next {
+  display: flex;
+}
+.mySwiper2 .swiper-button-prev::after,
+.mySwiper2 .swiper-button-next::after {
+  font-size: 12px;
+}
+
+@media (min-width: 767px) {
+  .mySwiper2 .swiper-button-prev::after,
+  .mySwiper2 .swiper-button-next::after {
+    font-size: 17px;
+  }
+}

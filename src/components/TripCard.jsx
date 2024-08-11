@@ -12,7 +12,7 @@ const TripCard = ({ title, offer, price, img, time, id }) => {
       className="h-full"
     >
       <NavLink
-        to={`trip/${id}`}
+        to={`/trip/${id}`}
         className="relative overflow-hidden select-none block group h-full bg-cover bg-[80%] after:absolute after:inset-0 after:bg-[#12131233] before:absolute before:inset-0 before:opacity-0 hover:before:bg-custom-gradient hover:before:opacity-[1] before:transition-all before:duration-700"
         style={{
           backgroundImage: `url('${img}')`,
@@ -29,7 +29,7 @@ const TripCard = ({ title, offer, price, img, time, id }) => {
         </span>
         <div className="z-50 absolute left-[1em] bottom-[1em] right-[1em] ">
           <h3 className="text-2xl  absolute bottom-[110px]  group-hover:bottom-[180px] sm:bottom-[110px]  sm:group-hover:bottom-[180px] md:bottom-[120px]  md:group-hover:bottom-[180px]  lg:bottom-[120px]lg:group-hover:bottom-[180px] transition-all duration-300 delay-[60ms] text-white">
-            {price}$/{time}
+            {price.adult}$/{time}
           </h3>
           <h4 className="absolute bottom-[30px] left-0 right-0 text-white text-3xl my-2 line-clamp-2 group-hover:bottom-[80px] transition-all duration-300 delay-[50ms]">
             {title}

@@ -10,9 +10,21 @@ export { default as FaqFormField } from "@/components/FaqFormField";
 export { default as FaqInput } from "@/components/FaqInput";
 export { default as AboutInfoBox } from "@/components/AboutInfoBox";
 export { default as OurServiceBox } from "@/components/OurServiceBox";
+export { default as BookInput } from "@/components/BookInput";
+export { default as QuestionsAccordion } from "@/components/QuestionsAccordion";
+// Trip
+export { default as TripNavigation } from "@/components/trip/TripNavigation";
+export { default as TripDetail } from "@/components/trip/TripDetail";
+export { default as TripPriceDetail } from "@/components/trip/TripPriceDetail";
+export { default as TripSlider } from "@/components/trip/TripSlider";
+export { default as TripOverview } from "@/components/trip/TripOverview";
+export { default as TripDetailsBox } from "@/components/trip/TripDetailsBox";
+export { default as TourPlanBox } from "@/components/trip/TourPlanBox";
+
 // Forms
 export { default as FaqForm } from "@/components/forms/FaqForm";
 export { default as ContactForm } from "@/components/forms/ContactForm";
+export { default as BookTripForm } from "@/components/forms/BookTripForm";
 
 // Header collection
 export { default as Navbar } from "@/components/Navbar";

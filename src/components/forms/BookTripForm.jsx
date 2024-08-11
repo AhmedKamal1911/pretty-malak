@@ -7,18 +7,23 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/Form";
-import questionFormSchema from "@/validations/questionsFormSchema";
-import { Textarea } from "@/components/ui/Textarea";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
-import { FaqInput } from "..";
+import { Textarea } from "@/components/ui/Textarea";
+import { IoMdCheckmarkCircleOutline, IoMdPhonePortrait } from "react-icons/io";
+
+import { BookInput } from "..";
 import { useEffect, useRef } from "react";
 import sendEmail from "@/utils/sendEmail";
 import { TbReload } from "react-icons/tb";
 import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
+import { FaDoorOpen, FaHotel, FaPen } from "react-icons/fa";
+import { BsFillChatRightTextFill } from "react-icons/bs";
 
-const FaqForm = () => {
+import { MdMail } from "react-icons/md";
+import bookTripFormSchema from "@/validations/bookTripFormSchema";
+
+const BookTripForm = () => {
   const formRef = useRef();
   const { toast } = useToast();
   const publicKey = import.meta.env.VITE_EMAILJS_FAQ_FORM_PUBLIC_KEY;
@@ -26,12 +31,18 @@ const FaqForm = () => {
   const templateId = import.meta.env.VITE_EMAILJS_FAQ_FORM_TEMPLATE_ID;
 
   const methods = useForm({
-    mode: "onBlur",
-    resolver: zodResolver(questionFormSchema),
+    mode: "onSubmit",
+    resolver: zodResolver(bookTripFormSchema),
     defaultValues: {
       email: "",
       message: "",
-      name: "",
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      hotelName: "",
+      roomNumber: "",
+      adultNumber: "",
+      childNumber: "",
       subject: "",
     },
   });
@@ -75,29 +86,70 @@ const FaqForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="border-[#cac8c85d] border rounded-md shadow-md bg-white"
       >
-        <div className="flex flex-col gap-8  p-8">
-          <div className="flex flex-col md:flex-row justify-between gap-6">
-            <FaqInput
-              control={control}
-              name="name"
-              type="text"
-              placeholder="Your Name:"
-            />
-
-            <FaqInput
-              control={control}
-              name="email"
-              type="email"
-              placeholder="Email:"
-            />
-          </div>
-          <FaqInput
+        <div className="flex flex-col gap-8  p-4">
+          <BookInput
+            icon={FaPen}
             control={control}
-            name="subject"
+            name="firstName"
             type="text"
-            placeholder="Type your subject:"
+            placeholder="First Name:"
+          />
+          <BookInput
+            icon={FaPen}
+            control={control}
+            name="lastName"
+            type="text"
+            placeholder="last Name:"
           />
 
+          <BookInput
+            icon={MdMail}
+            control={control}
+            name="email"
+            type="email"
+            placeholder="Email:"
+          />
+
+          <BookInput
+            icon={IoMdPhonePortrait}
+            control={control}
+            name="phoneNumber"
+            type="text"
+            placeholder="Type your phone Number:"
+          />
+          <BookInput
+            icon={FaHotel}
+            control={control}
+            name="hotelName"
+            type="text"
+            placeholder="Type your hotel name (Optional)"
+          />
+          <BookInput
+            icon={FaDoorOpen}
+            control={control}
+            name="roomNumber"
+            type="text"
+            placeholder="Type your room number:"
+          />
+
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-5 ">
+            <BookInput
+              icon={FaDoorOpen}
+              control={control}
+              name="adultNumber"
+              type="text"
+              placeholder="ADULT"
+              min={0}
+            />
+            <BookInput
+              icon={FaDoorOpen}
+              control={control}
+              name="childNumber"
+              type="text"
+              placeholder="CHILD"
+              min={0}
+            />
+          </div>
           <FormField
             control={control}
             name="message"
@@ -105,10 +157,13 @@ const FaqForm = () => {
               <FormItem className="flex-1">
                 <FormControl>
                   <Textarea
+                    icon={
+                      <BsFillChatRightTextFill className="w-4 h-4 text-main" />
+                    }
                     control={control}
                     {...field}
                     type="text"
-                    className="text-[16px] p-0 focus-visible:ring-transparent h-[180px] resize-none focus:placeholder:text-main border-t-0 border-l-0 border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border,placeholder] duration-500"
+                    className="text-[16px] pl-7 pt-0 pb-0 pr-0 focus-visible:ring-transparent h-[120px] focus:placeholder:text-main border-t-0 border-l-0 border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border,placeholder] duration-500"
                     placeholder="Type your message here."
                     id="message-2"
                   />
@@ -138,4 +193,4 @@ const FaqForm = () => {
   );
 };
 
-export default FaqForm;
+export default BookTripForm;

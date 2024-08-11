@@ -42,7 +42,7 @@ const AboutUs = () => {
         </div>
         <div>
           <SectionHeader introText="why choose us ?" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-[#f1f1f1] p-10 rounded-lg mt-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-[#f1f1f1] p-2 sm:p-10 rounded-lg mt-5">
             {ourServices.map((service) => {
               const IconComponent = service.icon;
               return (
