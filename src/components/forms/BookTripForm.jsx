@@ -12,8 +12,9 @@ import { Textarea } from "@/components/ui/Textarea";
 import { IoMdCheckmarkCircleOutline, IoMdPhonePortrait } from "react-icons/io";
 
 import { BookInput } from "..";
-import { useEffect, useRef } from "react";
-import sendEmail from "@/utils/sendEmail";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+
 import { TbReload } from "react-icons/tb";
 import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
@@ -22,14 +23,16 @@ import { BsFillChatRightTextFill } from "react-icons/bs";
 
 import { MdMail } from "react-icons/md";
 import bookTripFormSchema from "@/validations/bookTripFormSchema";
+import { RxCrossCircled } from "react-icons/rx";
 
 const BookTripForm = () => {
   const formRef = useRef();
   const { toast } = useToast();
-  const publicKey = import.meta.env.VITE_EMAILJS_FAQ_FORM_PUBLIC_KEY;
-  const serviceId = import.meta.env.VITE_EMAILJS_FAQ_FORM_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_FAQ_FORM_TEMPLATE_ID;
 
+  const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
+  console.log(serviceId);
+  console.log(templateId);
   const methods = useForm({
     mode: "onSubmit",
     resolver: zodResolver(bookTripFormSchema),
@@ -43,37 +46,44 @@ const BookTripForm = () => {
       roomNumber: "",
       adultNumber: "",
       childNumber: "",
-      subject: "",
     },
   });
   const {
     reset,
     handleSubmit,
     control,
-    formState: { isSubmitting, isSubmitSuccessful },
+    formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (data) => {
-    try {
-      await sendEmail(formRef, serviceId, templateId, publicKey);
-      toast({
-        description: "Your message has been sent.",
-        variant: "success",
-        icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
-      });
-
-      reset();
-    } catch (error) {
-      console.log(error);
-    }
+  const sendEmail = () => {
+    return emailjs
+      .sendForm(serviceId, templateId, formRef.current, {
+        publicKey: import.meta.env.VITE_EMAILJS_FORM_PUBLIC_KEY,
+      })
+      .then(
+        () => {
+          toast({
+            description: "Your message has been sent.",
+            variant: "success",
+            icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
+          });
+          setTimeout(() => {
+            reset();
+          }, 1000);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          toast({
+            description: "Server Error there is something wrong.",
+            variant: "destructive",
+            icon: <RxCrossCircled className="w-6 h-6" />,
+          });
+        }
+      );
   };
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      setTimeout(() => {
-        reset();
-      }, 1000);
-    }
-  }, [isSubmitSuccessful, reset]);
+  const onSubmit = async () => {
+    await sendEmail();
+  };
   return (
     <Form {...methods}>
       <form

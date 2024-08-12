@@ -112,7 +112,7 @@ const Trip = () => {
               <TripSlider imagesList={imgs} />
               <TripOverview desc={desc} title={tour} />
               {/* Info Box */}
-              <div className="border divide-y-2 mb-10">
+              <div className="border divide-y-2 mb-10" id="info">
                 <TripDetailsBox
                   tour={tour}
                   tourFrom={tourFrom}
@@ -139,7 +139,7 @@ const Trip = () => {
                 />
               </div>
               {/* Tour PLAN BOX */}
-              <div className="mb-10">
+              <div className="mb-10" id="tour-plan">
                 <TripOverview title={"Tour Plan"} />
                 <div
                   className="border rounded-md overflow-hidden"
@@ -153,11 +153,11 @@ const Trip = () => {
                 </div>
               </div>
               {/* Questions BOX */}
-              <div className="mb-10">
+              <div className="mb-10" id="faq">
                 <TripOverview title={"Frequently Asked Questions"} />
                 <QuestionsAccordion />
               </div>
-              <div>
+              <div id="reviews">
                 <TripOverview title={"Client Reviews"} />
                 <TripReviewBox />
               </div>
@@ -172,6 +172,7 @@ const Trip = () => {
                 direction="vertical"
                 isPaginated={true}
                 isAutoPlay={false}
+                loop={false}
                 tripsList={relatedTrips}
                 BreakPoints={sliderBreakPoints}
               />

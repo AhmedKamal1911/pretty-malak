@@ -17,8 +17,8 @@ const bookTripFormSchema = z.object({
     .string()
     .min(10, { message: "Phone number must be at least 10 digits" })
     .regex(phoneNumberRegex, { message: "Invalid phone number" }),
-  roomNumber: z.string().min(1, { message: "Required" }),
   hotelName: z.string(),
+  roomNumber: z.string().min(1, { message: "Required" }),
   adultNumber: z
     .string()
     .min(1, { message: "At least one adult is required" })
@@ -26,10 +26,6 @@ const bookTripFormSchema = z.object({
   childNumber: z
     .string()
     .regex(numberRegex, { message: "Child number must be a valid number" }),
-  subject: z
-    .string()
-    .min(2, { message: "subject content is required" })
-    .max(30, { message: "the subject length is to large!" }),
 });
 
 export default bookTripFormSchema;

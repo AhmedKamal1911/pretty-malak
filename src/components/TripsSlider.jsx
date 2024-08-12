@@ -18,6 +18,7 @@ const TripsSlider = ({
   direction = "horizontal",
   isAutoPlay = true,
   isPaginated = false,
+  loop = true,
   BreakPoints = sliderBreakPoints,
 }) => {
   return (
@@ -32,7 +33,7 @@ const TripsSlider = ({
             reverseDirection: isReversed,
           },
         })}
-        loop
+        loop={loop}
         {...(isPaginated && {
           pagination: {
             clickable: true,

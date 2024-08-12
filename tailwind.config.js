@@ -23,7 +23,7 @@ export default {
         main: "#bfa888",
         lightGray: "#e1e1e1",
         destructive: {
-          DEFAULT: "#001f3f",
+          DEFAULT: "#ff0000",
           foreground: "#F5FAFF",
         },
       },
