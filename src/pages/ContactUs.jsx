@@ -1,7 +1,9 @@
 import { slideImg1 } from "@/assets";
 import { ContactForm, SectionHeader } from "@/components";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 const ContactUs = () => {
+  useScrollToTop();
   return (
     <div className="relative min-h-screen py-36 ">
       <div

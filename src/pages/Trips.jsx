@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/SelectMenu";
 
 import { allTrips, tripsTypes } from "@/data";
+import useScrollToTop from "@/hooks/useScrollToTop";
 import { AnimatePresence } from "framer-motion";
 
 import { useState } from "react";
@@ -15,8 +16,10 @@ import { useState } from "react";
 const Trips = () => {
   const [tripType, setTripType] = useState("");
   const onTripValueChange = (value) => {
+    console.log("changed");
     setTripType(value);
   };
+  useScrollToTop();
   return (
     <div className="min-h-screen py-24">
       <div className="container">
@@ -26,12 +29,18 @@ const Trips = () => {
             <SelectTrigger className="w-[180px] text-[17px]">
               <SelectValue placeholder="Select Trip" />
             </SelectTrigger>
-            <SelectContent className="bg-white">
+            <SelectContent
+              ref={(ref) => {
+                if (!ref) return;
+                ref.ontouchstart = (e) => e.preventDefault();
+              }}
+              className="bg-white z-[800]"
+            >
               {tripsTypes.map(({ label, value }, i) => (
                 <SelectItem
                   key={i}
                   value={value}
-                  className="text-[17px] cursor-pointer hover:bg-[#ebeaea] transition-all"
+                  className="text-[17px] cursor-pointer hover:bg-[#ebeaea] transition-all "
                 >
                   {label}
                 </SelectItem>
@@ -40,18 +49,24 @@ const Trips = () => {
           </Select>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
           <AnimatePresence>
             {tripType !== ""
               ? allTrips
                   .filter((offer) => offer.type === tripType)
                   .map((offer) => (
-                    <div key={offer.id} className="h-[400px]">
+                    <div
+                      key={offer.id}
+                      className="max-[300px]:h-[300px] h-[400px] "
+                    >
                       <TripCard {...offer} img={offer.imgs[0]} />
                     </div>
                   ))
               : allTrips.map((offer) => (
-                  <div key={offer.id} className="h-[400px]">
+                  <div
+                    key={offer.id}
+                    className="max-[300px]:h-[300px] h-[400px] "
+                  >
                     <TripCard {...offer} img={offer.imgs[0]} />
                   </div>
                 ))}

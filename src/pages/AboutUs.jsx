@@ -1,8 +1,10 @@
 import { egyptImg } from "@/assets";
 import { AboutInfoBox, OurServiceBox, SectionHeader } from "@/components";
 import { aboutInfoList, ourServices } from "@/data";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 const AboutUs = () => {
+  useScrollToTop();
   return (
     <div className="min-h-screen py-36">
       <div className="container">

@@ -37,7 +37,10 @@ const WhyChooseUsSection = () => {
         />
         <div className="mt-16 relative">
           <div>
-            <h2 className="stroke-fill mb-5 text-6xl md:text-8xl xl:text-[120px] text-center relative">
+            <h2
+              data-text={"Why Choose Us"}
+              className="stroke-fill w-fit mx-auto whitespace-nowrap mb-5 text-6xl md:text-8xl xl:text-[120px] text-center relative after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden"
+            >
               Why Choose Us
             </h2>
             <div className="flex flex-col xl:flex-row lg:items-center">

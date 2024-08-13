@@ -14,11 +14,11 @@ const TripNavigation = () => {
   };
   return (
     <div className="bg-white rounded-md sticky left-0 right-0 top-[76px] w-full p-3 shadow-lg z-[800]">
-      <ul className="flex justify-center max-[378px]:flex-col items-center gap-2 md:gap-16 min-[376px]:flex-row">
+      <ul className="flex justify-center  items-center gap-2 md:gap-16 min-[376px]:flex-row">
         <li>
           <button
             onClick={() => scrollToSection("info")}
-            className={`p-2 min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
+            className={`min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
               activeSection === "info" && "text-orange-500"
             }`}
           >
@@ -28,7 +28,7 @@ const TripNavigation = () => {
         <li>
           <button
             onClick={() => scrollToSection("tour-plan")}
-            className={`p-2  min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
+            className={` min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
               activeSection === "tour-plan" && "text-orange-500"
             }`}
           >
@@ -38,7 +38,7 @@ const TripNavigation = () => {
         <li>
           <button
             onClick={() => scrollToSection("faq")}
-            className={`p-2  min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
+            className={` min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
               activeSection === "faq" && "text-orange-500"
             }`}
           >
@@ -48,7 +48,7 @@ const TripNavigation = () => {
         <li>
           <button
             onClick={() => scrollToSection("reviews")}
-            className={`p-2  min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
+            className={` min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
               activeSection === "reviews" && "text-orange-500"
             }`}
           >

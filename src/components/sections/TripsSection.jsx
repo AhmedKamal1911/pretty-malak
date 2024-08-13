@@ -1,7 +1,8 @@
 import { allTrips } from "@/data";
-import { SectionHeader, TripsSlider } from "..";
+import { SectionHeader, TripCard } from "..";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/Button";
+import { AnimatePresence } from "framer-motion";
 
 const TripsSection = () => {
   return (
@@ -15,38 +16,14 @@ const TripsSection = () => {
           <NavLink to="/trips">Show All</NavLink>
         </Button>
 
-        <div className="flex flex-col xl:flex-row  gap-10 mt-20 justify-center overflow-hidden h-full">
-          <div className="xl:w-[300px]">
-            <TripsSlider
-              className="h-[700px] lg:h-[900px]"
-              direction="vertical"
-              isPaginated={true}
-              isAutoPlay={false}
-              tripsList={allTrips}
-            />
-          </div>
-          <div className="flex flex-col flex-1 gap-5 justify-center">
-            <div className="h-[400px] w-full  xl:w-[824px]">
-              <TripsSlider className="h-full" tripsList={allTrips} />
-            </div>
-            <div className="h-[400px] w-full xl:w-[824px]">
-              <TripsSlider
-                className="h-full"
-                tripsList={allTrips}
-                isReversed={true}
-              />
-            </div>
-          </div>
-          <div className="xl:w-[300px]">
-            <TripsSlider
-              isAutoPlay={false}
-              className="h-[700px] lg:h-[900px]"
-              direction="vertical"
-              isPaginated={true}
-              isReversed={true}
-              tripsList={allTrips}
-            />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
+          <AnimatePresence>
+            {allTrips.map((offer) => (
+              <div key={offer.id} className="h-[400px]">
+                <TripCard {...offer} img={offer.imgs[0]} />
+              </div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

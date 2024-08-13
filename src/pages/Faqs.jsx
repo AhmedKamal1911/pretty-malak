@@ -1,6 +1,8 @@
 import { FaqForm, QuestionsAccordion, SectionHeader } from "@/components";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 const Faqs = () => {
+  useScrollToTop();
   return (
     <div className="min-h-screen py-36 bg-light">
       <div className="container">

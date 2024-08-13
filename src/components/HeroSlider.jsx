@@ -8,6 +8,7 @@ import { heroSliderImages } from "@/data";
 import useMediaQuery from "@/hooks/useMediaQuery";
 const HeroSlider = () => {
   const isMedScreen = useMediaQuery("(max-width: 767px)");
+  const isHeightSmall = useMediaQuery("(min-height: 470px)");
 
   return (
     <div className="h-full">
@@ -31,12 +32,14 @@ const HeroSlider = () => {
           >
             <img
               src={isMedScreen ? img.small : img.large}
-              className={`w-full h-full animate-smoothScale ${
-                i === 0
-                  ? "object-[-600px_center]"
-                  : i === 1
-                  ? ""
-                  : "object-[-350px_center]"
+              className={`w-full h-full animate-smoothScale  ${
+                isHeightSmall
+                  ? i === 0
+                    ? "object-[-320px_center]"
+                    : i === 1
+                    ? ""
+                    : "object-[-170px_center]"
+                  : ""
               } sm:object-center object-cover`}
               alt=""
             />

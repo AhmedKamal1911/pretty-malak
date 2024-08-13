@@ -13,13 +13,18 @@ import {
   TripsSlider,
 } from "@/components";
 import { allTrips } from "@/data";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 import { IoWatchOutline } from "react-icons/io5";
 import { MdMap } from "react-icons/md";
 import { useParams } from "react-router-dom";
 
 const Trip = () => {
+  const isSmallMedia = useMediaQuery("(max-width:767px)");
+  console.log(isSmallMedia);
   const { id: tripId } = useParams();
+  useScrollToTop();
   // console.log(id);
   const {
     departureTime,
@@ -168,11 +173,13 @@ const Trip = () => {
             <BookTripForm />
             <div className="mt-10">
               <TripsSlider
-                className="h-[700px] lg:h-[1800px]"
-                direction="vertical"
+                className="max-[300px]:h-[300px] h-[350px] md:h-[800px] lg:h-[900px] xl:h-[1800px]"
+                {...(!isSmallMedia && { direction: "vertical" })}
                 isPaginated={true}
-                isAutoPlay={false}
-                loop={false}
+                {...(isSmallMedia
+                  ? { isAutoPlay: true }
+                  : { isAutoPlay: false })}
+                loop={true}
                 tripsList={relatedTrips}
                 BreakPoints={sliderBreakPoints}
               />

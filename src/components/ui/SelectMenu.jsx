@@ -28,7 +28,7 @@ const SelectTrigger = React.forwardRef(
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <CaretSortIcon className="h-4 w-4 opacity-50" />
+        <CaretSortIcon className="h-5 w-5 " />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   )
@@ -122,7 +122,9 @@ const SelectItem = React.forwardRef(
           <CheckIcon className="h-4 w-4" />
         </SelectPrimitive.ItemIndicator>
       </span>
-      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemText>
+        <div className="flex gap-2 items-center">{children}</div>
+      </SelectPrimitive.ItemText>
     </SelectPrimitive.Item>
   )
 );

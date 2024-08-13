@@ -1,92 +1,66 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
-import { languageImages, languages } from "@/data";
+import { languages } from "@/data";
+
 import {
-  MdOutlineKeyboardArrowDown,
-  MdOutlineKeyboardArrowUp,
-} from "react-icons/md";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/SelectMenu";
 
-const LanguageSelectMenu = () => {
-  const [showSelectMenu, setShowSelectMenu] = useState(false);
+import { egypt, kingdom } from "@/assets";
+import { twMerge } from "tailwind-merge";
+
+const LanguageSelectMenu = ({ className }) => {
   const [selectedLanguage, setSelectedLanguage] = useState(
     () => localStorage.getItem("lang") ?? "EN"
   );
-  const componentRef = useRef(null);
-  const listRef = useRef(null);
-  const [isMounted, setIsMounted] = useState(true);
 
-  const handleLanguageSelect = (name) => {
-    setIsMounted(false);
-    setSelectedLanguage(name);
-
-    localStorage.setItem("lang", name);
-    setShowSelectMenu(false);
+  const onLanguageChange = (value) => {
+    console.log("changed");
+    setSelectedLanguage(value);
+    localStorage.setItem("lang", value);
   };
-  const handleShowSelectMenu = (e) => {
-    setIsMounted(false);
-    setShowSelectMenu((prev) => !prev);
-  };
-  const handleClickOutside = (e) => {
-    if (
-      !componentRef.current.contains(e.target) &&
-      !listRef.current.contains(e.target)
-    ) {
-      setShowSelectMenu(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
 
   return (
-    <div className="relative select-none">
-      <div
-        className="border backdrop-blur-[0px] text-white border-[#dfdfdf5d] bg-transparent rounded-md overflow-hidden lg:w-[90px]"
-        ref={componentRef}
+    <Select onValueChange={onLanguageChange}>
+      <SelectTrigger
+        className={twMerge("text-[17px] text-white w-[120px]", className)}
       >
-        <button
-          onClick={handleShowSelectMenu}
-          className="flex items-center gap-1 w-full h-full pl-5 pr-8 py-2 relative"
-        >
-          {selectedLanguage}
-          <img
-            src={languageImages[selectedLanguage]}
-            alt=""
-            className="w-[20px] h-[20px]"
-          />
-          <span className="absolute top-1/2 -translate-y-1/2 right-[10px] pointer-events-none">
-            {showSelectMenu ? (
-              <MdOutlineKeyboardArrowUp />
-            ) : (
-              <MdOutlineKeyboardArrowDown />
-            )}
-          </span>
-        </button>
-      </div>
-      <ul
-        ref={listRef}
-        className={`bg-white border rounded-sm w-full absolute z-[999] top-[calc(100%+5px)] transition-all duration-500 opacity-0 pointer-events-none  translate-y-[-20px] ${
-          showSelectMenu && "translate-y-[0] opacity-[1] pointer-events-auto"
-        } `}
+        <SelectValue
+          placeholder={
+            <div className="flex gap-2 items-center">
+              {selectedLanguage}
+              <img
+                src={selectedLanguage === "AR" ? egypt : kingdom}
+                alt=""
+                className="w-[18px] h-[18px]"
+              />
+            </div>
+          }
+        ></SelectValue>
+      </SelectTrigger>
+      <SelectContent
+        ref={(ref) => {
+          if (!ref) return;
+          ref.ontouchstart = (e) => e.preventDefault();
+        }}
+        className="relative left-[0px] right-0 bg-white z-[1001] w-full"
       >
-        {languages.map(({ name, icon }) => (
-          <li key={name}>
-            <a
-              onClick={() => handleLanguageSelect(name)}
-              key={name}
-              className="flex gap-1 items-center cursor-pointer transition-colors duration-1000 hover:bg-[#ededed] hover:text-main justify-center p-3 relative after:w-0 hover:after:w-full after:transition-all after:duration-700 after:absolute after:bottom-0 after:left-0 after:h-[3px]  after:bg-gradient-to-r after:from-main after:to-white"
-            >
-              {name}
-              <img src={icon} alt="" className="w-[20px] h-[20px]" />
-            </a>
-          </li>
+        {languages.map(({ name, icon }, i) => (
+          <SelectItem
+            key={i}
+            value={name}
+            className="text-[17px]  cursor-pointer  hover:bg-[#ebeaea] transition-all  w-full"
+          >
+            {name}
+            {<img src={icon} alt="" className="w-[18px] h-[18px]" />}
+          </SelectItem>
         ))}
-      </ul>
-    </div>
+      </SelectContent>
+    </Select>
   );
 };
 

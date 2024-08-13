@@ -38,7 +38,7 @@ const AsideDrawer = () => {
         <aside
           className={`${
             showDrawer ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-500 fixed inset-0 z-[2000]  bg-[rgba(27,27,27,0.25)] backdrop-blur-[10px] flex justify-center items-center`}
+          } transition-transform duration-500 fixed inset-0 z-[1000]  bg-[rgba(27,27,27,0.25)] backdrop-blur-[10px] flex justify-center items-center`}
         >
           <button
             onClick={toggleShowAside}
@@ -57,7 +57,7 @@ const AsideDrawer = () => {
                 )}
               />
             </div>
-            <LanguageSelectMenu />
+            <LanguageSelectMenu className={cn("mt-3")} />
           </div>
         </aside>,
         rootElement
