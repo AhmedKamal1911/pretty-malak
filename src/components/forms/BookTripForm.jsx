@@ -24,6 +24,7 @@ import { BsFillChatRightTextFill } from "react-icons/bs";
 import { MdMail } from "react-icons/md";
 import bookTripFormSchema from "@/validations/bookTripFormSchema";
 import { RxCrossCircled } from "react-icons/rx";
+import { DatePickerWithPresets } from "../ui/datePicker";
 
 const BookTripForm = () => {
   const formRef = useRef();
@@ -31,8 +32,7 @@ const BookTripForm = () => {
 
   const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
   const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
-  console.log(serviceId);
-  console.log(templateId);
+
   const methods = useForm({
     mode: "onSubmit",
     resolver: zodResolver(bookTripFormSchema),
@@ -81,7 +81,8 @@ const BookTripForm = () => {
         }
       );
   };
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
+    console.log(data);
     await sendEmail();
   };
   return (
@@ -136,7 +137,7 @@ const BookTripForm = () => {
             type="text"
             placeholder="Type your room number:"
           />
-
+          <DatePickerWithPresets />
           <div className="flex flex-col xl:flex-row gap-8 lg:gap-5 ">
             <BookInput
               icon={FaDoorOpen}
