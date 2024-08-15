@@ -1,3 +1,4 @@
+// BookTripForm.jsx
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import {
@@ -19,7 +20,8 @@ import { TbReload } from "react-icons/tb";
 import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
 import { FaDoorOpen, FaHotel, FaPen } from "react-icons/fa";
-import { BsFillChatRightTextFill } from "react-icons/bs";
+import { BsFillChatRightTextFill, BsPersonRaisedHand } from "react-icons/bs";
+import { FaChildReaching } from "react-icons/fa6";
 
 import { MdMail } from "react-icons/md";
 import bookTripFormSchema from "@/validations/bookTripFormSchema";
@@ -29,7 +31,6 @@ import { DatePickerWithPresets } from "../ui/datePicker";
 const BookTripForm = () => {
   const formRef = useRef();
   const { toast } = useToast();
-
   const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
   const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
 
@@ -46,8 +47,10 @@ const BookTripForm = () => {
       roomNumber: "",
       adultNumber: "",
       childNumber: "",
+      checkInDate: null, // Default value for check-in date
     },
   });
+
   const {
     reset,
     handleSubmit,
@@ -55,10 +58,11 @@ const BookTripForm = () => {
     formState: { isSubmitting },
   } = methods;
 
-  const sendEmail = () => {
+  const sendEmail = (data) => {
     return emailjs
       .sendForm(serviceId, templateId, formRef.current, {
         publicKey: import.meta.env.VITE_EMAILJS_FORM_PUBLIC_KEY,
+        ...data, // Include form data in the email
       })
       .then(
         () => {
@@ -81,10 +85,12 @@ const BookTripForm = () => {
         }
       );
   };
+
   const onSubmit = async (data) => {
     console.log(data);
-    await sendEmail();
+    await sendEmail(data);
   };
+
   return (
     <Form {...methods}>
       <form
@@ -105,7 +111,7 @@ const BookTripForm = () => {
             control={control}
             name="lastName"
             type="text"
-            placeholder="last Name:"
+            placeholder="Last Name:"
           />
 
           <BookInput
@@ -137,10 +143,26 @@ const BookTripForm = () => {
             type="text"
             placeholder="Type your room number:"
           />
-          <DatePickerWithPresets />
+          <FormField
+            control={control}
+            name="checkInDate"
+            render={({ field }) => {
+              return (
+                <FormItem className="w-full relative">
+                  <FormControl>
+                    <DatePickerWithPresets
+                      selectedDate={field.value}
+                      onDateChange={field.onChange}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red-600 text-[16px]" />
+                </FormItem>
+              );
+            }}
+          />
           <div className="flex flex-col xl:flex-row gap-8 lg:gap-5 ">
             <BookInput
-              icon={FaDoorOpen}
+              icon={BsPersonRaisedHand}
               control={control}
               name="adultNumber"
               type="text"
@@ -148,7 +170,7 @@ const BookTripForm = () => {
               min={0}
             />
             <BookInput
-              icon={FaDoorOpen}
+              icon={FaChildReaching}
               control={control}
               name="childNumber"
               type="text"

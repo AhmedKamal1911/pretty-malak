@@ -19,6 +19,8 @@ export { default as egyptImg } from "@/assets/egypt.jpg";
 export { default as compassImg } from "@/assets/compass.png";
 export { default as waveyMapImg } from "@/assets/wavey-map.png";
 export { default as wavesWithBoat } from "@/assets/waves-with-boat.png";
+export { default as paradise } from "@/assets/paradise.jpg";
+export { default as yachtImg } from "@/assets/yacht.jpg";
 
 // HeroSlider
 export { default as slideImg1 } from "@/assets/slide-1.jpg";

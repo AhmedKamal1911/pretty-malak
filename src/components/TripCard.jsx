@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-const TripCard = ({ title, offer, price, img, time, id }) => {
+const TripCard = ({ title, offer, adultPrice, childPrice, img, time, id }) => {
   return (
     <motion.div
       key={id}
@@ -20,7 +20,7 @@ const TripCard = ({ title, offer, price, img, time, id }) => {
       >
         {offer && (
           <div className="absolute text-white text-2xl right-2 top-2 bg-main w-[50px] h-[50px] rounded-full z-50 flex justify-center items-center">
-            {offer}
+            {offer}%
           </div>
         )}
 
@@ -29,7 +29,7 @@ const TripCard = ({ title, offer, price, img, time, id }) => {
         </span>
         <div className="z-50 absolute left-[1em] bottom-[1em] right-[1em] ">
           <h3 className="text-2xl  absolute bottom-[110px]  group-hover:bottom-[180px] sm:bottom-[110px]  sm:group-hover:bottom-[180px] md:bottom-[120px]  md:group-hover:bottom-[180px]  lg:bottom-[120px]lg:group-hover:bottom-[180px] transition-all duration-300 delay-[60ms] text-white">
-            {price.adult}$/{time}
+            {adultPrice}$/{time}
           </h3>
           <h4 className="absolute bottom-[30px] left-0 right-0 text-white text-3xl my-2 line-clamp-2 group-hover:bottom-[80px] transition-all duration-300 delay-[50ms]">
             {title}

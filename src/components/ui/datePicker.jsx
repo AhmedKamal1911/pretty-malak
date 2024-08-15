@@ -1,3 +1,4 @@
+// DatePickerWithPresets.jsx
 import { useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Button } from "./Button";
@@ -13,8 +14,13 @@ import {
 } from "./SelectMenu";
 import { Calendar } from "./calendar";
 
-export function DatePickerWithPresets() {
-  const [date, setDate] = useState();
+export function DatePickerWithPresets({ selectedDate, onDateChange }) {
+  const [date, setDate] = useState(selectedDate);
+
+  const handleDateChange = (newDate) => {
+    setDate(newDate);
+    onDateChange(newDate);
+  };
 
   return (
     <Popover>
@@ -39,7 +45,7 @@ export function DatePickerWithPresets() {
       <PopoverContent className="flex w-auto flex-col space-y-2 p-2 bg-white">
         <Select
           onValueChange={(value) =>
-            setDate(addDays(new Date(), parseInt(value)))
+            handleDateChange(addDays(new Date(), parseInt(value)))
           }
         >
           <SelectTrigger>
@@ -53,15 +59,14 @@ export function DatePickerWithPresets() {
             position="popper"
             className="bg-white"
           >
-            <SelectItem value="0">Today</SelectItem>
             <SelectItem value="1">Tomorrow</SelectItem>
             <SelectItem value="3">In 3 days</SelectItem>
             <SelectItem value="7">In a week</SelectItem>
-            <SelectItem value="15">In a 15 day</SelectItem>
+            <SelectItem value="15">In 15 days</SelectItem>
           </SelectContent>
         </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" selected={date} onSelect={setDate} />
+          <Calendar mode="single" selected={date} onSelect={handleDateChange} />
         </div>
       </PopoverContent>
     </Popover>

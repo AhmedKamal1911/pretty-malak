@@ -15,6 +15,8 @@ import {
 import { allTrips } from "@/data";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import fetchAllTrips from "@/services/trips/fetchAllTrips";
+import { useQuery } from "@tanstack/react-query";
 
 import { IoWatchOutline } from "react-icons/io5";
 import { MdMap } from "react-icons/md";
@@ -22,10 +24,19 @@ import { useParams } from "react-router-dom";
 
 const Trip = () => {
   const isSmallMedia = useMediaQuery("(max-width:767px)");
-  console.log(isSmallMedia);
+
   const { id: tripId } = useParams();
   useScrollToTop();
-  // console.log(id);
+  const {
+    data: tripsData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["trips"], // Object form for query key
+    queryFn: fetchAllTrips, // Function to fetch data
+  });
+
+  console.log(tripsData);
   const {
     departureTime,
     desc,
@@ -35,7 +46,8 @@ const Trip = () => {
     includedServices,
     maxGuests,
     notIncluded,
-    price,
+    adultPrice,
+    childPrice,
     returnTime,
     time,
     title,
@@ -107,9 +119,9 @@ const Trip = () => {
                 </div>
 
                 <div className="flex flex-col items-center lg:flex-row gap-5">
-                  <TripPriceDetail price={price.adult} age={"adult"} />
+                  <TripPriceDetail price={adultPrice} age={"adult"} />
                   <TripPriceDetail
-                    price={price.child}
+                    price={childPrice}
                     age={"child * Till 11 Years"}
                   />
                 </div>
@@ -173,9 +185,13 @@ const Trip = () => {
             <BookTripForm />
             <div className="mt-10">
               <TripsSlider
-                className="max-[300px]:h-[300px] h-[350px] md:h-[800px] lg:h-[900px] xl:h-[1800px]"
+                className={`max-[300px]:h-[300px] h-[350px] md:h-[800px] lg:h-[900px] ${
+                  relatedTrips.length > 2 && "xl:h-[1600px]"
+                } ${relatedTrips.length === 1 && "xl:h-[400px]"}`}
                 {...(!isSmallMedia && { direction: "vertical" })}
-                isPaginated={true}
+                isPaginated={
+                  relatedTrips.length > 8 && isSmallMedia ? false : true
+                }
                 {...(isSmallMedia
                   ? { isAutoPlay: true }
                   : { isAutoPlay: false })}
