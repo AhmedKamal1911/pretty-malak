@@ -3,6 +3,7 @@ import {
   QuestionsAccordion,
   TourOverviewDetails,
   TourPlanBox,
+  TripCard,
   TripDetail,
   TripDetailsBox,
   TripNavigation,
@@ -15,7 +16,9 @@ import {
 import { allTrips } from "@/data";
 import useMediaQuery from "@/hooks/useMediaQuery";
 import useScrollToTop from "@/hooks/useScrollToTop";
-import fetchAllTrips from "@/services/trips/fetchAllTrips";
+import { fetchAllTrips, fetchTripData } from "@/services/trips/queries";
+import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
+
 import { useQuery } from "@tanstack/react-query";
 
 import { IoWatchOutline } from "react-icons/io5";
@@ -23,26 +26,20 @@ import { MdMap } from "react-icons/md";
 import { useParams } from "react-router-dom";
 
 const Trip = () => {
-  const isSmallMedia = useMediaQuery("(max-width:767px)");
-
   const { id: tripId } = useParams();
   useScrollToTop();
-  const {
-    data: tripsData,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["trips"], // Object form for query key
-    queryFn: fetchAllTrips, // Function to fetch data
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["trip", tripId], // Object form for query key
+    queryFn: async () => await fetchTripData(tripId), // Function to fetch data
   });
 
-  console.log(tripsData);
   const {
     departureTime,
+    imgs,
     desc,
     dontForget,
     highlights,
-    imgs,
     includedServices,
     maxGuests,
     notIncluded,
@@ -57,41 +54,31 @@ const Trip = () => {
     offer,
     tour,
     type: currentTripType,
-  } = allTrips.find(({ id }) => id == tripId);
+  } = data?.data ?? {};
 
-  const relatedTrips = allTrips.filter(
-    ({ type: tripType }) => tripType === currentTripType
-  );
+  const imagesList = imgs?.data ?? [];
+  const {
+    data: tripsData,
+    isLoading: tripsIsLoading,
+    error: tripsError,
+  } = useQuery({
+    queryKey: ["tripsSection"], // Object form for query key
+    queryFn: fetchAllTrips, // Function to fetch data
+  });
 
-  const sliderBreakPoints = {
-    // when window width is >= 640px (Tailwind: sm)
-    640: {
-      slidesPerView: 1,
-      spaceBetween: 10,
-    },
-    // when window width is >= 768px (Tailwind: md)
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    // when window width is >= 1024px (Tailwind: lg)
-    1024: {
-      slidesPerView: 3,
-      spaceBetween: 10,
-    },
-    // when window width is >= 1280px (Tailwind: xl)
-    1280: {
-      slidesPerView: relatedTrips.length < 3 ? relatedTrips.length : 5,
-      spaceBetween: 30,
-    },
-  };
+  const allTrips = tripsData?.data ?? [];
 
+  // const relatedTrips = allTrips.filter(
+  //   ({ type: tripType }) => tripType === currentTripType
+  // );
+
+  console.log(imagesList);
   return (
     <div className="min-h-screen py-[72px] bg-light">
       <div className="h-[300px] relative after:inset-0 after:bg-[#0c0c0c81] after:absolute">
         <div className="h-full">
           <img
-            src={imgs[0]}
+            src={getStrapiMediaURL(imagesList[0]?.url)}
             alt=""
             className="h-full w-full object-cover object-[0%,60%]"
           />
@@ -126,7 +113,7 @@ const Trip = () => {
                   />
                 </div>
               </div>
-              <TripSlider imagesList={imgs} />
+              <TripSlider imagesList={imagesList} />
               <TripOverview desc={desc} title={tour} />
               {/* Info Box */}
               <div className="border divide-y-2 mb-10" id="info">
@@ -164,8 +151,8 @@ const Trip = () => {
                     counterReset: "feature-counter",
                   }}
                 >
-                  {tourPlan.map((plan, i) => (
-                    <TourPlanBox key={i} plan={plan} />
+                  {tourPlan?.map(({ name, id }) => (
+                    <TourPlanBox key={id} plan={name} />
                   ))}
                 </div>
               </div>
@@ -183,22 +170,12 @@ const Trip = () => {
           {/* Form AND RELATED TRIPS */}
           <div className="lg:w-[30%]">
             <BookTripForm />
-            <div className="mt-10">
-              <TripsSlider
-                className={`max-[300px]:h-[300px] h-[350px] md:h-[800px] lg:h-[900px] ${
-                  relatedTrips.length > 2 && "xl:h-[1600px]"
-                } ${relatedTrips.length === 1 && "xl:h-[400px]"}`}
-                {...(!isSmallMedia && { direction: "vertical" })}
-                isPaginated={
-                  relatedTrips.length > 8 && isSmallMedia ? false : true
-                }
-                {...(isSmallMedia
-                  ? { isAutoPlay: true }
-                  : { isAutoPlay: false })}
-                loop={true}
-                tripsList={relatedTrips}
-                BreakPoints={sliderBreakPoints}
-              />
+            <div className="mt-10 flex flex-col gap-3">
+              {allTrips.map((trip) => (
+                <div key={trip.id} className="max-[300px]:h-[300px] h-[350px] ">
+                  <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
+                </div>
+              ))}
             </div>
           </div>
         </div>

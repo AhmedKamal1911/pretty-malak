@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,9 +7,19 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
 const TripSlider = ({ imagesList }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const mainSwiperRef = useRef(null);
+
+  useEffect(() => {
+    if (mainSwiperRef.current && mainSwiperRef.current.swiper) {
+      // Update Swiper to make sure it's correctly initialized
+      mainSwiperRef.current.swiper.update();
+    }
+  }, [thumbsSwiper, imagesList]);
+
   return (
     <div className="select-none mb-10 max-w-">
       <div className="h-[150px] min-[367px]:h-[250px] min-[600px]:h-[500px]">
@@ -24,10 +34,16 @@ const TripSlider = ({ imagesList }) => {
           thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2 h-full"
+          ref={mainSwiperRef}
+          lazy={true}
         >
-          {imagesList.map((img, i) => (
-            <SwiperSlide key={i} className="active:cursor-grab">
-              <img src={img} className="h-full object-cover w-full" />
+          {imagesList.map(({ url, id }) => (
+            <SwiperSlide key={id} className="active:cursor-grab">
+              <img
+                src={getStrapiMediaURL(url)}
+                className="h-full object-cover w-full"
+                loading="lazy"
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -50,9 +66,12 @@ const TripSlider = ({ imagesList }) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper h-full"
         >
-          {imagesList.map((img, i) => (
-            <SwiperSlide key={i} className="opacity-slide active:cursor-grab">
-              <img src={img} className="h-full object-cover w-full" />
+          {imagesList.map(({ url, id }) => (
+            <SwiperSlide key={id} className="opacity-slide active:cursor-grab">
+              <img
+                src={getStrapiMediaURL(url)}
+                className="h-full object-cover w-full"
+              />
             </SwiperSlide>
           ))}
         </Swiper>

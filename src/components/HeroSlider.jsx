@@ -24,6 +24,7 @@ const HeroSlider = () => {
         slidesPerView={1}
         scrollbar={{ draggable: true }}
         effect="fade"
+        lazy={true}
       >
         {heroSliderImages.map((img, i) => (
           <SwiperSlide
@@ -32,6 +33,7 @@ const HeroSlider = () => {
           >
             <img
               src={isMedScreen ? img.small : img.large}
+              loading="lazy"
               className={`w-full h-full animate-smoothScale  ${
                 isHeightSmall
                   ? i === 0

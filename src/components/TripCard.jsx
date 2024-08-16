@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-const TripCard = ({ title, offer, adultPrice, childPrice, img, time, id }) => {
+import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
+const TripCard = ({ title, offer, adultPrice, img, time, id }) => {
+  const imgUrl = getStrapiMediaURL(img);
   return (
     <motion.div
       key={id}
@@ -15,7 +17,7 @@ const TripCard = ({ title, offer, adultPrice, childPrice, img, time, id }) => {
         to={`/trip/${id}`}
         className="relative overflow-hidden select-none block group h-full bg-cover bg-[80%] after:absolute after:inset-0 after:bg-[#12131233] before:absolute before:inset-0 before:opacity-0 hover:before:bg-custom-gradient hover:before:opacity-[1] before:transition-all before:duration-700"
         style={{
-          backgroundImage: `url('${img}')`,
+          backgroundImage: `url(${imgUrl})`,
         }}
       >
         {offer && (

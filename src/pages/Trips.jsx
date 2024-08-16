@@ -7,16 +7,31 @@ import {
   SelectValue,
 } from "@/components/ui/SelectMenu";
 
-import { allTrips, tripsTypes } from "@/data";
+import { tripsTypes } from "@/data";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import { fetchAllTrips } from "@/services/trips/queries";
+
+import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
 
 import { useState } from "react";
 
 const Trips = () => {
-  const [tripType, setTripType] = useState("");
+  const [tripType, setTripType] = useState("all");
+  const {
+    data: tripsData,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["trips"], // Object form for query key
+    queryFn: fetchAllTrips, // Function to fetch data
+  });
+
+  const allTrips = tripsData?.data ?? [];
+
   const onTripValueChange = (value) => {
     console.log("changed");
+
     setTripType(value);
   };
   useScrollToTop();
@@ -27,7 +42,7 @@ const Trips = () => {
           <SectionHeader subTitle="All Trips" introText="Explore Our Trips" />
           <Select onValueChange={onTripValueChange}>
             <SelectTrigger className="w-[180px] text-[17px]">
-              <SelectValue placeholder="Select Trip" />
+              <SelectValue placeholder="all" />
             </SelectTrigger>
             <SelectContent
               ref={(ref) => {
@@ -51,23 +66,23 @@ const Trips = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
           <AnimatePresence>
-            {tripType !== ""
+            {tripType !== "all"
               ? allTrips
-                  .filter((offer) => offer.type === tripType)
-                  .map((offer) => (
+                  .filter((trip) => trip.type === tripType)
+                  .map((trip) => (
                     <div
-                      key={offer.id}
+                      key={trip.id}
                       className="max-[300px]:h-[300px] h-[400px] "
                     >
-                      <TripCard {...offer} img={offer.imgs[0]} />
+                      <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
                     </div>
                   ))
-              : allTrips.map((offer) => (
+              : allTrips.map((trip) => (
                   <div
-                    key={offer.id}
+                    key={trip.id}
                     className="max-[300px]:h-[300px] h-[400px] "
                   >
-                    <TripCard {...offer} img={offer.imgs[0]} />
+                    <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
                   </div>
                 ))}
           </AnimatePresence>

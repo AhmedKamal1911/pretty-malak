@@ -246,6 +246,7 @@ export const sliderBreakPoints = {
 };
 
 export const tripsTypes = [
+  { value: "all", label: "all" },
   {
     value: "sea",
     label: "Sea",

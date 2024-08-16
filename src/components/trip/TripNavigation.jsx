@@ -18,7 +18,7 @@ const TripNavigation = () => {
         <li>
           <button
             onClick={() => scrollToSection("info")}
-            className={`min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
+            className={`min-[367px]:p-3 lg:px-7 lg:py-5 text-[16px] sm:text-xl ${
               activeSection === "info" && "text-orange-500"
             }`}
           >
@@ -28,7 +28,7 @@ const TripNavigation = () => {
         <li>
           <button
             onClick={() => scrollToSection("tour-plan")}
-            className={` min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
+            className={` min-[367px]:p-3 lg:px-7 lg:py-5 text-[16px] sm:text-xl ${
               activeSection === "tour-plan" && "text-orange-500"
             }`}
           >
@@ -38,7 +38,7 @@ const TripNavigation = () => {
         <li>
           <button
             onClick={() => scrollToSection("faq")}
-            className={` min-[367px]:p-3 lg:px-7 lg:py-5 text-[17px] sm:text-xl ${
+            className={` min-[367px]:p-3 lg:px-7 lg:py-5 text-[16px] sm:text-xl ${
               activeSection === "faq" && "text-orange-500"
             }`}
           >
