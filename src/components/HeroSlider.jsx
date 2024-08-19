@@ -24,7 +24,7 @@ const HeroSlider = () => {
         slidesPerView={1}
         scrollbar={{ draggable: true }}
         effect="fade"
-        lazy={true}
+        lazy={"true"}
       >
         {heroSliderImages.map((img, i) => (
           <SwiperSlide

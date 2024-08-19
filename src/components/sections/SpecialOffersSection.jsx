@@ -1,12 +1,12 @@
 // import { specialTrips } from "@/data";
-import { SectionHeader, TripsSlider } from "..";
+import { Loading, SectionHeader, TripsSlider } from "..";
 import { fetchSpecialTrips } from "@/services/trips/queries";
 import { useQuery } from "@tanstack/react-query";
 
 const SpecialOffersSection = () => {
   const {
     data: tripsData,
-    isLoading,
+    isFetching,
     error,
   } = useQuery({
     queryKey: ["trips"], // Object form for query key
@@ -23,7 +23,16 @@ const SpecialOffersSection = () => {
           introText="Get very special offers on trips"
         />
         <div className="mt-10">
-          <TripsSlider className="h-[400px]" tripsList={specialTrips} />
+          <Loading
+            isFetching={isFetching}
+            error={error}
+            loadingElementClassName="h-[20vh]"
+          >
+            <TripsSlider
+              className="h-[300px] sm:h-[400px]"
+              tripsList={specialTrips}
+            />
+          </Loading>
         </div>
       </div>
     </section>

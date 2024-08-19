@@ -1,4 +1,9 @@
-import { SectionHeader, TripCard } from "@/components";
+import {
+  FetchTripsTypesLoader,
+  Loading,
+  SectionHeader,
+  TripCard,
+} from "@/components";
 import {
   Select,
   SelectContent,
@@ -7,33 +12,44 @@ import {
   SelectValue,
 } from "@/components/ui/SelectMenu";
 
-import { tripsTypes } from "@/data";
 import useScrollToTop from "@/hooks/useScrollToTop";
-import { fetchAllTrips } from "@/services/trips/queries";
+import { fetchTrips, fetchTripTypes } from "@/services/trips/queries";
 
 import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
 
 import { useState } from "react";
-
+import { TfiFaceSad } from "react-icons/tfi";
 const Trips = () => {
   const [tripType, setTripType] = useState("all");
   const {
     data: tripsData,
-    isLoading,
+    isFetching,
     error,
   } = useQuery({
-    queryKey: ["trips"], // Object form for query key
-    queryFn: fetchAllTrips, // Function to fetch data
+    queryKey: ["trips", tripType], // Object form for query key
+    queryFn: () => fetchTrips(tripType), // Function to fetch data
   });
+  console.log(tripsData, "tripsData");
 
   const allTrips = tripsData?.data ?? [];
 
+  const {
+    data: tripsTypes,
+    isFetching: tripsTypesIsFetching,
+
+    error: tripsTypesError,
+  } = useQuery({
+    queryKey: ["tripsTypes"], // Object form for query key
+    queryFn: fetchTripTypes, // Function to fetch data
+  });
+  console.log("types", tripsTypes);
   const onTripValueChange = (value) => {
     console.log("changed");
 
     setTripType(value);
   };
+
   useScrollToTop();
   return (
     <div className="min-h-screen py-24">
@@ -41,8 +57,23 @@ const Trips = () => {
         <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between">
           <SectionHeader subTitle="All Trips" introText="Explore Our Trips" />
           <Select onValueChange={onTripValueChange}>
-            <SelectTrigger className="w-[180px] text-[17px]">
-              <SelectValue placeholder="all" />
+            <SelectTrigger
+              disabled={Boolean(tripsTypesError)}
+              className="w-[180px] text-[17px]"
+            >
+              <Loading
+                isFetching={tripsTypesIsFetching}
+                loadingElement={<FetchTripsTypesLoader />}
+                error={tripsTypesError}
+                errorElement={
+                  <div className="flex items-center gap-1">
+                    <TfiFaceSad className="text-red-600 w-[18px] h-[18px]" />
+                    <span className="text-red-600">Fetch Error</span>
+                  </div>
+                }
+              >
+                <SelectValue placeholder="Select type" />
+              </Loading>
             </SelectTrigger>
             <SelectContent
               ref={(ref) => {
@@ -51,42 +82,29 @@ const Trips = () => {
               }}
               className="bg-white z-[800]"
             >
-              {tripsTypes.map(({ label, value }, i) => (
+              {tripsTypes?.map((type, i) => (
                 <SelectItem
                   key={i}
-                  value={value}
+                  value={type}
                   className="text-[17px] cursor-pointer hover:bg-[#ebeaea] transition-all "
                 >
-                  {label}
+                  {type}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
-          <AnimatePresence>
-            {tripType !== "all"
-              ? allTrips
-                  .filter((trip) => trip.type === tripType)
-                  .map((trip) => (
-                    <div
-                      key={trip.id}
-                      className="max-[300px]:h-[300px] h-[400px] "
-                    >
-                      <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
-                    </div>
-                  ))
-              : allTrips.map((trip) => (
-                  <div
-                    key={trip.id}
-                    className="max-[300px]:h-[300px] h-[400px] "
-                  >
-                    <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
-                  </div>
-                ))}
-          </AnimatePresence>
-        </div>
+        <Loading isFetching={isFetching} error={error}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
+            <AnimatePresence>
+              {allTrips.map((trip) => (
+                <div key={trip.id} className="h-[300px] sm:h-[400px] ">
+                  <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
+                </div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </Loading>
       </div>
     </div>
   );

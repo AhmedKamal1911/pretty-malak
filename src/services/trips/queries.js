@@ -14,10 +14,27 @@ async function fetchTripData(tripId) {
 }
 
 // Function to fetch all trips
-const fetchAllTrips = async () => {
+const fetchTrips = async (typeName) => {
   // Make the API request with query parameters
-  const response = await axiosInstance.get(`/trips?${queryAll}`);
+  const filters =
+    typeName !== "all"
+      ? {
+          filters: {
+            type: {
+              typeName: {
+                $eq: typeName,
+              },
+            },
+          },
+        }
+      : {};
 
+  const filteredQuery = qs.stringify({
+    populate: "*",
+    ...filters,
+  });
+
+  const response = await axiosInstance.get(`/trips?${filteredQuery}`);
   return response.data;
 };
 
@@ -37,4 +54,42 @@ const fetchSpecialTrips = async () => {
   return response.data;
 };
 
-export { fetchAllTrips, fetchSpecialTrips, fetchTripData };
+const fetchRelatedTrips = async (typeName, tripId) => {
+  // Construct query parameters
+  const relatedTripsQuery = qs.stringify({
+    populate: "*",
+    filters: {
+      type: {
+        typeName: {
+          $eq: typeName,
+        },
+      },
+      id: {
+        $ne: tripId,
+      },
+    },
+  });
+  // Make the API request with query parameters
+  const response = await axiosInstance.get(`/trips?${relatedTripsQuery}`);
+
+  return response.data;
+};
+
+const fetchTripTypes = async () => {
+  const trips = await axiosInstance.get(`/trips?${queryAll}`);
+  // Extract unique trip types from fetched trips
+
+  const uniqueTripTypes = [
+    ...new Set(trips.data.data?.map((trip) => trip.type.typeName)),
+  ];
+
+  return uniqueTripTypes;
+};
+
+export {
+  fetchTrips,
+  fetchSpecialTrips,
+  fetchTripData,
+  fetchRelatedTrips,
+  fetchTripTypes,
+};

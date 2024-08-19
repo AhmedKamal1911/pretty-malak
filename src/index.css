@@ -15,6 +15,10 @@ body {
   -webkit-text-fill-color: white;
   -webkit-text-stroke: 1px rgb(84, 89, 95);
 }
+.error-stroke {
+  -webkit-text-fill-color: rgb(0, 0, 0);
+  -webkit-text-stroke: 1px rgb(218, 20, 20);
+}
 
 .stroke-fill::after {
   -webkit-text-fill-color: #bfa888;

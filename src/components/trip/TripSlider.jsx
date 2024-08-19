@@ -35,7 +35,7 @@ const TripSlider = ({ imagesList }) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2 h-full"
           ref={mainSwiperRef}
-          lazy={true}
+          lazy={"true"}
         >
           {imagesList.map(({ url, id }) => (
             <SwiperSlide key={id} className="active:cursor-grab">

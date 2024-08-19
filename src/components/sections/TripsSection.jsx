@@ -1,19 +1,19 @@
 // import { allTrips } from "@/data";
-import { SectionHeader, TripCard } from "..";
+import { Loading, SectionHeader, TripCard } from "..";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/Button";
 import { AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAllTrips } from "@/services/trips/queries";
+import { fetchTrips } from "@/services/trips/queries";
 
 const TripsSection = () => {
   const {
     data: tripsData,
-    isLoading,
+    isFetching,
     error,
   } = useQuery({
     queryKey: ["tripsSection"], // Object form for query key
-    queryFn: fetchAllTrips, // Function to fetch data
+    queryFn: fetchTrips, // Function to fetch data
   });
 
   const allTrips = tripsData?.data ?? [];
@@ -28,16 +28,21 @@ const TripsSection = () => {
         <Button asChild variant="primary">
           <NavLink to="/trips">Show All</NavLink>
         </Button>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
-          <AnimatePresence>
-            {allTrips.map((trip) => (
-              <div key={trip.id} className="h-[400px]">
-                <TripCard {...trip} img={trip?.imgs.data?.[0]?.url} />
-              </div>
-            ))}
-          </AnimatePresence>
-        </div>
+        <Loading
+          isFetching={isFetching}
+          error={error}
+          loadingElementClassName="h-[30vh]"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
+            <AnimatePresence>
+              {allTrips.map((trip) => (
+                <div key={trip.id} className="h-[300px] sm:h-[400px]">
+                  <TripCard {...trip} img={trip?.imgs.data?.[0]?.url} />
+                </div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </Loading>
       </div>
     </section>
   );

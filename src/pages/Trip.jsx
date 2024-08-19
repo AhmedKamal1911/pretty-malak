@@ -11,12 +11,10 @@ import {
   TripPriceDetail,
   TripReviewBox,
   TripSlider,
-  TripsSlider,
 } from "@/components";
-import { allTrips } from "@/data";
-import useMediaQuery from "@/hooks/useMediaQuery";
+
 import useScrollToTop from "@/hooks/useScrollToTop";
-import { fetchAllTrips, fetchTripData } from "@/services/trips/queries";
+import { fetchRelatedTrips, fetchTripData } from "@/services/trips/queries";
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
 import { useQuery } from "@tanstack/react-query";
@@ -53,26 +51,23 @@ const Trip = () => {
     tripDays,
     offer,
     tour,
-    type: currentTripType,
+
+    type: { typeName } = {},
   } = data?.data ?? {};
 
   const imagesList = imgs?.data ?? [];
+
   const {
-    data: tripsData,
-    isLoading: tripsIsLoading,
-    error: tripsError,
+    data: relatedTripsData,
+    isLoading: relatedTripsIsLoading,
+    error: relatedTripsError,
   } = useQuery({
-    queryKey: ["tripsSection"], // Object form for query key
-    queryFn: fetchAllTrips, // Function to fetch data
+    queryKey: ["relatedTrips", typeName, tripId], // Object form for query key
+    queryFn: async () => await fetchRelatedTrips(typeName, tripId), // Function to fetch data
   });
 
-  const allTrips = tripsData?.data ?? [];
+  const allRelatedTrips = relatedTripsData?.data ?? [];
 
-  // const relatedTrips = allTrips.filter(
-  //   ({ type: tripType }) => tripType === currentTripType
-  // );
-
-  console.log(imagesList);
   return (
     <div className="min-h-screen py-[72px] bg-light">
       <div className="h-[300px] relative after:inset-0 after:bg-[#0c0c0c81] after:absolute">
@@ -84,7 +79,7 @@ const Trip = () => {
           />
         </div>
         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-40 text-center w-full xl:w-[40%] px-2">
-          <h5 className="text-4xl text-main">{currentTripType}</h5>
+          <h5 className="text-4xl text-main">{typeName}</h5>
           <h2 className="text-4xl lg:text-6xl text-white">{title}</h2>
         </div>
       </div>
@@ -171,7 +166,8 @@ const Trip = () => {
           <div className="lg:w-[30%]">
             <BookTripForm />
             <div className="mt-10 flex flex-col gap-3">
-              {allTrips.map((trip) => (
+              <h2 className="text-3xl text-main mb-10">Related Trips</h2>
+              {allRelatedTrips.map((trip) => (
                 <div key={trip.id} className="max-[300px]:h-[300px] h-[350px] ">
                   <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
                 </div>

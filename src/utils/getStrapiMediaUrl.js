@@ -1,5 +1,5 @@
 function getStrapiURL() {
-  return "http://localhost:1337";
+  return import.meta.env.VITE_TOURS_BASE_URL;
 }
 
 export function getStrapiMediaURL(url) {
