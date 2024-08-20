@@ -1,9 +1,5 @@
-import {
-  FetchTripsTypesLoader,
-  Loading,
-  SectionHeader,
-  TripCard,
-} from "@/components";
+import { Loading, SectionHeader, TripCard } from "@/components";
+import { FetchTripsTypesLoader } from "@/components/feedback";
 import {
   Select,
   SelectContent,
@@ -30,7 +26,6 @@ const Trips = () => {
     queryKey: ["trips", tripType], // Object form for query key
     queryFn: () => fetchTrips(tripType), // Function to fetch data
   });
-  console.log(tripsData, "tripsData");
 
   const allTrips = tripsData?.data ?? [];
 
@@ -43,7 +38,7 @@ const Trips = () => {
     queryKey: ["tripsTypes"], // Object form for query key
     queryFn: fetchTripTypes, // Function to fetch data
   });
-  console.log("types", tripsTypes);
+
   const onTripValueChange = (value) => {
     console.log("changed");
 
@@ -75,15 +70,13 @@ const Trips = () => {
                 <SelectValue placeholder="Select type" />
               </Loading>
             </SelectTrigger>
-            <SelectContent
-              ref={(ref) => {
-                if (!ref) return;
-                ref.ontouchstart = (e) => e.preventDefault();
-              }}
-              className="bg-white z-[800]"
-            >
+            <SelectContent className="bg-white z-[800]">
               {tripsTypes?.map((type, i) => (
                 <SelectItem
+                  ref={(ref) => {
+                    if (!ref) return;
+                    ref.ontouchstart = (e) => e.preventDefault();
+                  }}
                   key={i}
                   value={type}
                   className="text-[17px] cursor-pointer hover:bg-[#ebeaea] transition-all "
@@ -97,9 +90,13 @@ const Trips = () => {
         <Loading isFetching={isFetching} error={error}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
             <AnimatePresence>
-              {allTrips.map((trip) => (
+              {allTrips.map((trip, i) => (
                 <div key={trip.id} className="h-[300px] sm:h-[400px] ">
-                  <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
+                  <TripCard
+                    {...trip}
+                    img={trip?.imgs.data[0]?.url}
+                    count={i + 1}
+                  />
                 </div>
               ))}
             </AnimatePresence>

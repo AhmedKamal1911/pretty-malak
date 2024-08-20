@@ -273,23 +273,27 @@ export const travelCategories = [
 export const clientQuestions = [
   {
     id: 1,
-    question: "is it accessible?",
-    answer: "yes it is",
+    question: "how to book a trip?",
+    answer:
+      "It is very easy to book a trip. On our website you choose the trip you need, fill out the booking form and send it. You can also do it directly, through whatsapp, Viber, Telegram , Gmail. And our operator will answer you.",
   },
   {
     id: 2,
-    question: "is it accessible?",
-    answer: "yes it is",
+    question: "how to book private trip?",
+    answer:
+      "It is very easy to book a private trip. On our website you choose the trip you need, fill out the booking form and send it and contact with us to book it as private trip. You can also do it directly, through whatsapp, Viber, Telegram , Gmail. And our operator will answer you.",
   },
   {
     id: 3,
-    question: "is it accessible?",
-    answer: "yes it is",
+    question: "how and when to pay for the trip?",
+    answer:
+      "Almost all our trips are paid before the start of it, in our office or in the bus, or during the trip.",
   },
   {
     id: 4,
-    question: "is it accessible?",
-    answer: "yes it is",
+    question: "are we insured during the excursion?",
+    answer:
+      "The insurance company is a separate organization, and it gives you an insurance conditions that are valid anywhere in Egypt. Not only on trips, but also everywhere in Egypt. The insurance policy contains the contact numbers of the representatives of the insurance company in Egypt, by which you can directly contact them without help of the tour operator representative.",
   },
 ];
 

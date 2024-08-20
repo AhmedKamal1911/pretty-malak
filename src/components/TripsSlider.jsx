@@ -43,9 +43,9 @@ const TripsSlider = ({
         modules={[Pagination, Autoplay]}
         className="mySwiper h-full w-full"
       >
-        {tripsList.map((trip) => (
+        {tripsList.map((trip, i) => (
           <SwiperSlide key={trip.id}>
-            <TripCard {...trip} img={trip?.imgs.data?.[0]?.url} />
+            <TripCard {...trip} img={trip?.imgs.data?.[0]?.url} count={i + 1} />
           </SwiperSlide>
         ))}
       </Swiper>

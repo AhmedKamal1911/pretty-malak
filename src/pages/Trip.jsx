@@ -1,5 +1,6 @@
 import {
   BookTripForm,
+  Loading,
   QuestionsAccordion,
   TourOverviewDetails,
   TourPlanBox,
@@ -59,7 +60,7 @@ const Trip = () => {
 
   const {
     data: relatedTripsData,
-    isLoading: relatedTripsIsLoading,
+    isFetching,
     error: relatedTripsError,
   } = useQuery({
     queryKey: ["relatedTrips", typeName, tripId], // Object form for query key
@@ -165,13 +166,27 @@ const Trip = () => {
           {/* Form AND RELATED TRIPS */}
           <div className="lg:w-[30%]">
             <BookTripForm />
-            <div className="mt-10 flex flex-col gap-3">
+            <div className="mt-10 flex flex-col gap-3 overflow-hidden">
               <h2 className="text-3xl text-main mb-10">Related Trips</h2>
-              {allRelatedTrips.map((trip) => (
-                <div key={trip.id} className="max-[300px]:h-[300px] h-[350px] ">
-                  <TripCard {...trip} img={trip?.imgs.data[0]?.url} />
-                </div>
-              ))}
+              {/* TODO:SKELETON LOADER */}
+              <Loading
+                isFetching={isFetching}
+                error={relatedTripsError}
+                errorElementClassName="h-[80vh] "
+              >
+                {allRelatedTrips.map((trip, i) => (
+                  <div
+                    key={trip.id}
+                    className="max-[300px]:h-[300px] h-[350px] "
+                  >
+                    <TripCard
+                      {...trip}
+                      img={trip?.imgs.data[0]?.url}
+                      count={i + 1}
+                    />
+                  </div>
+                ))}
+              </Loading>
             </div>
           </div>
         </div>

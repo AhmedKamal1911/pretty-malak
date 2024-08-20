@@ -27,7 +27,7 @@ const WhyChooseUsSection = () => {
         style={{
           backgroundImage: `url('${wavesWithBoat}')`,
         }}
-        className="absolute left-0 bottom-0  h-[705px] w-[431px] bg-[50%] bg-no-repeat bg-cover"
+        className="absolute animate-bouncing-left-right left-0 bottom-[-90px] md:bottom-0  h-[705px] w-[431px] bg-[50%] bg-no-repeat bg-cover"
       />
 
       <div className="container">
@@ -39,7 +39,7 @@ const WhyChooseUsSection = () => {
           <div>
             <h2
               data-text={"Why Choose Us"}
-              className="stroke-fill w-fit mx-auto whitespace-nowrap mb-5 text-6xl md:text-8xl xl:text-[120px] text-center relative after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden"
+              className="stroke-fill w-fit mx-auto whitespace-nowrap mb-5 text-5xl md:text-8xl xl:text-[120px] text-center relative after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden"
             >
               Why Choose Us
             </h2>
@@ -65,10 +65,10 @@ const WhyChooseUsSection = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 w-full">
                 <SectionHeader
                   subTitle="First-class full service"
-                  subTitleProps={{ className: "text-6xl" }}
+                  subTitleProps={{ className: "text-4xl md:text-6xl" }}
                   className="mb-8 text-center"
                 />
                 <Accordion type="single" collapsible>

@@ -21,16 +21,16 @@ const AboutUsSection = () => {
             >
               Read More
             </NavLink>
-            <div className="flex items-center justify-center md:justify-start gap-5 mt-5 p-[10px] md:p-0">
-              <div>
+            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-5 mt-5 p-[10px] md:p-0">
+              <div className="rounded-md overflow-hidden border-2 border-main">
                 <img
                   src={smallSlideImg1}
                   alt=""
-                  className="w-[100px] h-[100px] object-cover"
+                  className="w-[150px] h-[110px] object-cover"
                 />
               </div>
-              <div className="flex flex-col">
-                <span>Since year</span>
+              <div className="flex flex-col text-center">
+                <span className="text-gray-600">Since year</span>
                 <strong className="text-5xl text-main">2005</strong>
               </div>
             </div>

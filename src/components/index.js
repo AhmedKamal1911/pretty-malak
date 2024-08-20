@@ -12,14 +12,10 @@ export { default as AboutInfoBox } from "@/components/AboutInfoBox";
 export { default as OurServiceBox } from "@/components/OurServiceBox";
 export { default as BookInput } from "@/components/BookInput";
 export { default as QuestionsAccordion } from "@/components/QuestionsAccordion";
-//Animations
-export { default as NotFoundAnimation } from "@/components/NotFoundAnimation";
-export { default as ErrorAnimation } from "@/components/ErrorAnimation";
+
 // Loaders
 export { default as Loading } from "@/components/Loading";
-export { default as FetchTripsLoader } from "@/components/loaders/FetchTripsLoader";
 export { default as ErrorElement } from "@/components/ErrorElement";
-export { default as FetchTripsTypesLoader } from "@/components/loaders/FetchTripsTypesLoader";
 // Trip
 export { default as TripNavigation } from "@/components/trip/TripNavigation";
 export { default as TripDetail } from "@/components/trip/TripDetail";

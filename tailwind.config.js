@@ -75,7 +75,10 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(100%)" },
         },
-
+        "bouncing-left-right": {
+          "0%": { transform: "translateX(10px)" },
+          "100%": { transform: "translateX(-10px)" },
+        },
         smoothAlternate: {
           "0%": {
             transform: "translate(0,0)",
@@ -105,6 +108,8 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-in": "slide-in 0.2s ease-out",
         "slide-out": "slide-out 0.1s ease-in",
+        "bouncing-left-right":
+          "bouncing-left-right 2s linear infinite alternate",
         smoothScale: "smoothScale 18s linear infinite alternate",
         smoothAlternate: "smoothAlternate 4s linear infinite alternate",
         infiniteSlide: "infiniteSlide 35s linear infinite",

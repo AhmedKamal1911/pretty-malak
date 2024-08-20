@@ -21,7 +21,7 @@ const TripSlider = ({ imagesList }) => {
   }, [thumbsSwiper, imagesList]);
 
   return (
-    <div className="select-none mb-10 max-w-">
+    <div className="select-none mb-10">
       <div className="h-[150px] min-[367px]:h-[250px] min-[600px]:h-[500px]">
         <Swiper
           style={{

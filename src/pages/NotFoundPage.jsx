@@ -1,4 +1,4 @@
-import { NotFoundAnimation } from "@/components";
+import NotFoundAnimation from "@/components/animations/NotFoundAnimation";
 
 const NotFoundPage = () => {
   return (

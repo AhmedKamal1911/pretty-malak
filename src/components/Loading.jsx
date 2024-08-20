@@ -1,13 +1,20 @@
 import { cn } from "@/utils/cn";
-import { ErrorElement, FetchTripsLoader } from ".";
+import ErrorElement from "./ErrorElement";
+import { FetchTripsLoader } from "./feedback";
 
 const Loading = ({
   children,
   isFetching,
   error,
-  errorElement = <ErrorElement error={error?.message} />,
-  loadingElement = <FetchTripsLoader />,
   loadingElementClassName,
+  errorElementClassName,
+  errorElement = (
+    <ErrorElement
+      error={error?.message}
+      errorElementClassName={errorElementClassName}
+    />
+  ),
+  loadingElement = <FetchTripsLoader />,
 }) => {
   // REQUIRED FALLBACK ELEMENT
   if (isFetching) {

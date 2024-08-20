@@ -86,6 +86,15 @@ const fetchTripTypes = async () => {
   return uniqueTripTypes;
 };
 
+const fetchGlobalInfo = async () => {
+  // Construct query parameters
+
+  // Make the API request with query parameters
+  const response = await axiosInstance.get(`/global?${queryAll}`);
+  const globalInfo = response?.data;
+  return globalInfo;
+};
+
 export {
   fetchTrips,
   fetchSpecialTrips,

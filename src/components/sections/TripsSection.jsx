@@ -32,12 +32,17 @@ const TripsSection = () => {
           isFetching={isFetching}
           error={error}
           loadingElementClassName="h-[30vh]"
+          errorElementClassName="h-[70vh]"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
             <AnimatePresence>
-              {allTrips.map((trip) => (
+              {allTrips.map((trip, i) => (
                 <div key={trip.id} className="h-[300px] sm:h-[400px]">
-                  <TripCard {...trip} img={trip?.imgs.data?.[0]?.url} />
+                  <TripCard
+                    {...trip}
+                    img={trip?.imgs.data?.[0]?.url}
+                    count={i + 1}
+                  />
                 </div>
               ))}
             </AnimatePresence>
