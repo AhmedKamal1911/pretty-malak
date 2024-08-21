@@ -17,7 +17,7 @@ body {
 }
 .error-stroke {
   -webkit-text-fill-color: rgb(0, 0, 0);
-  -webkit-text-stroke: 1px rgb(218, 20, 20);
+  -webkit-text-stroke: 0.1px rgb(218, 20, 20);
 }
 
 .stroke-fill::after {

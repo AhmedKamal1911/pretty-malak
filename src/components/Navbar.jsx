@@ -4,6 +4,8 @@ import { LanguageSelectMenu, NavLinks } from ".";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useMatch } from "react-router-dom";
 import { cn } from "@/utils/cn";
+import { useQuery } from "@tanstack/react-query";
+import { fetchGlobalInfo } from "@/services/trips/queries";
 
 const Navbar = () => {
   const isMatched = useMediaQuery("(max-width: 767px)");
@@ -11,6 +13,11 @@ const Navbar = () => {
   const isHomepage = Boolean(homepageMatch);
   const ref = useRef(null);
   const [isAnimateHeader, setIsAnimateHeader] = useState(false);
+  const { data } = useQuery({
+    queryKey: ["navbar"], // Object form for query key
+    queryFn: fetchGlobalInfo,
+  });
+  const logo = data?.logoText;
 
   useEffect(() => {
     if (!ref.current) return;
@@ -47,7 +54,7 @@ const Navbar = () => {
             <div>
               <NavLink to="/">
                 <h2 className="text-3xl text-white font-logoFont uppercase">
-                  SeaCrew
+                  {logo ?? "seacrew"}
                 </h2>
               </NavLink>
             </div>

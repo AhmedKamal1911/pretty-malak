@@ -10,6 +10,7 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 
 const Home = () => {
   useScrollToTop();
+
   return (
     <main>
       <HeroSection />

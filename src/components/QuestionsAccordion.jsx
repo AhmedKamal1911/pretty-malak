@@ -5,11 +5,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/Accordion";
 
-import { clientQuestions } from "@/data";
-const QuestionsAccordion = () => {
+const QuestionsAccordion = ({ questionsList }) => {
   return (
     <Accordion type="single" collapsible>
-      {clientQuestions.map(({ question, answer, id }) => (
+      {questionsList.map(({ question, answer, id }) => (
         <AccordionItem
           value={`item-${id}`}
           key={id}

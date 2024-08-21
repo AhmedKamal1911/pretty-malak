@@ -1,12 +1,21 @@
 import { DynamicInfoSection, FooterSectionHeader } from ".";
 import { NavLink } from "react-router-dom";
-import { contactWays, links } from "@/data";
+
 import { dashedLines, unEvenWaves } from "@/assets";
 import { FaFacebookSquare } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io5";
 import { Button } from "./ui/Button";
+import { fetchGlobalInfo } from "@/services/trips/queries";
+import { useQuery } from "@tanstack/react-query";
 
 const Footer = () => {
+  const { data } = useQuery({
+    queryKey: ["footer"], // Object form for query key
+    queryFn: fetchGlobalInfo,
+  });
+
+  const linksList = data?.navLinks ?? [];
+  const contactLinks = data?.contactLinks ?? [];
   return (
     <footer className="bg-[#050a16] relative min-h-[50vh] overflow-hidden">
       <div className="container">
@@ -33,11 +42,11 @@ const Footer = () => {
           </div>
           <div>
             <FooterSectionHeader title="contact us" />
-            <DynamicInfoSection infoList={contactWays} />
+            <DynamicInfoSection infoList={contactLinks} />
           </div>
           <div>
             <FooterSectionHeader title="quick links" />
-            <DynamicInfoSection infoList={links} />
+            <DynamicInfoSection infoList={linksList} />
           </div>
           <div>
             <FooterSectionHeader

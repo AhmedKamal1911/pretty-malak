@@ -1,10 +1,30 @@
 import { egyptImg } from "@/assets";
 import { AboutInfoBox, OurServiceBox, SectionHeader } from "@/components";
-import { aboutInfoList, ourServices } from "@/data";
+import { aboutInfoList } from "@/data";
 import useScrollToTop from "@/hooks/useScrollToTop";
-
+import { fetchWhyUsInfo } from "@/services/trips/queries";
+import { useQuery } from "@tanstack/react-query";
+import {
+  FaBookOpen,
+  FaHandsHelping,
+  FaRegCompass,
+  FaStar,
+} from "react-icons/fa";
+const iconMap = {
+  FaBookOpen: FaBookOpen,
+  FaHandsHelping: FaHandsHelping,
+  FaRegCompass: FaRegCompass,
+  FaStar: FaStar,
+  // Add more icons as needed
+};
 const AboutUs = () => {
   useScrollToTop();
+  const { data } = useQuery({
+    queryKey: ["whyUs"], // Object form for query key
+    queryFn: fetchWhyUsInfo,
+  });
+  const services = data?.services ?? [];
+
   return (
     <div className="min-h-screen py-36">
       <div className="container">
@@ -45,8 +65,8 @@ const AboutUs = () => {
         <div>
           <SectionHeader introText="why choose us ?" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-[#f1f1f1] p-2 sm:p-10 rounded-lg mt-5">
-            {ourServices.map((service) => {
-              const IconComponent = service.icon;
+            {services.map((service) => {
+              const IconComponent = iconMap[service.icon];
               return (
                 <OurServiceBox
                   key={service.id}

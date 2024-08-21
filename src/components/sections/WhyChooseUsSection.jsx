@@ -5,16 +5,38 @@ import {
   wavesWithBoat,
   waveyMapImg,
 } from "@/assets";
+import {
+  FaBookOpen,
+  FaHandsHelping,
+  FaRegCompass,
+  FaStar,
+} from "react-icons/fa";
+// Map of icon names to their respective components
+const iconMap = {
+  FaBookOpen: FaBookOpen,
+  FaHandsHelping: FaHandsHelping,
+  FaRegCompass: FaRegCompass,
+  FaStar: FaStar,
+  // Add more icons as needed
+};
 import { AboutInfoBox, SectionHeader } from "..";
-import { aboutInfoList, ourServices } from "@/data";
+import { aboutInfoList } from "@/data";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "../ui/Accordion";
+import { useQuery } from "@tanstack/react-query";
+import { fetchWhyUsInfo } from "@/services/trips/queries";
 
 const WhyChooseUsSection = () => {
+  const { data } = useQuery({
+    queryKey: ["whyUs"], // Object form for query key
+    queryFn: fetchWhyUsInfo,
+  });
+  const services = data?.services ?? [];
+
   return (
     <section className="relative py-32 bg-light overflow-hidden">
       <div
@@ -72,8 +94,9 @@ const WhyChooseUsSection = () => {
                   className="mb-8 text-center"
                 />
                 <Accordion type="single" collapsible>
-                  {ourServices.map(({ name, desc, id, icon }) => {
-                    const IconComponent = icon;
+                  {services.map(({ name, desc, id, icon }) => {
+                    const IconComponent = iconMap[icon] || null;
+
                     return (
                       <AccordionItem
                         value={`item-${id}`}

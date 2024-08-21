@@ -1,8 +1,16 @@
 import { FaqForm, QuestionsAccordion, SectionHeader } from "@/components";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import { fetchFaqInfo } from "@/services/trips/queries";
+import { useQuery } from "@tanstack/react-query";
 
 const Faqs = () => {
   useScrollToTop();
+  const { data } = useQuery({
+    queryKey: ["faqs"], // Object form for query key
+    queryFn: fetchFaqInfo,
+  });
+  const faqsList = data?.faqsList ?? [];
+
   return (
     <div className="min-h-screen py-36 bg-light">
       <div className="container">
@@ -13,7 +21,7 @@ const Faqs = () => {
           desc="Welcome to our FAQ page! Here, you'll find answers to the most common questions about our services, products, and policies. Whether you're seeking information about our offerings, troubleshooting an issue, or just curious about how things work, we've got you covered."
         />
         <div className="flex flex-col gap-20">
-          <QuestionsAccordion />
+          <QuestionsAccordion questionsList={faqsList} />
           <div>
             <SectionHeader
               className="text-center mb-10"

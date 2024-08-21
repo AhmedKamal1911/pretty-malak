@@ -87,12 +87,24 @@ const fetchTripTypes = async () => {
 };
 
 const fetchGlobalInfo = async () => {
-  // Construct query parameters
-
-  // Make the API request with query parameters
   const response = await axiosInstance.get(`/global?${queryAll}`);
   const globalInfo = response?.data;
   return globalInfo;
+};
+const fetchHeroSectionInfo = async () => {
+  const response = await axiosInstance.get(`/hero-section?${queryAll}`);
+  const heroInfo = response?.data;
+  return heroInfo;
+};
+const fetchWhyUsInfo = async () => {
+  const response = await axiosInstance.get(`/why-us-section?${queryAll}`);
+  const whyUsInfo = response?.data;
+  return whyUsInfo;
+};
+const fetchFaqInfo = async () => {
+  const response = await axiosInstance.get(`/faq-page?${queryAll}`);
+  const faqsInfo = response?.data;
+  return faqsInfo;
 };
 
 export {
@@ -101,4 +113,8 @@ export {
   fetchTripData,
   fetchRelatedTrips,
   fetchTripTypes,
+  fetchGlobalInfo,
+  fetchHeroSectionInfo,
+  fetchWhyUsInfo,
+  fetchFaqInfo,
 };
