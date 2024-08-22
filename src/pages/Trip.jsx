@@ -13,6 +13,7 @@ import {
   TripReviewBox,
   TripSlider,
 } from "@/components";
+import { SkeletonLoaderCard } from "@/components/feedback";
 
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { fetchRelatedTrips, fetchTripData } from "@/services/trips/queries";
@@ -50,7 +51,7 @@ const Trip = () => {
     tourFrom,
     tourPlan,
     tripDays,
-    offer,
+    // offer,
     tour,
 
     type: { typeName } = {},
@@ -172,20 +173,27 @@ const Trip = () => {
               <Loading
                 isFetching={isFetching}
                 error={relatedTripsError}
-                errorElementClassName="h-[80vh] "
+                loadingElement={<SkeletonLoaderCard />}
+                loadingElementClassName="h-[68vh] sm:h-[120vh] lg:h-[95vh]"
               >
-                {allRelatedTrips.map((trip, i) => (
-                  <div
-                    key={trip.id}
-                    className="max-[300px]:h-[300px] h-[350px] "
-                  >
-                    <TripCard
-                      {...trip}
-                      img={trip?.imgs.data[0]?.url}
-                      count={i + 1}
-                    />
-                  </div>
-                ))}
+                {allRelatedTrips.length >= 1 ? (
+                  allRelatedTrips.map((trip, i) => (
+                    <div
+                      key={trip.id}
+                      className="max-[300px]:h-[300px] h-[350px] "
+                    >
+                      <TripCard
+                        {...trip}
+                        img={trip?.imgs.data[0]?.url}
+                        count={i + 1}
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <span className="text-4xl text-center text-yellow-500">
+                    There is no related trips
+                  </span>
+                )}
               </Loading>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { Loading, SectionHeader, TripCard } from "@/components";
+import { Loading, SectionHeader, SelectError, TripCard } from "@/components";
 import { FetchTripsTypesLoader } from "@/components/feedback";
 import {
   Select,
@@ -15,7 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
 
 import { useState } from "react";
-import { TfiFaceSad } from "react-icons/tfi";
+
 const Trips = () => {
   const [tripType, setTripType] = useState("all");
   const {
@@ -53,19 +53,14 @@ const Trips = () => {
           <SectionHeader subTitle="All Trips" introText="Explore Our Trips" />
           <Select onValueChange={onTripValueChange}>
             <SelectTrigger
-              disabled={Boolean(tripsTypesError)}
+              disabled={tripsTypesIsFetching ? true : Boolean(tripsTypesError)}
               className="w-[180px] text-[17px]"
             >
               <Loading
                 isFetching={tripsTypesIsFetching}
                 loadingElement={<FetchTripsTypesLoader />}
                 error={tripsTypesError}
-                errorElement={
-                  <div className="flex items-center gap-1">
-                    <TfiFaceSad className="text-red-600 w-[18px] h-[18px]" />
-                    <span className="text-red-600">Fetch Error</span>
-                  </div>
-                }
+                errorElement={<SelectError />}
               >
                 <SelectValue placeholder="Select type" />
               </Loading>

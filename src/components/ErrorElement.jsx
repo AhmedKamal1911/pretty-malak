@@ -1,8 +1,7 @@
 import { cn } from "@/utils/cn";
-import { NetworkErrorAnimation } from "./animations";
+// import { NetworkErrorAnimation } from "./animations";
 
 const ErrorElement = ({ error, errorElementClassName }) => {
-  console.log(error);
   return (
     <div
       className={cn(
@@ -10,9 +9,9 @@ const ErrorElement = ({ error, errorElementClassName }) => {
         errorElementClassName
       )}
     >
-      <NetworkErrorAnimation />
+      {/* <NetworkErrorAnimation /> */}
       <h3 className="font-bold text-4xl sm:text-6xl text-center error-stroke text-red-600">
-        {error}
+        Failed to fetch due to {error}
       </h3>
     </div>
   );

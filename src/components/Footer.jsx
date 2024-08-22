@@ -1,9 +1,14 @@
 import { DynamicInfoSection, FooterSectionHeader } from ".";
 import { NavLink } from "react-router-dom";
 
-import { dashedLines, unEvenWaves } from "@/assets";
-import { FaFacebookSquare } from "react-icons/fa";
-import { IoLogoWhatsapp } from "react-icons/io5";
+import {
+  dashedLines,
+  facebook,
+  instgram,
+  unEvenWaves,
+  whatsapp,
+} from "@/assets";
+
 import { Button } from "./ui/Button";
 import { fetchGlobalInfo } from "@/services/trips/queries";
 import { useQuery } from "@tanstack/react-query";
@@ -54,11 +59,15 @@ const Footer = () => {
               desc="you can reach us by :"
             />
             <div className="flex gap-3 mt-5">
-              <NavLink to="" className=" bg-white">
-                <FaFacebookSquare size="30px" color="#1877F2" />
+              <NavLink to="https://www.facebook.com" className=" bg-white">
+                <img src={facebook} alt="" className="w-[35px] h-[35px]" />
               </NavLink>
               <NavLink to="tel:01450151145">
-                <IoLogoWhatsapp color="#25d366" size="30px" />
+                <img src={whatsapp} alt="" className="w-[35px] h-[35px]" />
+              </NavLink>
+
+              <NavLink to="tel:01450151145">
+                <img src={instgram} alt="" className="w-[35px] h-[35px]" />
               </NavLink>
             </div>
           </div>

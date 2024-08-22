@@ -1,73 +1,73 @@
 import {
-  camp,
+  // camp,
   clientReviews,
   customExperince,
-  diving,
-  egypt,
+  // diving,
+  // egypt,
   // egyptImg,
-  kingdom,
+  // kingdom,
   // paradise,
   seaLocations,
-  slideImg1,
-  slideImg2,
-  slideImg3,
-  smallSlideImg1,
-  smallSlideImg2,
-  smallSlideImg3,
+  // slideImg1,
+  // slideImg2,
+  // slideImg3,
+  // smallSlideImg1,
+  // smallSlideImg2,
+  // smallSlideImg3,
   trophy,
-  yacht,
+  // yacht,
 } from "@/assets";
 
-export const languages = [
-  {
-    name: "EN",
-    icon: kingdom,
-  },
-  {
-    name: "AR",
-    icon: egypt,
-  },
-];
-export const languageImages = {
-  EN: kingdom,
-  AR: egypt,
-};
+// export const languages = [
+//   {
+//     name: "EN",
+//     icon: kingdom,
+//   },
+//   {
+//     name: "AR",
+//     icon: egypt,
+//   },
+// ];
+// export const languageImages = {
+//   EN: kingdom,
+//   AR: egypt,
+// };
 
-export const heroSliderImages = [
-  {
-    large: slideImg1,
-    small: smallSlideImg1,
-  },
-  {
-    large: slideImg2,
-    small: smallSlideImg2,
-  },
-  {
-    large: slideImg3,
-    small: smallSlideImg3,
-  },
-];
+// export const heroSliderImages = [
+//   {
+//     large: slideImg1,
+//     small: smallSlideImg1,
+//   },
+//   {
+//     large: slideImg2,
+//     small: smallSlideImg2,
+//   },
+//   {
+//     large: slideImg3,
+//     small: smallSlideImg3,
+//   },
+// ];
 
-export const features = [
-  {
-    icon: yacht,
-    travelImg: smallSlideImg1,
-    title: "sea Cruises",
-    url: "/trips",
-  },
-  {
-    icon: diving,
-    travelImg: smallSlideImg1,
-    title: "diving trips",
-    url: "/trips",
-  },
-  {
-    icon: camp,
-    travelImg: smallSlideImg1,
-    title: "safari trips",
-    url: "/trips",
-  },
-];
+// export const features = [
+//   {
+//     icon: yacht,
+//     travelImg: smallSlideImg1,
+//     title: "sea Cruises",
+//     url: "/trips",
+//   },
+//   {
+//     icon: diving,
+//     travelImg: smallSlideImg1,
+//     title: "diving trips",
+//     url: "/trips",
+//   },
+//   {
+//     icon: camp,
+//     travelImg: smallSlideImg1,
+//     title: "safari trips",
+//     url: "/trips",
+//   },
+// ];
 
 export const sliderBreakPoints = {
   // when window width is >= 640px (Tailwind: sm)

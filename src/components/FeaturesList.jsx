@@ -1,3 +1,4 @@
+import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
@@ -12,7 +13,7 @@ const FeaturesList = ({ className, features }) => {
         className
       )}
     >
-      {features.map((feature, idx) => (
+      {features?.map((feature, idx) => (
         <FeatureListItem key={idx} feature={feature} />
       ))}
     </div>
@@ -26,7 +27,7 @@ function FeatureListItem({ feature }) {
 
       <div>
         <img
-          src={feature.icon}
+          src={getStrapiMediaURL(feature.icon?.url)}
           className="w-[70px] z-[-1] transition-transform duration-500 group-hover:scale-x-[-1]"
           alt=""
         />
@@ -42,9 +43,9 @@ function FeatureListItem({ feature }) {
           </NavLink>
         </div>
 
-        <div className="md:absolute md:left-full md:-top-2 w-[120px] h-[90px] ">
+        <div className="md:absolute md:left-full md:-top-2 w-[120px] h-[80px] ">
           <img
-            src={feature.travelImg}
+            src={getStrapiMediaURL(feature.travelImg?.formats?.small?.url)}
             alt=""
             className="w-full h-full object-cover md:opacity-0 md:pointer-events-none transition-all duration-500 rotate-[20deg] group-hover:rotate-[16deg] md:group-hover:opacity-[1]"
           />

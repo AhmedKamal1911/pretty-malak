@@ -8,7 +8,7 @@ import {
 const QuestionsAccordion = ({ questionsList }) => {
   return (
     <Accordion type="single" collapsible>
-      {questionsList.map(({ question, answer, id }) => (
+      {questionsList?.map(({ question, answer, id }) => (
         <AccordionItem
           value={`item-${id}`}
           key={id}

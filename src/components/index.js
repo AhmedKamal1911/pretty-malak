@@ -15,7 +15,10 @@ export { default as QuestionsAccordion } from "@/components/QuestionsAccordion";
 
 // Loaders
 export { default as Loading } from "@/components/Loading";
+// Error
 export { default as ErrorElement } from "@/components/ErrorElement";
+export { default as SelectError } from "@/components/SelectError";
+
 // Trip
 export { default as TripNavigation } from "@/components/trip/TripNavigation";
 export { default as TripDetail } from "@/components/trip/TripDetail";

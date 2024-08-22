@@ -29,6 +29,7 @@ import {
 } from "../ui/Accordion";
 import { useQuery } from "@tanstack/react-query";
 import { fetchWhyUsInfo } from "@/services/trips/queries";
+import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
 const WhyChooseUsSection = () => {
   const { data } = useQuery({
@@ -36,6 +37,7 @@ const WhyChooseUsSection = () => {
     queryFn: fetchWhyUsInfo,
   });
   const services = data?.services ?? [];
+  const imagesList = data?.images.data ?? [];
 
   return (
     <section className="relative py-32 bg-light overflow-hidden">
@@ -73,14 +75,14 @@ const WhyChooseUsSection = () => {
                   </div>
                   <div className="absolute left-[200px] bottom-[150px] rounded-md overflow-hidden">
                     <img
-                      src={slideImg1}
+                      src={getStrapiMediaURL(imagesList[0]?.url)}
                       alt=""
                       className="w-[400px] h-[400px] object-cover"
                     />
                   </div>
                   <div className="absolute left-[100px] bottom-[80px] bg-white p-2 rounded-md">
                     <img
-                      src={slideImg2}
+                      src={getStrapiMediaURL(imagesList[1]?.url)}
                       alt=""
                       className="w-[200px] h-[250px] object-cover rounded-md"
                     />

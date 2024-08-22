@@ -3,6 +3,7 @@ import qs from "qs";
 
 // Function to fetch a single trip by ID
 const queryAll = qs.stringify({ populate: "*" });
+
 async function fetchTripData(tripId) {
   // Construct the URL with the trip ID and query parameters
   const response = await axiosInstance.get(`/trips/${tripId}?${queryAll}`);
@@ -91,20 +92,56 @@ const fetchGlobalInfo = async () => {
   const globalInfo = response?.data;
   return globalInfo;
 };
+
 const fetchHeroSectionInfo = async () => {
   const response = await axiosInstance.get(`/hero-section?${queryAll}`);
   const heroInfo = response?.data;
   return heroInfo;
 };
+
 const fetchWhyUsInfo = async () => {
   const response = await axiosInstance.get(`/why-us-section?${queryAll}`);
   const whyUsInfo = response?.data;
   return whyUsInfo;
 };
+
 const fetchFaqInfo = async () => {
   const response = await axiosInstance.get(`/faq-page?${queryAll}`);
   const faqsInfo = response?.data;
   return faqsInfo;
+};
+
+const fetchIntroInfo = async () => {
+  const iconAndImgQuery = qs.stringify({
+    populate: {
+      featuresBox: {
+        populate: {
+          icon: true,
+          travelImg: true,
+        },
+      },
+    },
+  });
+  const response = await axiosInstance.get(`/intro-section?${iconAndImgQuery}`);
+  const introInfo = response?.data;
+  return introInfo;
+};
+
+const fetchLanguages = async () => {
+  const allLanguagesDataQuery = qs.stringify({
+    populate: {
+      languagesList: {
+        populate: {
+          icon: true,
+        },
+      },
+    },
+  });
+  const response = await axiosInstance.get(
+    `/language?${allLanguagesDataQuery}`
+  );
+  const languages = response?.data;
+  return languages;
 };
 
 export {
@@ -117,4 +154,6 @@ export {
   fetchHeroSectionInfo,
   fetchWhyUsInfo,
   fetchFaqInfo,
+  fetchIntroInfo,
+  fetchLanguages,
 };

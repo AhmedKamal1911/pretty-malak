@@ -27,7 +27,7 @@ const SpecialOffersSection = () => {
             isFetching={isFetching}
             error={error}
             loadingElementClassName="h-[20vh]"
-            errorElementClassName="h-[70vh] "
+            errorElementClassName="h-[20vh] "
           >
             <TripsSlider
               className="h-[300px] sm:h-[400px]"

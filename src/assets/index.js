@@ -21,6 +21,9 @@ export { default as waveyMapImg } from "@/assets/wavey-map.png";
 export { default as wavesWithBoat } from "@/assets/waves-with-boat.png";
 export { default as paradise } from "@/assets/paradise.jpg";
 export { default as yachtImg } from "@/assets/yacht.jpg";
+export { default as whatsapp } from "@/assets/whatsapp.png";
+export { default as facebook } from "@/assets/facebook.png";
+export { default as instgram } from "@/assets/instagram.png";
 
 // HeroSlider
 export { default as slideImg1 } from "@/assets/slide-1.jpg";

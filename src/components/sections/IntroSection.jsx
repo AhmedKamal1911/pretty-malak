@@ -1,9 +1,22 @@
-import { features } from "@/data";
+// import { features } from "@/data";
 import { SectionHeader } from "..";
 
 import FeaturesList from "../FeaturesList";
 import { mapBackground } from "@/assets";
+import { fetchIntroInfo } from "@/services/trips/queries";
+import { useQuery } from "@tanstack/react-query";
 const IntroSection = () => {
+  const { data } = useQuery({
+    queryKey: ["introInfo"], // Object form for query key
+    queryFn: fetchIntroInfo,
+  });
+  const featuresList = data?.featuresBox ?? [];
+  const introHeading =
+    data?.heading ?? "We are here to help you have the best trip";
+  const introDesc =
+    data?.desc ??
+    "With a large group of diverse, fun and exciting trips in Egypt, we guarantee you a new experience!";
+
   return (
     <section className="py-[120px] overflow-hidden bg-light relative z-10">
       <div
@@ -18,8 +31,8 @@ const IntroSection = () => {
             <SectionHeader
               className="lg:w-[400px] mx-auto"
               subTitle="Travel experience"
-              introText="We are here to help you have the best trip"
-              desc="With a large group of diverse, fun and exciting trips in Egypt, we guarantee you a new experience!"
+              introText={introHeading}
+              desc={introDesc}
             />
             <div className="mt-16 space-y-10">
               <h3 className="font-signature text-4xl">Seif Haraz</h3>
@@ -27,7 +40,7 @@ const IntroSection = () => {
               <span className="text-gray-500">CEO</span>
             </div>
           </div>
-          <FeaturesList className="flex-1" features={features} />
+          <FeaturesList className="flex-1" features={featuresList} />
         </div>
       </div>
     </section>

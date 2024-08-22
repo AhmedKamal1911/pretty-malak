@@ -32,7 +32,7 @@ const TripsSection = () => {
           isFetching={isFetching}
           error={error}
           loadingElementClassName="h-[30vh]"
-          errorElementClassName="h-[70vh]"
+          errorElementClassName="h-[20vh]"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
             <AnimatePresence>
