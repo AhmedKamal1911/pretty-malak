@@ -26,7 +26,7 @@ const bookTripFormSchema = z.object({
   childNumber: z
     .string()
     .regex(numberRegex, { message: "Child number must be a valid number" }),
-  checkInDate: z
+  checkDate: z
     .date()
     .refine((date) => date !== null && !isNaN(date.getTime()), {
       message: "Check-in date is required",

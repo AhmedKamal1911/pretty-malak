@@ -27,12 +27,13 @@ import { MdMail } from "react-icons/md";
 import bookTripFormSchema from "@/validations/bookTripFormSchema";
 import { RxCrossCircled } from "react-icons/rx";
 import { DatePickerWithPresets } from "../ui/datePicker";
+import { format } from "date-fns";
+const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
 
 const BookTripForm = () => {
   const formRef = useRef();
   const { toast } = useToast();
-  const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
 
   const methods = useForm({
     mode: "onSubmit",
@@ -47,7 +48,7 @@ const BookTripForm = () => {
       roomNumber: "",
       adultNumber: "",
       childNumber: "",
-      checkInDate: null, // Default value for check-in date
+      checkDate: new Date(), // Default value for check-in date
     },
   });
 
@@ -58,11 +59,10 @@ const BookTripForm = () => {
     formState: { isSubmitting },
   } = methods;
 
-  const sendEmail = (data) => {
+  const sendEmail = () => {
     return emailjs
       .sendForm(serviceId, templateId, formRef.current, {
         publicKey: import.meta.env.VITE_EMAILJS_FORM_PUBLIC_KEY,
-        ...data, // Include form data in the email
       })
       .then(
         () => {
@@ -86,9 +86,8 @@ const BookTripForm = () => {
       );
   };
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    await sendEmail(data);
+  const onSubmit = async () => {
+    await sendEmail();
   };
 
   return (
@@ -145,7 +144,7 @@ const BookTripForm = () => {
           />
           <FormField
             control={control}
-            name="checkInDate"
+            name="checkDate"
             render={({ field }) => {
               return (
                 <FormItem className="w-full relative">
@@ -155,6 +154,15 @@ const BookTripForm = () => {
                       onDateChange={field.onChange}
                     />
                   </FormControl>
+                  <input
+                    type="text"
+                    name={field.name}
+                    hidden
+                    defaultValue={format(
+                      new Date(field.value),
+                      "dd MMMM, hh:mm a, yyyy"
+                    )}
+                  />
                   <FormMessage className="text-red-600 text-[16px]" />
                 </FormItem>
               );

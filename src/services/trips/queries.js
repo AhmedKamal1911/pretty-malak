@@ -22,9 +22,7 @@ const fetchTrips = async (typeName) => {
       ? {
           filters: {
             type: {
-              typeName: {
-                $eq: typeName,
-              },
+              $eq: typeName,
             },
           },
         }
@@ -61,9 +59,7 @@ const fetchRelatedTrips = async (typeName, tripId) => {
     populate: "*",
     filters: {
       type: {
-        typeName: {
-          $eq: typeName,
-        },
+        $eq: typeName,
       },
       id: {
         $ne: tripId,
@@ -81,7 +77,7 @@ const fetchTripTypes = async () => {
   // Extract unique trip types from fetched trips
 
   const uniqueTripTypes = [
-    ...new Set(trips.data.data?.map((trip) => trip.type.typeName)),
+    ...new Set(trips.data.data?.map((trip) => trip.type)),
   ];
 
   return uniqueTripTypes;
@@ -137,13 +133,16 @@ const fetchLanguages = async () => {
       },
     },
   });
-  const response = await axiosInstance.get(
-    `/language?${allLanguagesDataQuery}`
-  );
+  const response = await axiosInstance.get(`/global?${allLanguagesDataQuery}`);
   const languages = response?.data;
   return languages;
 };
 
+const fetchClientQuestions = async () => {
+  const response = await axiosInstance.get(`/trip-question?${queryAll}`);
+  const clientQuestions = response?.data;
+  return clientQuestions;
+};
 export {
   fetchTrips,
   fetchSpecialTrips,
@@ -156,4 +155,5 @@ export {
   fetchFaqInfo,
   fetchIntroInfo,
   fetchLanguages,
+  fetchClientQuestions,
 };

@@ -29,6 +29,7 @@ const LanguageSelectMenu = ({ className }) => {
     queryKey: ["languageMenu"], // Object form for query key
     queryFn: fetchLanguages,
   });
+
   const languagesList = data?.languagesList ?? [];
 
   const onLanguageChange = (value) => {

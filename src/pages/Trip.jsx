@@ -16,10 +16,15 @@ import {
 import { SkeletonLoaderCard } from "@/components/feedback";
 
 import useScrollToTop from "@/hooks/useScrollToTop";
-import { fetchRelatedTrips, fetchTripData } from "@/services/trips/queries";
+import {
+  fetchClientQuestions,
+  fetchRelatedTrips,
+  fetchTripData,
+} from "@/services/trips/queries";
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
 import { useQuery } from "@tanstack/react-query";
+import { format, isValid, parse } from "date-fns";
 
 import { IoWatchOutline } from "react-icons/io5";
 import { MdMap } from "react-icons/md";
@@ -27,8 +32,6 @@ import { useParams } from "react-router-dom";
 
 const Trip = () => {
   const { id: tripId } = useParams();
-  useScrollToTop();
-
   const { data, isLoading, error } = useQuery({
     queryKey: ["trip", tripId], // Object form for query key
     queryFn: async () => await fetchTripData(tripId), // Function to fetch data
@@ -52,9 +55,8 @@ const Trip = () => {
     tourPlan,
     tripDays,
     // offer,
-    tour,
 
-    type: { typeName } = {},
+    type,
   } = data?.data ?? {};
 
   const imagesList = imgs?.data ?? [];
@@ -64,11 +66,32 @@ const Trip = () => {
     isFetching,
     error: relatedTripsError,
   } = useQuery({
-    queryKey: ["relatedTrips", typeName, tripId], // Object form for query key
-    queryFn: async () => await fetchRelatedTrips(typeName, tripId), // Function to fetch data
+    queryKey: ["relatedTrips", type, tripId], // Object form for query key
+    queryFn: async () => await fetchRelatedTrips(type, tripId), // Function to fetch data
   });
 
   const allRelatedTrips = relatedTripsData?.data ?? [];
+
+  const { data: clientQuestionData } = useQuery({
+    queryKey: ["clientQuestions"],
+    queryFn: fetchClientQuestions,
+  });
+  const clientQuestionsList = clientQuestionData?.clientQuestionsList;
+
+  useScrollToTop();
+
+  // Convert and format departureTime and returnTime
+  const formatTime = (time) => {
+    if (!time) return "N/A"; // Handle undefined or null time values
+
+    const parsedTime = parse(time, "HH:mm:ss.SSS", new Date());
+    if (isValid(parsedTime)) {
+      return format(parsedTime, "hh:mm a");
+    } else {
+      console.error("Invalid time format:", time);
+      return "Invalid Time";
+    }
+  };
 
   return (
     <div className="min-h-screen py-[72px] bg-light">
@@ -81,7 +104,7 @@ const Trip = () => {
           />
         </div>
         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-40 text-center w-full xl:w-[40%] px-2">
-          <h5 className="text-4xl text-main">{typeName}</h5>
+          <h5 className="text-4xl text-main">{type} trip</h5>
           <h2 className="text-4xl lg:text-6xl text-white">{title}</h2>
         </div>
       </div>
@@ -97,7 +120,7 @@ const Trip = () => {
                     icon={<IoWatchOutline className="text-main" />}
                   />
                   <TripDetail
-                    detail={tourFrom}
+                    detail={`tours from ${tourFrom}`}
                     icon={<MdMap className="text-main" />}
                   />
                 </div>
@@ -111,14 +134,14 @@ const Trip = () => {
                 </div>
               </div>
               <TripSlider imagesList={imagesList} />
-              <TripOverview desc={desc} title={tour} />
+              <TripOverview desc={desc} title={title} />
               {/* Info Box */}
               <div className="border divide-y-2 mb-10" id="info">
                 <TripDetailsBox
-                  tour={tour}
+                  tour={title}
                   tourFrom={tourFrom}
-                  departureTime={departureTime}
-                  returnTime={returnTime}
+                  departureTime={formatTime(departureTime)}
+                  returnTime={formatTime(returnTime)}
                   tripDays={tripDays}
                   maxGuests={maxGuests}
                 />
@@ -156,7 +179,7 @@ const Trip = () => {
               {/* Questions BOX */}
               <div className="mb-10" id="faq">
                 <TripOverview title={"Frequently Asked Questions"} />
-                <QuestionsAccordion />
+                <QuestionsAccordion questionsList={clientQuestionsList} />
               </div>
               <div id="reviews">
                 <TripOverview title={"Client Reviews"} />
