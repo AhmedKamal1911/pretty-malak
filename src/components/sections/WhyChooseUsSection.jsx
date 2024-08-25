@@ -1,10 +1,4 @@
-import {
-  mapBackground,
-  slideImg1,
-  slideImg2,
-  wavesWithBoat,
-  waveyMapImg,
-} from "@/assets";
+import { mapBackground, wavesWithBoat, waveyMapImg } from "@/assets";
 import {
   FaBookOpen,
   FaHandsHelping,
@@ -51,7 +45,7 @@ const WhyChooseUsSection = () => {
         style={{
           backgroundImage: `url('${wavesWithBoat}')`,
         }}
-        className="absolute animate-bouncing-left-right left-0 bottom-[-90px] md:bottom-0  h-[705px] w-[431px] bg-[50%] bg-no-repeat bg-cover"
+        className="absolute animate-bouncing-left-right start-0 bottom-[-90px] md:bottom-0  h-[705px] w-[431px] bg-[50%] bg-no-repeat bg-cover"
       />
 
       <div className="container">
@@ -73,14 +67,14 @@ const WhyChooseUsSection = () => {
                   <div className="relative after:absolute after:inset-0 after:w-[398px] after:bg-[#9c775918]">
                     <img src={waveyMapImg} alt="" className="" />
                   </div>
-                  <div className="absolute left-[200px] bottom-[150px] rounded-md overflow-hidden">
+                  <div className="absolute start-[200px] bottom-[150px] rounded-md overflow-hidden">
                     <img
                       src={getStrapiMediaURL(imagesList[0]?.url)}
                       alt=""
                       className="w-[400px] h-[400px] object-cover"
                     />
                   </div>
-                  <div className="absolute left-[100px] bottom-[80px] bg-white p-2 rounded-md">
+                  <div className="absolute start-[100px] bottom-[80px] bg-white p-2 rounded-md">
                     <img
                       src={getStrapiMediaURL(imagesList[1]?.url)}
                       alt=""

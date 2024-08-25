@@ -26,7 +26,7 @@ const AboutUs = () => {
   const services = data?.services ?? [];
 
   return (
-    <div className="min-h-screen py-36">
+    <div className="min-h-screen py-36 overflow-hidden">
       <div className="container">
         <SectionHeader introText="ABOUT US" className="mb-5 text-center" />
 
@@ -41,7 +41,7 @@ const AboutUs = () => {
               unforgettable travel experiences that immerse you in the rich
               history, vibrant culture, and breathtaking landscapes of this
               ancient land."
-              className="mb-6 lg:mb-16 text-center lg:text-left max-w-[600px]"
+              className="mb-6 lg:mb-16 text-center lg:text-start max-w-[600px]"
             />
             <SectionHeader
               subTitle="our story"

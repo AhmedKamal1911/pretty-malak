@@ -5,6 +5,7 @@ import FeaturesList from "../FeaturesList";
 import { mapBackground } from "@/assets";
 import { fetchIntroInfo } from "@/services/trips/queries";
 import { useQuery } from "@tanstack/react-query";
+
 const IntroSection = () => {
   const { data } = useQuery({
     queryKey: ["introInfo"], // Object form for query key
@@ -23,11 +24,11 @@ const IntroSection = () => {
         style={{
           backgroundImage: `url('${mapBackground}')`,
         }}
-        className="h-[935px] absolute left-0 top-0  w-full bg-[50%] bg-no-repeat z-[-1] bg-cover"
+        className={`absolute  inset-0  w-full bg-[50%] bg-no-repeat z-[-1] bg-cover`}
       />
       <div className="container">
         <div className="flex flex-col lg:flex-row justify-center gap-10 md:gap-0">
-          <div className="text-center flex-1 md:pr-[100px]">
+          <div className="text-center flex-1 md:pe-[100px]">
             <SectionHeader
               className="lg:w-[400px] mx-auto"
               subTitle="Travel experience"

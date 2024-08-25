@@ -26,12 +26,12 @@ const Footer = () => {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 py-16">
           <div
-            className="absolute w-[494px] h-[465px] left-[-100px] top-0 bottom-0 "
+            className="absolute w-[494px] h-[465px] start-[-100px] top-0 bottom-0 "
             style={{ backgroundImage: `url(${unEvenWaves})` }}
             alt=""
           />
           <div
-            className="absolute w-[247px] h-[477px] right-[0px] top-0 bottom-0"
+            className="absolute w-[247px] h-[477px] end-[0px] top-0 bottom-0"
             style={{ backgroundImage: `url(${dashedLines})` }}
             alt=""
           />

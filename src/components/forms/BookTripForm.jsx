@@ -28,6 +28,8 @@ import bookTripFormSchema from "@/validations/bookTripFormSchema";
 import { RxCrossCircled } from "react-icons/rx";
 import { DatePickerWithPresets } from "../ui/datePicker";
 import { format } from "date-fns";
+import { ComboboxDemo } from "../ui/ComboBox";
+
 const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
 const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
 
@@ -49,6 +51,7 @@ const BookTripForm = () => {
       adultNumber: "",
       childNumber: "",
       checkDate: new Date(), // Default value for check-in date
+      country: "",
     },
   });
 
@@ -86,7 +89,8 @@ const BookTripForm = () => {
       );
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async (data) => {
+    console.log(data, "data");
     await sendEmail();
   };
 
@@ -168,6 +172,30 @@ const BookTripForm = () => {
               );
             }}
           />
+          <FormField
+            control={control}
+            name="country"
+            render={({ field }) => {
+              return (
+                <FormItem className="w-full relative">
+                  <FormControl>
+                    <ComboboxDemo
+                      selectCountry={field.value}
+                      onSelectCountry={field.onChange}
+                    />
+                  </FormControl>
+                  <input
+                    type="text"
+                    name={field.name}
+                    hidden
+                    defaultValue={field.value}
+                  />
+                  <FormMessage className="text-red-600 text-[16px]" />
+                </FormItem>
+              );
+            }}
+          />
+
           <div className="flex flex-col xl:flex-row gap-8 lg:gap-5 ">
             <BookInput
               icon={BsPersonRaisedHand}
@@ -199,7 +227,7 @@ const BookTripForm = () => {
                     control={control}
                     {...field}
                     type="text"
-                    className="text-[16px] pl-7 pt-0 pb-0 pr-0 focus-visible:ring-transparent h-[120px] focus:placeholder:text-main border-t-0 border-l-0 border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border,placeholder] duration-500"
+                    className="text-[16px] ps-7 pt-0 pb-0 pe-0 focus-visible:ring-transparent h-[120px] focus:placeholder:text-main border-t-0 border-l-0 border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border,placeholder] duration-500"
                     placeholder="Type your message here."
                     id="message-2"
                   />

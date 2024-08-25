@@ -13,7 +13,7 @@ const TripNavigation = () => {
     }
   };
   return (
-    <div className="bg-white rounded-md sticky left-0 right-0 top-[76px] w-full p-3 shadow-lg z-[800]">
+    <div className="bg-white rounded-md sticky start-0 end-0 top-[76px] w-full p-3 shadow-lg z-[800]">
       <ul className="flex justify-center  items-center gap-2 md:gap-16 min-[376px]:flex-row">
         <li>
           <button

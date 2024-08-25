@@ -31,6 +31,7 @@ const bookTripFormSchema = z.object({
     .refine((date) => date !== null && !isNaN(date.getTime()), {
       message: "Check-in date is required",
     }),
+    country:z.string().min(1,{message:"country is required"})
 });
 
 export default bookTripFormSchema;

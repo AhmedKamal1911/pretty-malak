@@ -123,21 +123,6 @@ const fetchIntroInfo = async () => {
   return introInfo;
 };
 
-const fetchLanguages = async () => {
-  const allLanguagesDataQuery = qs.stringify({
-    populate: {
-      languagesList: {
-        populate: {
-          icon: true,
-        },
-      },
-    },
-  });
-  const response = await axiosInstance.get(`/global?${allLanguagesDataQuery}`);
-  const languages = response?.data;
-  return languages;
-};
-
 const fetchClientQuestions = async () => {
   const response = await axiosInstance.get(`/trip-question?${queryAll}`);
   const clientQuestions = response?.data;
@@ -154,6 +139,5 @@ export {
   fetchWhyUsInfo,
   fetchFaqInfo,
   fetchIntroInfo,
-  fetchLanguages,
   fetchClientQuestions,
 };

@@ -15,7 +15,7 @@ export const Textarea = React.forwardRef((props, ref) => {
         {...otherProps}
       />
       {props.icon && (
-        <span className="absolute left-[3px] top-1 group-focus:!text-main">
+        <span className="absolute start-[3px] top-1 group-focus:!text-main">
           {props.icon}
         </span>
       )}

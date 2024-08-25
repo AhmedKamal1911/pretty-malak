@@ -42,7 +42,7 @@ const AsideDrawer = () => {
         >
           <button
             onClick={toggleShowAside}
-            className="absolute right-2 top-2 rounded-full w-[40px] h-[40px] z-[999]"
+            className="absolute end-2 top-2 rounded-full w-[40px] h-[40px] z-[999]"
           >
             <IoCloseOutline size="45px" color="white" />
           </button>

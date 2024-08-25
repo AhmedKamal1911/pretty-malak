@@ -87,9 +87,14 @@ export default {
             transform: "translate(30px,0)",
           },
         },
-        infiniteSlide: {
+        infiniteSlideLTR: {
           to: {
             transform: "translate(calc(-50% - 25px))",
+          },
+        },
+        infiniteSlideRTL: {
+          to: {
+            transform: "translate(calc(50% - 25px))",
           },
         },
         fadeDown: {
@@ -112,7 +117,8 @@ export default {
           "bouncing-left-right 2s linear infinite alternate",
         smoothScale: "smoothScale 18s linear infinite alternate",
         smoothAlternate: "smoothAlternate 4s linear infinite alternate",
-        infiniteSlide: "infiniteSlide 35s linear infinite",
+        infiniteSlideLTR: "infiniteSlideLTR 30s linear infinite",
+        infiniteSlideRTL: "infiniteSlideRTL 30s linear infinite",
         fadeDown: "fadeDown 0.5s linear forwards",
       },
     },

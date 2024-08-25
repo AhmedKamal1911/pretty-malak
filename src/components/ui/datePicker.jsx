@@ -28,11 +28,11 @@ export function DatePickerWithPresets({ selectedDate, onDateChange }) {
         <Button
           variant={"outline"}
           className={cn(
-            "w-full text-[16px] pl-0  border-t-0 border-l-0 group border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border] duration-500 justify-start",
+            "w-full text-[16px] ps-0  border-t-0 border-l-0 group border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border] duration-500 justify-start",
             !date && "text-muted-foreground"
           )}
         >
-          <CalendarIcon className="mr-2 h-4 w-4 text-main" />
+          <CalendarIcon className="me-2 h-4 w-4 text-main" />
           {date ? (
             format(date, "PPP")
           ) : (

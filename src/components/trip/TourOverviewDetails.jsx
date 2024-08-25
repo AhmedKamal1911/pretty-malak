@@ -23,7 +23,7 @@ const TourOverviewDetails = ({ list, label, status }) => {
 
   return (
     <div className="p-6 flex flex-col sm:flex-row gap-5 sm:gap-0">
-      <span className="text-xl sm:text-[19px] flex-1">{label}</span>
+      <span className="text-xl sm:text-[19px] flex-1">{label} :</span>
       <ul className="flex-1 flex flex-col gap-5 sm:gap-7">
         {list?.map(({ id, name }) => (
           <li key={id}>
