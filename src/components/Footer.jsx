@@ -10,13 +10,14 @@ import {
 } from "@/assets";
 
 import { Button } from "./ui/Button";
-import { fetchGlobalInfo } from "@/services/trips/queries";
-import { useQuery } from "@tanstack/react-query";
+import { fetchFooterData } from "@/services/trips/queries";
+
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 const Footer = () => {
-  const { data } = useQuery({
-    queryKey: ["footer"], // Object form for query key
-    queryFn: fetchGlobalInfo,
+  const { data } = useQueryWithLocale({
+    queryKey: ["footer"],
+    queryFn: fetchFooterData,
   });
 
   const linksList = data?.navLinks ?? [];

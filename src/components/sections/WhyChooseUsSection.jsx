@@ -21,12 +21,13 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/Accordion";
-import { useQuery } from "@tanstack/react-query";
+
 import { fetchWhyUsInfo } from "@/services/trips/queries";
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 const WhyChooseUsSection = () => {
-  const { data } = useQuery({
+  const { data } = useQueryWithLocale({
     queryKey: ["whyUs"], // Object form for query key
     queryFn: fetchWhyUsInfo,
   });

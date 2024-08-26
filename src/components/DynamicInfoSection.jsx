@@ -1,5 +1,5 @@
-import { PageDirectionContext } from "@/contexts/PageDirectionProvider";
-import { useContext } from "react";
+import { useLanguage } from "@/contexts/LanguageProvider";
+
 import {
   MdOutlineKeyboardDoubleArrowLeft,
   MdOutlineKeyboardDoubleArrowRight,
@@ -7,7 +7,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 const DynamicInfoSection = ({ infoList }) => {
-  const { isRTL } = useContext(PageDirectionContext);
+  const { isRTL } = useLanguage();
   return (
     <div>
       <ul className="flex flex-col gap-3 z-40 relative">

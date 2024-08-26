@@ -1,18 +1,17 @@
 // import { specialTrips } from "@/data";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { Loading, SectionHeader, TripsSlider } from "..";
 import { fetchSpecialTrips } from "@/services/trips/queries";
-import { useQuery } from "@tanstack/react-query";
 
 const SpecialOffersSection = () => {
   const {
     data: tripsData,
     isFetching,
     error,
-  } = useQuery({
+  } = useQueryWithLocale({
     queryKey: ["trips"], // Object form for query key
     queryFn: fetchSpecialTrips, // Function to fetch data
   });
-
   const specialTrips = tripsData?.data ?? [];
   return (
     <section className="py-10">

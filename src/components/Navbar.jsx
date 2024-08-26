@@ -4,21 +4,21 @@ import { LanguageSelectMenu, NavLinks } from ".";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useMatch } from "react-router-dom";
 import { cn } from "@/utils/cn";
-import { useQuery } from "@tanstack/react-query";
-import { fetchGlobalInfo } from "@/services/trips/queries";
+import { fetchNavbarData } from "@/services/trips/queries";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 const Navbar = () => {
-  const isMatched = useMediaQuery("(max-width: 767px)");
+  const isMatched = useMediaQuery("(max-width: 1200px)");
   const homepageMatch = useMatch("/");
   const isHomepage = Boolean(homepageMatch);
   const ref = useRef(null);
   const [isAnimateHeader, setIsAnimateHeader] = useState(false);
-  const { data } = useQuery({
-    queryKey: ["navbar"], // Object form for query key
-    queryFn: fetchGlobalInfo,
+  const { data } = useQueryWithLocale({
+    queryKey: ["navbar"],
+    queryFn: fetchNavbarData,
   });
   const logo = data?.logoText;
-
+  console.log({ data });
   useEffect(() => {
     if (!ref.current) return;
 
@@ -63,7 +63,7 @@ const Navbar = () => {
                 <AsideDrawer />
               ) : (
                 <>
-                  <NavLinks />
+                  <NavLinks linksList={data?.navLinks} />
                   <LanguageSelectMenu />
                 </>
               )}

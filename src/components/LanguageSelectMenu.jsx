@@ -1,5 +1,3 @@
-import { useContext, useEffect, useState } from "react";
-
 import {
   Select,
   SelectContent,
@@ -10,26 +8,10 @@ import {
 
 import { twMerge } from "tailwind-merge";
 import { languages } from "@/data";
-import { PageDirectionContext } from "@/contexts/PageDirectionProvider";
+import { useLanguage } from "@/contexts/LanguageProvider";
 
 const LanguageSelectMenu = ({ className }) => {
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    () => JSON.parse(localStorage.getItem("lang")) ?? languages[0]
-  );
-  const { toggleDirection } = useContext(PageDirectionContext);
-  const onLanguageChange = (value) => {
-    setSelectedLanguage(value);
-    localStorage.setItem("lang", JSON.stringify(value));
-  };
-
-  useEffect(() => {
-    if (selectedLanguage) {
-      onLanguageChange(selectedLanguage);
-      toggleDirection(
-        JSON.parse(localStorage.getItem("lang")).languageName === "ar"
-      );
-    }
-  }, [selectedLanguage, toggleDirection]);
+  const { selectedLanguage, onLanguageChange } = useLanguage();
 
   return (
     <Select onValueChange={onLanguageChange}>
@@ -39,10 +21,10 @@ const LanguageSelectMenu = ({ className }) => {
         <SelectValue
           placeholder={
             <div className="flex gap-2 items-center">
-              {selectedLanguage.languageName}
+              {selectedLanguage?.languageName}
               <img
                 className="h-7 w-7 mr-2"
-                src={`https://flagsapi.com/${selectedLanguage.countryName}/flat/64.png`}
+                src={`https://flagsapi.com/${selectedLanguage?.countryName}/flat/64.png`}
               />
             </div>
           }

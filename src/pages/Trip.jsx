@@ -14,6 +14,7 @@ import {
   TripSlider,
 } from "@/components";
 import { SkeletonLoaderCard } from "@/components/feedback";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 import useScrollToTop from "@/hooks/useScrollToTop";
 import {
@@ -32,7 +33,7 @@ import { useParams } from "react-router-dom";
 
 const Trip = () => {
   const { id: tripId } = useParams();
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading, error } = useQueryWithLocale({
     queryKey: ["trip", tripId], // Object form for query key
     queryFn: async () => await fetchTripData(tripId), // Function to fetch data
   });
@@ -65,19 +66,18 @@ const Trip = () => {
     data: relatedTripsData,
     isFetching,
     error: relatedTripsError,
-  } = useQuery({
+  } = useQueryWithLocale({
     queryKey: ["relatedTrips", type, tripId], // Object form for query key
     queryFn: async () => await fetchRelatedTrips(type, tripId), // Function to fetch data
   });
-
   const allRelatedTrips = relatedTripsData?.data ?? [];
 
-  const { data: clientQuestionData } = useQuery({
+  const { data: clientQuestionData } = useQueryWithLocale({
     queryKey: ["clientQuestions"],
     queryFn: fetchClientQuestions,
   });
   const clientQuestionsList = clientQuestionData?.clientQuestionsList;
-
+  console.log({ relatedTripsData });
   useScrollToTop();
 
   // Convert and format departureTime and returnTime

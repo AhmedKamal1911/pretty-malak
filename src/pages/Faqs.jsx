@@ -1,11 +1,12 @@
 import { FaqForm, QuestionsAccordion, SectionHeader } from "@/components";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { fetchFaqInfo } from "@/services/trips/queries";
-import { useQuery } from "@tanstack/react-query";
 
 const Faqs = () => {
   useScrollToTop();
-  const { data } = useQuery({
+
+  const { data } = useQueryWithLocale({
     queryKey: ["faqs"], // Object form for query key
     queryFn: fetchFaqInfo,
   });

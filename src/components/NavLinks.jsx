@@ -1,15 +1,11 @@
-import { fetchGlobalInfo } from "@/services/trips/queries";
-import { useQuery } from "@tanstack/react-query";
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-const NavLinks = ({ className, disableInitialAnimation = false }) => {
-  const { data } = useQuery({
-    queryKey: ["navbar"], // Object form for query key
-    queryFn: fetchGlobalInfo,
-  });
-
-  const linksList = data?.navLinks;
+const NavLinks = ({
+  className,
+  disableInitialAnimation = false,
+  linksList,
+}) => {
   return (
     <nav>
       <ul

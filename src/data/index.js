@@ -253,6 +253,10 @@ export const languages = [
     countryName: "EG",
     languageName: "ar",
   },
+  {
+    countryName: "RU",
+    languageName: "ru",
+  },
 ];
 
 export const sliderBreakPoints = {

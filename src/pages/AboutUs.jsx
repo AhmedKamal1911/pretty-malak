@@ -1,6 +1,7 @@
 import { egyptImg } from "@/assets";
 import { AboutInfoBox, OurServiceBox, SectionHeader } from "@/components";
 import { aboutInfoList } from "@/data";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { fetchWhyUsInfo } from "@/services/trips/queries";
 import { useQuery } from "@tanstack/react-query";
@@ -19,7 +20,8 @@ const iconMap = {
 };
 const AboutUs = () => {
   useScrollToTop();
-  const { data } = useQuery({
+
+  const { data } = useQueryWithLocale({
     queryKey: ["whyUs"], // Object form for query key
     queryFn: fetchWhyUsInfo,
   });

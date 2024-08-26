@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/SelectMenu";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { fetchTrips, fetchTripTypes } from "@/services/trips/queries";
@@ -18,11 +19,12 @@ import { useState } from "react";
 
 const Trips = () => {
   const [tripType, setTripType] = useState("all");
+
   const {
     data: tripsData,
     isFetching,
     error,
-  } = useQuery({
+  } = useQueryWithLocale({
     queryKey: ["trips", tripType], // Object form for query key
     queryFn: () => fetchTrips(tripType), // Function to fetch data
   });

@@ -3,19 +3,19 @@ import { Loading, SectionHeader, TripCard } from "..";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/Button";
 import { AnimatePresence } from "framer-motion";
-import { useQuery } from "@tanstack/react-query";
+
 import { fetchTrips } from "@/services/trips/queries";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 const TripsSection = () => {
   const {
     data: tripsData,
     isFetching,
     error,
-  } = useQuery({
+  } = useQueryWithLocale({
     queryKey: ["tripsSection"], // Object form for query key
     queryFn: fetchTrips, // Function to fetch data
   });
-
   const allTrips = tripsData?.data ?? [];
 
   return (

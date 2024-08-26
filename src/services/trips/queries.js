@@ -2,7 +2,9 @@ import axiosInstance from "./axiosInstance";
 import qs from "qs";
 
 // Function to fetch a single trip by ID
-const queryAll = qs.stringify({ populate: "*" });
+const queryAll = qs.stringify({
+  populate: "*",
+});
 
 async function fetchTripData(tripId) {
   // Construct the URL with the trip ID and query parameters
@@ -10,7 +12,7 @@ async function fetchTripData(tripId) {
 
   // Response data will contain the trip details
   const tripData = response;
-
+  console.log(tripData);
   return tripData;
 }
 
@@ -54,6 +56,7 @@ const fetchSpecialTrips = async () => {
 };
 
 const fetchRelatedTrips = async (typeName, tripId) => {
+  console.log({ typeName, tripId });
   // Construct query parameters
   const relatedTripsQuery = qs.stringify({
     populate: "*",
@@ -83,10 +86,24 @@ const fetchTripTypes = async () => {
   return uniqueTripTypes;
 };
 
-const fetchGlobalInfo = async () => {
-  const response = await axiosInstance.get(`/global?${queryAll}`);
-  const globalInfo = response?.data;
-  return globalInfo;
+// Navbar and footer data
+const fetchNavbarData = async () => {
+  const navbarDataQuery = qs.stringify({
+    populate: "logoText,navLinks",
+  });
+  const response = await axiosInstance.get(`/global?${navbarDataQuery}`);
+  const navbarData = response?.data;
+
+  return navbarData;
+};
+const fetchFooterData = async () => {
+  const footerDataQuery = qs.stringify({
+    populate: "navLinks,contactLinks",
+  });
+  const response = await axiosInstance.get(`/global?${footerDataQuery}`);
+  const footerData = response?.data;
+
+  return footerData;
 };
 
 const fetchHeroSectionInfo = async () => {
@@ -128,13 +145,15 @@ const fetchClientQuestions = async () => {
   const clientQuestions = response?.data;
   return clientQuestions;
 };
+
 export {
   fetchTrips,
   fetchSpecialTrips,
   fetchTripData,
   fetchRelatedTrips,
   fetchTripTypes,
-  fetchGlobalInfo,
+  fetchNavbarData,
+  fetchFooterData,
   fetchHeroSectionInfo,
   fetchWhyUsInfo,
   fetchFaqInfo,

@@ -3,11 +3,11 @@ import { SectionHeader } from "..";
 
 import FeaturesList from "../FeaturesList";
 import { mapBackground } from "@/assets";
+import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { fetchIntroInfo } from "@/services/trips/queries";
-import { useQuery } from "@tanstack/react-query";
 
 const IntroSection = () => {
-  const { data } = useQuery({
+  const { data } = useQueryWithLocale({
     queryKey: ["introInfo"], // Object form for query key
     queryFn: fetchIntroInfo,
   });

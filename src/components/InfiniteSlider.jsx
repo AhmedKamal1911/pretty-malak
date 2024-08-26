@@ -1,5 +1,6 @@
-import { PageDirectionContext } from "@/contexts/PageDirectionProvider";
-import { Children, cloneElement, useContext } from "react";
+import { useLanguage } from "@/contexts/LanguageProvider";
+
+import { Children, cloneElement } from "react";
 
 const InfiniteSlider = ({ children }) => {
   // Clone children to ensure aria-hidden is applied
@@ -8,7 +9,7 @@ const InfiniteSlider = ({ children }) => {
       "aria-hidden": true,
     })
   );
-  const { isRTL } = useContext(PageDirectionContext);
+  const { isRTL } = useLanguage();
 
   return (
     <div className="overflow-hidden">

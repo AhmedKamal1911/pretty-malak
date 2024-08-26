@@ -12,5 +12,19 @@ const axiosInstance = axios.create({
   // .. other options
 });
 // You can also log to verify
+axiosInstance.interceptors.request.use(
+  function (config) {
+    config.params = {
+      ...config.params,
+      locale: JSON.parse(localStorage.getItem("lang")).languageName,
+    };
+    // Do something before request is sent
+    return config;
+  },
+  function (error) {
+    // Do something with request error
+    return Promise.reject(error);
+  }
+);
 
 export default axiosInstance;
