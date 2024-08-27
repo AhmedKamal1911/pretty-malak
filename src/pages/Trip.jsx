@@ -24,7 +24,6 @@ import {
 } from "@/services/trips/queries";
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
-import { useQuery } from "@tanstack/react-query";
 import { format, isValid, parse } from "date-fns";
 
 import { IoWatchOutline } from "react-icons/io5";

@@ -1,4 +1,5 @@
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
+import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
@@ -23,6 +24,7 @@ const FeaturesList = ({ className, features }) => {
 };
 
 function FeatureListItem({ feature }) {
+  const { t } = useTranslation("global");
   return (
     <div
       className={`relative counter-increment group before:duration-500 before:text-6xl before:text-lightGray before:content-[counter(feature-counter,decimal-leading-zero)] hover:before:text-black py-8 flex flex-col sm:flex-row items-center gap-10 [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:bottom-0 [&:not(:last-child)]:after:end-0 [&:not(:last-child)]:after:h-[1px] [&:not(:last-child)]:after:bg-lightGray [&:not(:last-child)]:after:w-[100vw]`}
@@ -38,12 +40,12 @@ function FeatureListItem({ feature }) {
       </div>
       <div className="relative flex md:flex-col flex-row gap-7 sm:gap-10 md:gap-4 items-center">
         <div className="z-50">
-          <h5>{feature.title}</h5>
+          <h5 className="text-xl">{feature.title}</h5>
           <NavLink
             className="text-main z-50 hover:text-black transition-colors duration-700 relative after:absolute after:-end-7 after:bottom-1/2 after:w-[0px] after:hover:w-[25px] after:transition-all after:duration-700 after:h-[2px] after:bg-black after:rounded-3xl before:absolute before:-end-7 before:bottom-1/2 before:w-[25px] before:h-[2px] before:bg-main before:rounded-3xl "
             to={feature.url}
           >
-            Learn More
+            {t("homePage.introSection.learnMoreTitle")}
           </NavLink>
         </div>
 

@@ -5,8 +5,10 @@ import FeaturesList from "../FeaturesList";
 import { mapBackground } from "@/assets";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { fetchIntroInfo } from "@/services/trips/queries";
+import { useTranslation } from "react-i18next";
 
 const IntroSection = () => {
+  const { t } = useTranslation("global");
   const { data } = useQueryWithLocale({
     queryKey: ["introInfo"], // Object form for query key
     queryFn: fetchIntroInfo,
@@ -31,14 +33,18 @@ const IntroSection = () => {
           <div className="text-center flex-1 md:pe-[100px]">
             <SectionHeader
               className="lg:w-[400px] mx-auto"
-              subTitle="Travel experience"
+              subTitle={t("homePage.introSection.subTitle")}
               introText={introHeading}
               desc={introDesc}
             />
             <div className="mt-16 space-y-10">
               <h3 className="font-signature text-4xl">Seif Haraz</h3>
-              <h6 className="text-xl">Seif Haraz</h6>
-              <span className="text-gray-500">CEO</span>
+              <h6 className="text-xl">
+                {t("homePage.introSection.managerName")}
+              </h6>
+              <span className="text-xl text-grayDesc font-bold  font-mono">
+                {t("homePage.introSection.managerRank")}
+              </span>
             </div>
           </div>
           <FeaturesList className="flex-1" features={featuresList} />

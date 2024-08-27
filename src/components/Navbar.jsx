@@ -18,7 +18,7 @@ const Navbar = () => {
     queryFn: fetchNavbarData,
   });
   const logo = data?.logoText;
-  console.log({ data });
+  console.log();
   useEffect(() => {
     if (!ref.current) return;
 
@@ -60,7 +60,7 @@ const Navbar = () => {
             </div>
             <div className="flex gap-16 items-center">
               {isMatched ? (
-                <AsideDrawer />
+                <AsideDrawer navLinks={data?.navLinks} />
               ) : (
                 <>
                   <NavLinks linksList={data?.navLinks} />

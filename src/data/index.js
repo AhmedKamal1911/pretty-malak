@@ -289,9 +289,9 @@ export const travelCategories = [
   { value: "Family" },
   { value: "Luxury" },
   { value: "Nature" },
-  { value: "Road Trip" },
-  { value: "Romantic" },
-  { value: "Skiing" },
+  { value: "Archaeological" },
+  { value: "Sea" },
+  { value: "Relaxation" },
   { value: "Safari" },
 ];
 
@@ -312,7 +312,7 @@ export const aboutInfoList = [
     id: 3,
     img: trophy,
     count: "40",
-    about: "our awards",
+    about: "Our awards",
   },
   {
     id: 4,

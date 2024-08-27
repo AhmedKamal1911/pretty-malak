@@ -6,8 +6,10 @@ import { AnimatePresence } from "framer-motion";
 
 import { fetchTrips } from "@/services/trips/queries";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
+import { useTranslation } from "react-i18next";
 
 const TripsSection = () => {
+  const { t } = useTranslation("global");
   const {
     data: tripsData,
     isFetching,
@@ -22,11 +24,13 @@ const TripsSection = () => {
     <section className="py-20">
       <div className="container h-full">
         <SectionHeader
-          subTitle="our trips"
-          introText="take a look to our trips"
+          subTitle={t("homePage.tripsSection.subTitle")}
+          introText={t("homePage.tripsSection.introText")}
         />
         <Button asChild variant="primary">
-          <NavLink to="/trips">Show All</NavLink>
+          <NavLink to="/trips">
+            {t("homePage.tripsSection.tripsButtonLabel")}
+          </NavLink>
         </Button>
         <Loading
           isFetching={isFetching}

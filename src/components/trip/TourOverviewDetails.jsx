@@ -22,14 +22,14 @@ const TourOverviewDetails = ({ list, label, status }) => {
   }
 
   return (
-    <div className="p-6 flex flex-col sm:flex-row gap-5 sm:gap-0">
-      <span className="text-xl sm:text-[19px] flex-1">{label} :</span>
+    <div className="p-2 sm:p-6 flex flex-col sm:flex-row gap-5 sm:gap-0">
+      <span className="text-xl sm:text-[21px] flex-1">{label} :</span>
       <ul className="flex-1 flex flex-col gap-5 sm:gap-7">
         {list?.map(({ id, name }) => (
           <li key={id}>
-            <span className="text-gray-500 text-[16px] sm:text-[18px] flex items-start gap-2 sm:gap-5 ">
+            <span className="text-grayDesc text-[18px] sm:text-[19px] flex items-start gap-2 sm:gap-5 ">
               {icon}
-              <span>{name}</span>
+              <span className="leading-7">{name}</span>
             </span>
           </li>
         ))}

@@ -2,8 +2,10 @@
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { Loading, SectionHeader, TripsSlider } from "..";
 import { fetchSpecialTrips } from "@/services/trips/queries";
+import { useTranslation } from "react-i18next";
 
 const SpecialOffersSection = () => {
+  const { t } = useTranslation("global");
   const {
     data: tripsData,
     isFetching,
@@ -18,8 +20,8 @@ const SpecialOffersSection = () => {
       <div className="container">
         <SectionHeader
           className=""
-          subTitle="Special Offers"
-          introText="Get very special offers on trips"
+          subTitle={t("homePage.specialOffersSection.subTitle")}
+          introText={t("homePage.specialOffersSection.introText")}
         />
         <div className="mt-10">
           <Loading

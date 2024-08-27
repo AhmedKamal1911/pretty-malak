@@ -2,8 +2,10 @@ import { slideImg1 } from "@/assets";
 import { ContactForm, SectionHeader } from "@/components";
 
 import useScrollToTop from "@/hooks/useScrollToTop";
+import { useTranslation } from "react-i18next";
 
 const ContactUs = () => {
+  const { t } = useTranslation("global");
   useScrollToTop();
   return (
     <div className="relative min-h-screen py-36 ">
@@ -23,8 +25,8 @@ const ContactUs = () => {
           <div className="flex-1  p-2 md:p-5 lg:p-12">
             <SectionHeader
               className="mb-8"
-              introText="GET IN TOUCH"
-              desc="24/7 WE WILL ANSWER YOUR QUESTION AND PROBLEMS"
+              introText={t("contactUsPage.introText")}
+              desc={t("contactUsPage.desc")}
             />
             <ContactForm />
           </div>

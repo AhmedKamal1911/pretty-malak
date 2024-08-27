@@ -4,7 +4,8 @@ import { aboutInfoList } from "@/data";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { fetchWhyUsInfo } from "@/services/trips/queries";
-import { useQuery } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
+
 import {
   FaBookOpen,
   FaHandsHelping,
@@ -20,7 +21,7 @@ const iconMap = {
 };
 const AboutUs = () => {
   useScrollToTop();
-
+  const { t } = useTranslation("global");
   const { data } = useQueryWithLocale({
     queryKey: ["whyUs"], // Object form for query key
     queryFn: fetchWhyUsInfo,
@@ -30,28 +31,23 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen py-36 overflow-hidden">
       <div className="container">
-        <SectionHeader introText="ABOUT US" className="mb-5 text-center" />
+        <SectionHeader
+          introText={t("aboutUsPage.introText")}
+          className="mb-5 text-center"
+        />
 
         <AboutInfoBox aboutInfoList={aboutInfoList} />
 
         <div className="flex flex-col lg:flex-row mt-10 justify-center gap-10 mb-10">
           <div className="flex-1">
             <SectionHeader
-              introText="SeaCrew Team"
-              desc=" Welcome to SeaCrew, your ultimate gateway to exploring the
-              timeless wonders of Egypt. We are passionate about crafting
-              unforgettable travel experiences that immerse you in the rich
-              history, vibrant culture, and breathtaking landscapes of this
-              ancient land."
+              introText={t("aboutUsPage.companyInfo.introText")}
+              desc={t("aboutUsPage.companyInfo.desc")}
               className="mb-6 lg:mb-16 text-center lg:text-start max-w-[600px]"
             />
             <SectionHeader
-              subTitle="our story"
-              desc="Founded with a deep love for Egypt and a desire to share its magic
-            with the world, [Your Company Name] has been providing exceptional
-            travel services for [X] years. Our team of dedicated travel experts
-            and local guides are committed to ensuring that each journey is
-            unique, enriching, and tailored to your interests and preferences."
+              subTitle={t("aboutUsPage.companyStory.introText")}
+              desc={t("aboutUsPage.companyStory.desc")}
               className="max-w-[800px]"
               subTitleProps={{ className: "text-black" }}
             />
@@ -65,7 +61,7 @@ const AboutUs = () => {
           </div>
         </div>
         <div>
-          <SectionHeader introText="why choose us ?" />
+          <SectionHeader introText={t("aboutUsPage.secondaryIntroText")} />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 bg-[#f1f1f1] p-2 sm:p-10 rounded-lg mt-5">
             {services.map((service) => {
               const IconComponent = iconMap[service.icon];

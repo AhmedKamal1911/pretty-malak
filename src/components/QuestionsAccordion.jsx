@@ -14,10 +14,10 @@ const QuestionsAccordion = ({ questionsList }) => {
           key={id}
           className="mb-1 border-none shadow"
         >
-          <AccordionTrigger className="bg-white border-0 p-5  data-[state=open]:bg-main data-[state=open]:text-white text-[17px]">
+          <AccordionTrigger className="border-0 p-5 bg-white transition-all data-[state=open]:bg-main data-[state=open]:text-white text-[19px]">
             {question}
           </AccordionTrigger>
-          <AccordionContent className="p-5 bg-white text-[17px]">
+          <AccordionContent className="p-5 bg-white text-[19px] leading-7 text-grayDesc">
             {answer}
           </AccordionContent>
         </AccordionItem>

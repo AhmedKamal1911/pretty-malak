@@ -22,6 +22,7 @@ export default {
       colors: {
         main: "#bfa888",
         lightGray: "#e1e1e1",
+        grayDesc: "rgb(55 65 81 / 1)",
         destructive: {
           DEFAULT: "#ff0000",
           foreground: "#F5FAFF",

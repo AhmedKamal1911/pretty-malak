@@ -50,7 +50,7 @@ const BookTripForm = () => {
       roomNumber: "",
       adultNumber: "",
       childNumber: "",
-      checkDate: new Date(), // Default value for check-in date
+      checkDate: undefined, // Default value for check-in date
       country: "",
     },
   });
@@ -162,10 +162,14 @@ const BookTripForm = () => {
                     type="text"
                     name={field.name}
                     hidden
-                    defaultValue={format(
-                      new Date(field.value),
-                      "dd MMMM, hh:mm a, yyyy"
-                    )}
+                    defaultValue={
+                      field.value
+                        ? format(
+                            new Date(field.value),
+                            "dd MMMM, hh:mm a, yyyy"
+                          )
+                        : ""
+                    }
                   />
                   <FormMessage className="text-red-600 text-[16px]" />
                 </FormItem>

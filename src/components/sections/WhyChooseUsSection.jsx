@@ -25,8 +25,12 @@ import {
 import { fetchWhyUsInfo } from "@/services/trips/queries";
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
+import { useLanguage } from "@/contexts/LanguageProvider";
+import { useTranslation } from "react-i18next";
 
 const WhyChooseUsSection = () => {
+  const { isRTL } = useLanguage();
+  const { t } = useTranslation("global");
   const { data } = useQueryWithLocale({
     queryKey: ["whyUs"], // Object form for query key
     queryFn: fetchWhyUsInfo,
@@ -45,8 +49,9 @@ const WhyChooseUsSection = () => {
       <div
         style={{
           backgroundImage: `url('${wavesWithBoat}')`,
+          rotate: isRTL ? "y 180deg" : undefined,
         }}
-        className="absolute animate-bouncing-left-right start-0 bottom-[-90px] md:bottom-0  h-[705px] w-[431px] bg-[50%] bg-no-repeat bg-cover"
+        className={`absolute animate-bouncing-left-right start-0 bottom-[-90px] md:bottom-0 h-[705px] w-[431px] bg-[50%] bg-no-repeat bg-cover `}
       />
 
       <div className="container">
@@ -57,10 +62,10 @@ const WhyChooseUsSection = () => {
         <div className="mt-16 relative">
           <div>
             <h2
-              data-text={"Why Choose Us"}
+              data-text={t("homePage.whyChooseUsSection.heading")}
               className="stroke-fill w-fit mx-auto whitespace-nowrap mb-5 text-5xl md:text-8xl xl:text-[120px] text-center relative after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden"
             >
-              Why Choose Us
+              {t("homePage.whyChooseUsSection.heading")}
             </h2>
             <div className="flex flex-col xl:flex-row lg:items-center">
               <div className="flex-1">
@@ -86,7 +91,7 @@ const WhyChooseUsSection = () => {
               </div>
               <div className="flex-1 w-full">
                 <SectionHeader
-                  subTitle="First-class full service"
+                  subTitle={t("homePage.whyChooseUsSection.subTitle")}
                   subTitleProps={{ className: "text-4xl md:text-6xl" }}
                   className="mb-8 text-center"
                 />
@@ -100,11 +105,11 @@ const WhyChooseUsSection = () => {
                         key={id}
                         className="mb-1 border-none shadow"
                       >
-                        <AccordionTrigger className="border-0 p-5 bg-white transition-all data-[state=open]:bg-main data-[state=open]:text-white text-[17px]">
+                        <AccordionTrigger className="border-0 p-5 bg-white transition-all data-[state=open]:bg-main data-[state=open]:text-white text-[19px]">
                           <IconComponent />
                           {name}
                         </AccordionTrigger>
-                        <AccordionContent className="p-5 bg-white text-[17px]">
+                        <AccordionContent className="p-5 bg-white text-[18px] leading-7 text-grayDesc">
                           {desc}
                         </AccordionContent>
                       </AccordionItem>

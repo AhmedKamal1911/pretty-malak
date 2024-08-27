@@ -21,8 +21,10 @@ import { RxCrossCircled } from "react-icons/rx";
 import { TbReload } from "react-icons/tb";
 import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
+import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {
+  const { t } = useTranslation("global");
   const formRef = useRef();
   const { toast } = useToast();
 
@@ -31,7 +33,7 @@ const ContactForm = () => {
 
   const methods = useForm({
     mode: "onBlur",
-    resolver: zodResolver(questionFormSchema),
+    resolver: zodResolver(questionFormSchema(t)),
     defaultValues: {
       email: "",
       message: "",
@@ -89,21 +91,21 @@ const ContactForm = () => {
               control={control}
               name="name"
               type="text"
-              placeholder="Your Name:"
+              placeholder={t("global.contactForm.name")}
             />
 
             <FaqInput
               control={control}
               name="email"
               type="email"
-              placeholder="Email:"
+              placeholder={t("global.contactForm.email")}
             />
           </div>
           <FaqInput
             control={control}
             name="subject"
             type="text"
-            placeholder="Type your subject:"
+            placeholder={t("global.contactForm.subject")}
           />
 
           <FormField
@@ -117,7 +119,7 @@ const ContactForm = () => {
                     {...field}
                     type="text"
                     className="text-[16px] p-0 focus-visible:ring-transparent h-[180px] resize-none focus:placeholder:text-main border-t-0 border-l-0 border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border,placeholder] duration-500"
-                    placeholder="Type your message here."
+                    placeholder={t("global.contactForm.message")}
                     id="message-2"
                   />
                 </FormControl>
@@ -134,10 +136,10 @@ const ContactForm = () => {
             {isSubmitting ? (
               <span className="flex items-center gap-2 text-xl text-white">
                 <TbReload className="h-5 w-5 animate-spin" />
-                Loading...
+                {t("global.contactForm.loadingText")}
               </span>
             ) : (
-              "Submit"
+              t("global.contactForm.contactFormButtonLabel")
             )}
           </Button>
         </div>

@@ -33,7 +33,7 @@ const TripCard = ({ title, offer, adultPrice, img, time, id, count }) => {
           <h3 className="text-2xl  absolute bottom-[110px]  group-hover:bottom-[180px] sm:bottom-[110px]  sm:group-hover:bottom-[180px] md:bottom-[120px]  md:group-hover:bottom-[180px]  lg:bottom-[120px]lg:group-hover:bottom-[180px] transition-all duration-300 delay-[60ms] text-white">
             {adultPrice}$/{time}
           </h3>
-          <h4 className="absolute bottom-[30px] start-0 end-0 text-white text-2xl sm:text-3xl my-2 line-clamp-2 group-hover:bottom-[80px] transition-all duration-300 delay-[50ms]">
+          <h4 className="absolute bottom-[30px] start-0 end-0 text-white text-3xl my-2 line-clamp-2 group-hover:bottom-[80px] transition-all duration-300 delay-[50ms] ">
             {title}
           </h4>
           <button className="absolute py-2 px-10 bg-main text-white bottom-[-50px] opacity-0 group-hover:bottom-[30px] group-hover:opacity-[1] transition-all  duration-500 delay-[30ms]">

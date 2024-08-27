@@ -13,8 +13,10 @@ import { Button } from "./ui/Button";
 import { fetchFooterData } from "@/services/trips/queries";
 
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation("global");
   const { data } = useQueryWithLocale({
     queryKey: ["footer"],
     queryFn: fetchFooterData,
@@ -38,26 +40,27 @@ const Footer = () => {
           />
           <div>
             <FooterSectionHeader
-              title="about us"
-              desc="  We strongly support best practice sharing across our operations around
-          the world"
+              title={t("footer.aboutUsSection.title")}
+              desc={t("footer.aboutUsSection.desc")}
             />
             <Button asChild variant="primary" className="py-6 px-7">
-              <NavLink to="/about-us">Book Now</NavLink>
+              <NavLink to="/about-us">
+                {t("footer.aboutUsSection.aboutUsButtonLabel")}
+              </NavLink>
             </Button>
           </div>
           <div>
-            <FooterSectionHeader title="contact us" />
+            <FooterSectionHeader title={t("footer.contactUsSectionTitle")} />
             <DynamicInfoSection infoList={contactLinks} />
           </div>
           <div>
-            <FooterSectionHeader title="quick links" />
+            <FooterSectionHeader title={t("footer.quickLinksSectionTitle")} />
             <DynamicInfoSection infoList={linksList} />
           </div>
           <div>
             <FooterSectionHeader
-              title="reach us"
-              desc="you can reach us by :"
+              title={t("footer.reachUsSection.title")}
+              desc={t("footer.reachUsSection.desc")}
             />
             <div className="flex gap-3 mt-5">
               <NavLink to="https://www.facebook.com" className=" bg-white">
@@ -75,7 +78,7 @@ const Footer = () => {
         </div>
         <div className="relative p-5 bg-[#363d5371]  gap-5">
           <p className="text-main text-xl text-center">
-            &copy; Copyrights reserved by Ahmed Kamal
+            &copy; {t("footer.copyRightReference")}
           </p>
         </div>
       </div>

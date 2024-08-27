@@ -1,16 +1,29 @@
 import { z } from "zod";
 
-const questionFormSchema = z.object({
-  email: z.string().min(1, { message: "Email Address is Required" }).email(),
-  message: z.string().min(1, { message: "message is required" }),
-  name: z
-    .string()
-    .min(2, { message: "Your Name Must bigger thant 2 letters at least" })
-    .max(50, { message: "Your Name Must Be equal or less than 50 letter" }),
-  subject: z
-    .string()
-    .min(2, { message: "subject content is required" })
-    .max(30, { message: "the subject length is to large!" }),
-});
+const questionFormSchema = (t) => {
+  return z.object({
+    email: z
+      .string()
+      .min(1, {
+        message: t("global.contactForm.validation.emailRequired"),
+      })
+      .email({
+        message: t("global.contactForm.validation.emailInvalid"),
+      }),
+    message: z.string().min(1, {
+      message: t("global.contactForm.validation.messageRequired"),
+    }),
+    name: z
+      .string()
+      .min(2, { message: t("global.contactForm.validation.nameMin") })
+      .max(50, { message: t("global.contactForm.validation.nameMax") }),
+    subject: z
+      .string()
+      .min(2, { message: t("global.contactForm.validation.subjectMin") })
+      .max(30, {
+        message: t("global.contactForm.validation.subjectMax"),
+      }),
+  });
+};
 
 export default questionFormSchema;

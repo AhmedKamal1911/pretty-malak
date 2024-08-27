@@ -1,14 +1,16 @@
+import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
 
 const AboutInfoBox = ({ aboutInfoList, className }) => {
+  const { t } = useTranslation("global");
   return (
     <div
       className={twMerge(
-        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 bg-[#f1f1f1] p-10 rounded-lg",
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 bg-[#f1f1f1] p-10 rounded-lg shadow-md",
         className
       )}
     >
-      {aboutInfoList.map((info) => (
+      {aboutInfoList.map((info, i) => (
         <div
           key={info.id}
           className="flex w-full flex-col md:flex-row gap-4 items-center "
@@ -21,7 +23,9 @@ const AboutInfoBox = ({ aboutInfoList, className }) => {
               {info.count}
               <span className="text-main text-6xl">+</span>
             </h3>
-            <span className="text-xl">{info.about}</span>
+            <span className="text-xl">
+              {t(`homePage.whyChooseUsSection.achievementsSection.${i}`)}
+            </span>
           </div>
         </div>
       ))}
