@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const TripNavigation = () => {
   const [activeSection, setActiveSection] = useState();
+  const { t } = useTranslation("global");
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
 
@@ -22,7 +24,7 @@ const TripNavigation = () => {
               activeSection === "info" && "text-orange-500"
             }`}
           >
-            information
+            {t("tripInfo.navbarInfo.information")}
           </button>
         </li>
         <li>
@@ -32,7 +34,7 @@ const TripNavigation = () => {
               activeSection === "tour-plan" && "text-orange-500"
             }`}
           >
-            tour plan
+            {t("tripInfo.navbarInfo.tourPlan")}
           </button>
         </li>
         <li>
@@ -42,7 +44,7 @@ const TripNavigation = () => {
               activeSection === "faq" && "text-orange-500"
             }`}
           >
-            faq
+            {t("tripInfo.navbarInfo.faq")}
           </button>
         </li>
         <li>
@@ -52,7 +54,7 @@ const TripNavigation = () => {
               activeSection === "reviews" && "text-orange-500"
             }`}
           >
-            reviews
+            {t("tripInfo.navbarInfo.reviews")}
           </button>
         </li>
       </ul>

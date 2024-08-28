@@ -14,7 +14,11 @@ import {
 } from "./SelectMenu";
 import { Calendar } from "./calendar";
 
-export function DatePickerWithPresets({ selectedDate, onDateChange }) {
+export function DatePickerWithPresets({
+  selectedDate,
+  onDateChange,
+  placeholder,
+}) {
   const [date, setDate] = useState(selectedDate);
 
   const handleDateChange = (newDate) => {
@@ -37,7 +41,7 @@ export function DatePickerWithPresets({ selectedDate, onDateChange }) {
             format(date, "PPP")
           ) : (
             <span className="group-focus:text-main text-gray-400">
-              Pick a date
+              {placeholder}
             </span>
           )}
         </Button>

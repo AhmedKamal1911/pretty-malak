@@ -1,5 +1,5 @@
 import i18n from "@/i18n";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 // Creating the context with a default value
 const LanguageContext = createContext(null);
@@ -8,18 +8,23 @@ export const DEFAULT_LANG = {
   languageName: "en",
 };
 const LanguageProvider = ({ children }) => {
-  const [isRTL, setIsRTL] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState(
     () => JSON.parse(localStorage.getItem("lang")) ?? DEFAULT_LANG
   );
-
+  const [isRTL, setIsRTL] = useState(selectedLanguage.languageName === "ar");
+  useEffect(() => {
+    document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
+    document.documentElement.setAttribute(
+      "lang",
+      selectedLanguage.languageName
+    );
+  }, [isRTL, selectedLanguage]);
   const onLanguageChange = (value) => {
     setSelectedLanguage(value);
     localStorage.setItem("lang", JSON.stringify(value));
     const lang = value.languageName;
     const isRTLNewValue = lang === "ar";
     setIsRTL(isRTLNewValue);
-    document.documentElement.setAttribute("dir", isRTLNewValue ? "rtl" : "ltr");
     i18n.changeLanguage(lang);
   };
 

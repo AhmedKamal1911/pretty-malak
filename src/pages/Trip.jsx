@@ -25,6 +25,7 @@ import {
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
 import { format, isValid, parse } from "date-fns";
+import { useTranslation } from "react-i18next";
 
 import { IoWatchOutline } from "react-icons/io5";
 import { MdMap } from "react-icons/md";
@@ -32,6 +33,7 @@ import { useParams } from "react-router-dom";
 
 const Trip = () => {
   const { id: tripId } = useParams();
+  const { t } = useTranslation("global");
   const { data, isLoading, error } = useQueryWithLocale({
     queryKey: ["trip", tripId], // Object form for query key
     queryFn: async () => await fetchTripData(tripId), // Function to fetch data
@@ -103,7 +105,7 @@ const Trip = () => {
           />
         </div>
         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-40 text-center w-full xl:w-[40%] px-2">
-          <h5 className="text-4xl text-main">{type} trip</h5>
+          <h5 className="text-4xl text-main">{t(`tripInfo.types.${type}`)}</h5>
           <h2 className="text-4xl lg:text-6xl text-white">{title}</h2>
         </div>
       </div>
@@ -115,20 +117,23 @@ const Trip = () => {
               <div className="flex items-center flex-col gap-5 lg:gap-0 lg:flex-row justify-between my-12">
                 <div className="flex flex-col  md:flex-row justify-center gap-5">
                   <TripDetail
-                    detail={time}
+                    detail={t(`tripInfo.tripTime.${time}`)}
                     icon={<IoWatchOutline className="text-main" />}
                   />
                   <TripDetail
-                    detail={`tours from ${tourFrom}`}
+                    detail={`${t("tripInfo.toursFrom")} ${tourFrom}`}
                     icon={<MdMap className="text-main" />}
                   />
                 </div>
 
                 <div className="flex flex-col items-center lg:flex-row gap-5">
-                  <TripPriceDetail price={adultPrice} age={"adult"} />
+                  <TripPriceDetail
+                    price={adultPrice}
+                    age={t("tripInfo.priceForAdultText")}
+                  />
                   <TripPriceDetail
                     price={childPrice}
-                    age={"child * Till 11 Years"}
+                    age={t("tripInfo.priceForChildText")}
                   />
                 </div>
               </div>
@@ -145,25 +150,28 @@ const Trip = () => {
                   maxGuests={maxGuests}
                 />
 
-                <TourOverviewDetails list={highlights} label="highlights" />
+                <TourOverviewDetails
+                  list={highlights}
+                  label={t("tripInfo.tripOverviewDetails.highlightsText")}
+                />
                 <TourOverviewDetails
                   list={includedServices}
-                  label="included services"
+                  label={t("tripInfo.tripOverviewDetails.includedServicesText")}
                 />
                 <TourOverviewDetails
                   list={notIncluded}
-                  label="not included"
+                  label={t("tripInfo.tripOverviewDetails.notIncludedText")}
                   status="cross"
                 />
                 <TourOverviewDetails
                   list={dontForget}
-                  label="don't forget"
+                  label={t("tripInfo.tripOverviewDetails.dontForgetText")}
                   status="info"
                 />
               </div>
               {/* Tour PLAN BOX */}
               <div className="mb-10" id="tour-plan">
-                <TripOverview title={"Tour Plan"} />
+                <TripOverview title={t("tripInfo.tourPlanIntroText")} />
                 <div
                   className="border rounded-md overflow-hidden"
                   style={{
@@ -177,12 +185,15 @@ const Trip = () => {
               </div>
               {/* Questions BOX */}
               <div className="mb-10" id="faq">
-                <TripOverview title={"Frequently Asked Questions"} />
+                <TripOverview title={t("tripInfo.questionsIntroText")} />
                 <QuestionsAccordion questionsList={clientQuestionsList} />
               </div>
               <div id="reviews">
-                <TripOverview title={"Client Reviews"} />
-                <TripReviewBox />
+                <TripOverview title={t("tripInfo.clientReviews.introText")} />
+                <TripReviewBox
+                  desc={t("tripInfo.clientReviews.desc")}
+                  buttonLabel={t("tripInfo.clientReviews.reviewButtonLabel")}
+                />
               </div>
             </div>
           </div>
@@ -190,7 +201,9 @@ const Trip = () => {
           <div className="lg:w-[30%]">
             <BookTripForm />
             <div className="mt-10 flex flex-col gap-3 overflow-hidden">
-              <h2 className="text-3xl text-main mb-10">Related Trips</h2>
+              <h2 className="text-3xl text-main mb-10">
+                {t("tripInfo.relatedTripsSubTitle")}
+              </h2>
               {/* TODO:SKELETON LOADER */}
               <Loading
                 isFetching={isFetching}
@@ -213,7 +226,7 @@ const Trip = () => {
                   ))
                 ) : (
                   <span className="text-4xl text-center text-yellow-500">
-                    There is no related trips
+                    {t("tripInfo.emptyRelatedTripsText")}
                   </span>
                 )}
               </Loading>

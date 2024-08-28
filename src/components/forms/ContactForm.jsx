@@ -56,7 +56,7 @@ const ContactForm = () => {
       .then(
         () => {
           toast({
-            description: "Your message has been sent.",
+            description: t("global.toasts.messageToast.successMessage"),
             variant: "success",
             icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
           });
@@ -67,7 +67,7 @@ const ContactForm = () => {
         (error) => {
           console.log("FAILED...", error.text);
           toast({
-            description: "Server Error there is something wrong.",
+            description: t("global.toasts.messageToast.failedMessage"),
             variant: "destructive",
             icon: <RxCrossCircled className="w-6 h-6" />,
           });
@@ -136,7 +136,7 @@ const ContactForm = () => {
             {isSubmitting ? (
               <span className="flex items-center gap-2 text-xl text-white">
                 <TbReload className="h-5 w-5 animate-spin" />
-                {t("global.contactForm.loadingText")}
+                {t("global.loadingText")}
               </span>
             ) : (
               t("global.contactForm.contactFormButtonLabel")

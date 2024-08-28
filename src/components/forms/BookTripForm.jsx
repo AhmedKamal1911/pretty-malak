@@ -19,7 +19,7 @@ import emailjs from "@emailjs/browser";
 import { TbReload } from "react-icons/tb";
 import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
-import { FaDoorOpen, FaHotel, FaPen } from "react-icons/fa";
+import { FaHotel, FaPen } from "react-icons/fa";
 import { BsFillChatRightTextFill, BsPersonRaisedHand } from "react-icons/bs";
 import { FaChildReaching } from "react-icons/fa6";
 
@@ -29,17 +29,19 @@ import { RxCrossCircled } from "react-icons/rx";
 import { DatePickerWithPresets } from "../ui/datePicker";
 import { format } from "date-fns";
 import { ComboboxDemo } from "../ui/ComboBox";
+import { useTranslation } from "react-i18next";
 
 const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
 const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
 
 const BookTripForm = () => {
+  const { t } = useTranslation("global");
   const formRef = useRef();
   const { toast } = useToast();
 
   const methods = useForm({
     mode: "onSubmit",
-    resolver: zodResolver(bookTripFormSchema),
+    resolver: zodResolver(bookTripFormSchema(t)),
     defaultValues: {
       email: "",
       message: "",
@@ -47,10 +49,9 @@ const BookTripForm = () => {
       lastName: "",
       phoneNumber: "",
       hotelName: "",
-      roomNumber: "",
-      adultNumber: "",
-      childNumber: "",
       checkDate: undefined, // Default value for check-in date
+      childNumber: 0,
+      adultNumber: 1,
       country: "",
     },
   });
@@ -70,7 +71,7 @@ const BookTripForm = () => {
       .then(
         () => {
           toast({
-            description: "Your message has been sent.",
+            description: t("global.toasts.messageToast.successMessage"),
             variant: "success",
             icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
           });
@@ -81,7 +82,7 @@ const BookTripForm = () => {
         (error) => {
           console.log("FAILED...", error.text);
           toast({
-            description: "Server Error there is something wrong.",
+            description: t("global.toasts.messageToast.failedMessage"),
             variant: "destructive",
             icon: <RxCrossCircled className="w-6 h-6" />,
           });
@@ -107,14 +108,14 @@ const BookTripForm = () => {
             control={control}
             name="firstName"
             type="text"
-            placeholder="First Name:"
+            placeholder={t("global.bookTripForm.firstName")}
           />
           <BookInput
             icon={FaPen}
             control={control}
             name="lastName"
             type="text"
-            placeholder="Last Name:"
+            placeholder={t("global.bookTripForm.lastName")}
           />
 
           <BookInput
@@ -122,7 +123,7 @@ const BookTripForm = () => {
             control={control}
             name="email"
             type="email"
-            placeholder="Email:"
+            placeholder={t("global.bookTripForm.email")}
           />
 
           <BookInput
@@ -130,22 +131,16 @@ const BookTripForm = () => {
             control={control}
             name="phoneNumber"
             type="text"
-            placeholder="Type your phone Number:"
+            placeholder={t("global.bookTripForm.phoneNumber")}
           />
           <BookInput
             icon={FaHotel}
             control={control}
             name="hotelName"
             type="text"
-            placeholder="Type your hotel name (Optional)"
+            placeholder={t("global.bookTripForm.hotelName")}
           />
-          <BookInput
-            icon={FaDoorOpen}
-            control={control}
-            name="roomNumber"
-            type="text"
-            placeholder="Type your room number:"
-          />
+
           <FormField
             control={control}
             name="checkDate"
@@ -154,6 +149,7 @@ const BookTripForm = () => {
                 <FormItem className="w-full relative">
                   <FormControl>
                     <DatePickerWithPresets
+                      placeholder={t("global.bookTripForm.checkDate")}
                       selectedDate={field.value}
                       onDateChange={field.onChange}
                     />
@@ -201,22 +197,28 @@ const BookTripForm = () => {
           />
 
           <div className="flex flex-col xl:flex-row gap-8 lg:gap-5 ">
-            <BookInput
-              icon={BsPersonRaisedHand}
-              control={control}
-              name="adultNumber"
-              type="text"
-              placeholder="ADULT"
-              min={0}
-            />
-            <BookInput
-              icon={FaChildReaching}
-              control={control}
-              name="childNumber"
-              type="text"
-              placeholder="CHILD"
-              min={0}
-            />
+            <div>
+              <span className="text-grayDesc">
+                {t("global.bookTripForm.adult")}
+              </span>
+              <BookInput
+                icon={BsPersonRaisedHand}
+                control={control}
+                name="adultNumber"
+                type="number"
+              />
+            </div>
+            <div>
+              <span className="text-grayDesc">
+                {t("global.bookTripForm.child")}
+              </span>
+              <BookInput
+                icon={FaChildReaching}
+                control={control}
+                name="childNumber"
+                type="number"
+              />
+            </div>
           </div>
           <FormField
             control={control}
@@ -232,7 +234,7 @@ const BookTripForm = () => {
                     {...field}
                     type="text"
                     className="text-[16px] ps-7 pt-0 pb-0 pe-0 focus-visible:ring-transparent h-[120px] focus:placeholder:text-main border-t-0 border-l-0 border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border,placeholder] duration-500"
-                    placeholder="Type your message here."
+                    placeholder={t("global.bookTripForm.message")}
                     id="message-2"
                   />
                 </FormControl>
@@ -249,10 +251,10 @@ const BookTripForm = () => {
             {isSubmitting ? (
               <span className="flex items-center gap-2 text-xl text-white">
                 <TbReload className="h-5 w-5 animate-spin" />
-                Loading...
+                {t("global.loadingText")}
               </span>
             ) : (
-              "Submit"
+              t("global.bookTripForm.bookTripFormButtonLabel")
             )}
           </Button>
         </div>

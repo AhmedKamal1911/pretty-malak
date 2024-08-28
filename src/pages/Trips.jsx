@@ -16,10 +16,11 @@ import { useQuery } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Trips = () => {
   const [tripType, setTripType] = useState("all");
-
+  const { t } = useTranslation("global");
   const {
     data: tripsData,
     isFetching,
@@ -40,7 +41,7 @@ const Trips = () => {
     queryKey: ["tripsTypes"], // Object form for query key
     queryFn: fetchTripTypes, // Function to fetch data
   });
-
+  console.log(tripsTypes?.sort((a, b) => a.localeCompare(b)));
   const onTripValueChange = (value) => {
     console.log("changed");
 
@@ -52,7 +53,10 @@ const Trips = () => {
     <div className="min-h-screen py-24">
       <div className="container">
         <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between">
-          <SectionHeader subTitle="All Trips" introText="Explore Our Trips" />
+          <SectionHeader
+            subTitle={t("tripsPage.subTitle")}
+            introText={t("tripsPage.introText")}
+          />
           <Select onValueChange={onTripValueChange}>
             <SelectTrigger
               disabled={tripsTypesIsFetching ? true : Boolean(tripsTypesError)}
@@ -64,7 +68,9 @@ const Trips = () => {
                 error={tripsTypesError}
                 errorElement={<SelectError />}
               >
-                <SelectValue placeholder="Select type" />
+                <SelectValue
+                  placeholder={t("tripsPage.selectTypeMenu.title")}
+                />
               </Loading>
             </SelectTrigger>
             <SelectContent className="bg-white z-[800]">
@@ -78,7 +84,7 @@ const Trips = () => {
                   value={type}
                   className="text-[17px] cursor-pointer hover:bg-[#ebeaea] transition-all "
                 >
-                  {type}
+                  {t(`tripsPage.selectTypeMenu.types.${type}`)}
                 </SelectItem>
               ))}
             </SelectContent>

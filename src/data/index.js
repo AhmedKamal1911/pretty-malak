@@ -106,7 +106,6 @@ export const countries = [
   { name: "Iraq", code: "IQ" },
   { name: "Ireland", code: "IE" },
   { name: "Isle of Man", code: "IM" },
-
   { name: "Italy", code: "IT" },
   { name: "Jamaica", code: "JM" },
   { name: "Japan", code: "JP" },
