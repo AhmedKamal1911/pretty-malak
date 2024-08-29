@@ -8,7 +8,7 @@ import { fetchNavbarData } from "@/services/trips/queries";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 const Navbar = () => {
-  const isMatched = useMediaQuery("(max-width: 1200px)");
+  const isMatched = useMediaQuery("(max-width: 1280px)");
   const homepageMatch = useMatch("/");
   const isHomepage = Boolean(homepageMatch);
   const ref = useRef(null);

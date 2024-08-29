@@ -17,17 +17,19 @@ const AboutUsSection = () => {
               subTitle={t("homePage.aboutUsSection.subTitle")}
               introText={t("homePage.aboutUsSection.introText")}
               desc={t("homePage.aboutUsSection.aboutDesc")}
+              descProps="font-serif font-semibold text-[#FF9800]"
             />
 
-            <Button asChild variant="primary" className="py-5 px-4">
-              <NavLink
-                to="/about-us"
-                className="p-2 bg-main text-white rounded-md mt-3 hover:scale-[0.95] transition-transform block w-fit mx-auto lg:mx-0"
-              >
+            <Button
+              asChild
+              variant="primary"
+              className="mx-auto lg:ms-0 block w-fit"
+            >
+              <NavLink to="/trips" className="py-2 px-4 h-fit">
                 {t("homePage.aboutUsSection.aboutButtonLabel")}
               </NavLink>
             </Button>
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-5 mt-5 p-[10px] md:p-0">
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-5 mt-5 p-[10px] md:p-0">
               <div className="rounded-md overflow-hidden border-2 border-main">
                 <img
                   src={slideImg1}
@@ -54,7 +56,7 @@ const AboutUsSection = () => {
           />
           <div
             style={{ backgroundImage: `url("${realYacht}")` }}
-            className="animate-smoothAlternate md:z-[1] lg:absolute hidden lg:block md:inset-0  lg:top-0 min-[1400px]:start-[-500px] md:bg-contain md:bg-[80%]   min-[1400px]:h-[464px] min-[1400px]:w-[800px] min-[1400px]:z-40 md:bg-no-repeat"
+            className="animate-smoothAlternate md:z-[1] lg:absolute  hidden lg:block md:inset-0  lg:top-0 min-[1400px]:start-[-500px] md:bg-contain md:bg-[80%]   min-[1400px]:h-[464px] min-[1400px]:w-[800px] min-[1400px]:z-40 md:bg-no-repeat"
           />
         </div>
       </div>
@@ -64,7 +66,7 @@ const AboutUsSection = () => {
             <span
               key={i}
               data-text={t(`homePage.infiniteSlider.${i}`)}
-              className="text-6xl lg:text-8xl whitespace-nowrap stroke-fill transition-all duration-500 hover:before:bg-main before:transition-all before:duration-500 relative before:absolute before:start-[-20px] before:top-1/2 before:-translate-y-1/2 before:w-[10px] before:h-[10px] before:bg-black before:rounded-full after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden"
+              className="text-6xl font-mainFont lg:text-8xl whitespace-nowrap stroke-fill transition-all duration-500 hover:before:bg-main before:transition-all before:duration-500 relative before:absolute before:start-[-20px] before:top-1/2 before:-translate-y-1/2 before:w-[10px] before:h-[10px] before:bg-black before:rounded-full after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden"
             >
               {t(`homePage.infiniteSlider.${i}`)}
             </span>

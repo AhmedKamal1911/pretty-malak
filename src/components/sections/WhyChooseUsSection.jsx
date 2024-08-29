@@ -27,9 +27,11 @@ import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { useTranslation } from "react-i18next";
+import { cn } from "@/utils/cn";
 
 const WhyChooseUsSection = () => {
-  const { isRTL } = useLanguage();
+  const { isRTL, selectedLanguage } = useLanguage();
+
   const { t } = useTranslation("global");
   const { data } = useQueryWithLocale({
     queryKey: ["whyUs"], // Object form for query key
@@ -63,7 +65,15 @@ const WhyChooseUsSection = () => {
           <div>
             <h2
               data-text={t("homePage.whyChooseUsSection.heading")}
-              className="stroke-fill w-fit mx-auto whitespace-nowrap mb-5 text-5xl md:text-8xl xl:text-[120px] text-center relative after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden"
+              className={cn(
+                "stroke-fill font-mainFont w-fit mx-auto whitespace-nowrap mb-5 text-center relative after:content-[attr(data-text)] after:absolute after:inset-0 after:w-0 after:z-[1] after:transition-all after:duration-500 hover:after:w-full after:overflow-hidden",
+                {
+                  "text-5xl sm:text-8xl xl:text-[120px]":
+                    selectedLanguage.languageName !== "ru",
+                  "max-[350px]:text-[20px] text-[30px] sm:text-5xl lg:text-6xl xl:text-8xl":
+                    selectedLanguage.languageName === "ru",
+                }
+              )}
             >
               {t("homePage.whyChooseUsSection.heading")}
             </h2>
@@ -92,7 +102,7 @@ const WhyChooseUsSection = () => {
               <div className="flex-1 w-full">
                 <SectionHeader
                   subTitle={t("homePage.whyChooseUsSection.subTitle")}
-                  subTitleProps={{ className: "text-4xl md:text-6xl" }}
+                  subTitleProps={{ className: "text-2xl sm:text-6xl" }}
                   className="mb-8 text-center"
                 />
                 <Accordion type="single" collapsible>

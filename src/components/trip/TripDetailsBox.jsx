@@ -4,8 +4,10 @@ const TripDetailsBox = ({
   tour,
   tourFrom,
   departureTime,
+  departureTimeSystem,
   tripDays,
   returnTime,
+  returnTimeSystem,
   maxGuests,
 }) => {
   const { t } = useTranslation("global");
@@ -33,7 +35,9 @@ const TripDetailsBox = ({
             {t("tripInfo.tripDetails.departureTimeText")} :
           </span>
           <span className="text-grayDesc flex-1 text-[16px] sm:text-[19px]">
-            {departureTime}
+            {`${departureTime} ${t(
+              `global.timingSystem.${departureTimeSystem}`
+            )}`}
           </span>
         </li>
         <li className="flex flex-col sm:flex-row">
@@ -41,7 +45,7 @@ const TripDetailsBox = ({
             {t("tripInfo.tripDetails.tripDaysText")} :
           </span>
           <span className="text-grayDesc flex-1 text-[16px] sm:text-[19px]">
-            {tripDays}
+            {t(`tripInfo.tripDays.${tripDays}`)}
           </span>
         </li>
         <li className="flex flex-col sm:flex-row">
@@ -49,7 +53,7 @@ const TripDetailsBox = ({
             {t("tripInfo.tripDetails.returnTimeText")} :
           </span>
           <span className="text-grayDesc flex-1 text-[16px] sm:text-[19px]">
-            {returnTime}
+            {`${returnTime} ${t(`global.timingSystem.${returnTimeSystem}`)}`}
           </span>
         </li>
         {maxGuests && (

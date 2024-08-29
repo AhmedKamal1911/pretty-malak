@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "./SelectMenu";
 import { Calendar } from "./calendar";
+import { useTranslation } from "react-i18next";
 
 export function DatePickerWithPresets({
   selectedDate,
@@ -20,7 +21,10 @@ export function DatePickerWithPresets({
   placeholder,
 }) {
   const [date, setDate] = useState(selectedDate);
-
+  const { t } = useTranslation("global");
+  const in3Days = "in 3 days";
+  const inAWeek = "in a week";
+  const in15Days = "in 15 days";
   const handleDateChange = (newDate) => {
     setDate(newDate);
     onDateChange(newDate);
@@ -53,7 +57,7 @@ export function DatePickerWithPresets({
           }
         >
           <SelectTrigger>
-            <SelectValue placeholder="Select" />
+            <SelectValue placeholder={t(`global.inputs.date.selectText`)} />
           </SelectTrigger>
           <SelectContent
             ref={(ref) => {
@@ -63,10 +67,18 @@ export function DatePickerWithPresets({
             position="popper"
             className="bg-white"
           >
-            <SelectItem value="1">Tomorrow</SelectItem>
-            <SelectItem value="3">In 3 days</SelectItem>
-            <SelectItem value="7">In a week</SelectItem>
-            <SelectItem value="15">In 15 days</SelectItem>
+            <SelectItem value="1">
+              {t("global.inputs.date.dateInFuture.tomorrow")}
+            </SelectItem>
+            <SelectItem value="3">
+              {t(`global.inputs.date.dateInFuture.${in3Days}`)}
+            </SelectItem>
+            <SelectItem value="7">
+              {t(`global.inputs.date.dateInFuture.${inAWeek}`)}
+            </SelectItem>
+            <SelectItem value="15">
+              {t(`global.inputs.date.dateInFuture.${in15Days}`)}
+            </SelectItem>
           </SelectContent>
         </Select>
         <div className="rounded-md border">

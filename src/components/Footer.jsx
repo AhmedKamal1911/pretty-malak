@@ -76,10 +76,20 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="relative p-5 bg-[#363d5371]  gap-5">
-          <p className="text-main text-xl text-center">
+        <div className="relative flex flex-col sm:flex-row justify-between p-5 bg-[#363d5371]  gap-10 rounded-md">
+          <p className="text-main text-xl text-center sm:text-start">
             &copy; {t("footer.copyRightReference")}
           </p>
+          <span className="text-white text-xl">
+            {t("footer.poweredBy")}
+
+            <NavLink
+              to="mailto:khmedamal@gmail.com"
+              className="text-main text-lg !font-logoFont"
+            >
+              UltraTeam
+            </NavLink>
+          </span>
         </div>
       </div>
     </footer>

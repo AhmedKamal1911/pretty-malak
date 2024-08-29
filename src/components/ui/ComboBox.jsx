@@ -35,7 +35,7 @@ export function ComboboxDemo({ selectCountry, onSelectCountry }) {
         >
           <div className="flex items-center">
             <IoEarthSharp className="me-2 h-4 w-4 shrink-0 opacity-50 text-main" />
-            <span className="text-grayDesc font-serif  text-ellipsis overflow-hidden max-w-[160px] text-start">
+            <span className="text-grayDesc text-ellipsis overflow-hidden max-w-[160px] text-start">
               {value ? country?.name : t("global.inputs.country.introText")}
             </span>
           </div>

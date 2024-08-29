@@ -28,7 +28,7 @@ import { format, isValid, parse } from "date-fns";
 import { useTranslation } from "react-i18next";
 
 import { IoWatchOutline } from "react-icons/io5";
-import { MdMap } from "react-icons/md";
+import { MdMap, MdOutlineWatchLater } from "react-icons/md";
 import { useParams } from "react-router-dom";
 
 const Trip = () => {
@@ -87,7 +87,20 @@ const Trip = () => {
 
     const parsedTime = parse(time, "HH:mm:ss.SSS", new Date());
     if (isValid(parsedTime)) {
-      return format(parsedTime, "hh:mm a");
+      return format(parsedTime, "hh:mm");
+    } else {
+      console.error("Invalid time format:", time);
+      return "Invalid Time";
+    }
+  };
+  console.log(formatTime(departureTime));
+  // Function to format time and return only the timing system (AM/PM)
+  const getTimingSystem = (time) => {
+    if (!time) return "N/A"; // Handle undefined or null time values
+
+    const parsedTime = parse(time, "HH:mm:ss.SSS", new Date());
+    if (isValid(parsedTime)) {
+      return format(parsedTime, "a"); // 'a' returns AM or PM
     } else {
       console.error("Invalid time format:", time);
       return "Invalid Time";
@@ -105,8 +118,12 @@ const Trip = () => {
           />
         </div>
         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-40 text-center w-full xl:w-[40%] px-2">
-          <h5 className="text-4xl text-main">{t(`tripInfo.types.${type}`)}</h5>
-          <h2 className="text-4xl lg:text-6xl text-white">{title}</h2>
+          <h5 className="text-4xl text-main mb-5">
+            {t(`tripInfo.types.${type}`)}
+          </h5>
+          <h2 className="text-4xl lg:text-6xl text-white !leading-[1.4]">
+            {title}
+          </h2>
         </div>
       </div>
       <div className="container">
@@ -118,11 +135,11 @@ const Trip = () => {
                 <div className="flex flex-col  md:flex-row justify-center gap-5">
                   <TripDetail
                     detail={t(`tripInfo.tripTime.${time}`)}
-                    icon={<IoWatchOutline className="text-main" />}
+                    icon={<MdOutlineWatchLater className="text-main w-7 h-7" />}
                   />
                   <TripDetail
                     detail={`${t("tripInfo.toursFrom")} ${tourFrom}`}
-                    icon={<MdMap className="text-main" />}
+                    icon={<MdMap className="text-main w-7 h-7" />}
                   />
                 </div>
 
@@ -145,7 +162,9 @@ const Trip = () => {
                   tour={title}
                   tourFrom={tourFrom}
                   departureTime={formatTime(departureTime)}
+                  departureTimeSystem={getTimingSystem(departureTime)}
                   returnTime={formatTime(returnTime)}
+                  returnTimeSystem={getTimingSystem(returnTime)}
                   tripDays={tripDays}
                   maxGuests={maxGuests}
                 />

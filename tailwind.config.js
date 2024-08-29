@@ -14,6 +14,7 @@ export default {
       fontFamily: {
         logoFont: "Audiowide",
         signature: "Playwrite CO",
+        mainFont: "Bebas Neue",
       },
       boxShadow: {
         lighter:
@@ -37,11 +38,11 @@ export default {
         "smooth-show": {
           "0%": {
             opacity: "0",
-            transform: "translate(-500px,-10px)",
+            transform: "translateY(-50px)",
           },
           "100%": {
             opacity: "1",
-            transform: "translate(0,0)",
+            transform: "translateY(0)",
           },
         },
         smoothScale: {
@@ -116,7 +117,7 @@ export default {
         "slide-out": "slide-out 0.1s ease-in",
         "bouncing-left-right":
           "bouncing-left-right 2s linear infinite alternate",
-        smoothScale: "smoothScale 18s linear infinite alternate",
+        smoothScale: "smoothScale 25s linear infinite alternate",
         smoothAlternate: "smoothAlternate 4s linear infinite alternate",
         infiniteSlideLTR: "infiniteSlideLTR 30s linear infinite",
         infiniteSlideRTL: "infiniteSlideRTL 30s linear infinite",

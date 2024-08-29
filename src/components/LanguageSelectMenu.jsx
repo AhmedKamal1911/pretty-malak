@@ -41,7 +41,11 @@ const LanguageSelectMenu = ({ className }) => {
           <SelectItem
             key={i}
             value={language}
-            className={`text-[17px]  cursor-pointer  hover:bg-[#ebeaea] transition-all  w-full ${language.countryName === selectedLanguage?.countryName ? "bg-[#acacad]" : ""} mb-1`}
+            className={`text-[17px] cursor-pointer hover:bg-[#ebeaea] transition-all capitalize w-full ${
+              language.countryName === selectedLanguage?.countryName
+                ? "bg-[#acacad]"
+                : ""
+            } mb-1`}
           >
             {language.languageName}
             {

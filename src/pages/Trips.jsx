@@ -54,6 +54,7 @@ const Trips = () => {
       <div className="container">
         <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between">
           <SectionHeader
+            className="space-y-4"
             subTitle={t("tripsPage.subTitle")}
             introText={t("tripsPage.introText")}
           />

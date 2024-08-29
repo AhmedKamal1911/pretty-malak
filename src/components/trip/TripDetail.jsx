@@ -3,7 +3,7 @@ const TripDetail = ({ icon, detail }) => {
     <div className="flex md:flex-row  items-center gap-2">
       {icon}
 
-      <span className="text-xl">{detail}</span>
+      <span className="text-[18px]">{detail}</span>
     </div>
   );
 };

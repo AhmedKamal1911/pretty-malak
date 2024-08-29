@@ -28,7 +28,7 @@ const TripsSection = () => {
           introText={t("homePage.tripsSection.introText")}
         />
         <Button asChild variant="primary">
-          <NavLink to="/trips">
+          <NavLink to="/trips" className="py-6 block !my-7">
             {t("homePage.tripsSection.tripsButtonLabel")}
           </NavLink>
         </Button>
