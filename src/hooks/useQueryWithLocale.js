@@ -8,7 +8,7 @@ const useQueryWithLocale = (
   }
 ) => {
   const { selectedLanguage } = useLanguage();
-  console.log({ selectedLanguage, queryParams });
+
   return useQuery({
     queryKey: [...queryParams.queryKey, selectedLanguage], // Object form for query key
     queryFn: queryParams.queryFn,

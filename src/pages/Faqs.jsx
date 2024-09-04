@@ -1,4 +1,5 @@
 import { FaqForm, QuestionsAccordion, SectionHeader } from "@/components";
+
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { fetchFaqInfo } from "@/services/trips/queries";

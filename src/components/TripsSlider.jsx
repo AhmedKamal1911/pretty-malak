@@ -7,6 +7,9 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { sliderBreakPoints } from "@/data";
 import { TripCard } from ".";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+import useSectionInView from "@/hooks/useSectionInView";
 
 // import required modules
 const TripsSlider = ({
@@ -22,7 +25,7 @@ const TripsSlider = ({
   BreakPoints = sliderBreakPoints,
 }) => {
   return (
-    <div className={className}>
+    <div id="tripsSlider" className={className}>
       <Swiper
         breakpoints={BreakPoints}
         direction={direction}
@@ -45,7 +48,12 @@ const TripsSlider = ({
       >
         {tripsList.map((trip, i) => (
           <SwiperSlide key={trip.id}>
-            <TripCard {...trip} img={trip?.imgs.data?.[0]?.url} count={i + 1} />
+            <TripCard
+              i={i}
+              {...trip}
+              img={trip?.imgs.data?.[0]?.url}
+              count={i + 1}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

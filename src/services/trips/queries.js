@@ -55,8 +55,8 @@ const fetchSpecialTrips = async () => {
   return response.data;
 };
 
-const fetchRelatedTrips = async (typeName, tripId) => {
-  console.log({ typeName, tripId });
+const fetchRelatedTrips = async (typeName, slug) => {
+  console.log({ typeName, slug });
   // Construct query parameters
   const relatedTripsQuery = qs.stringify({
     populate: "*",
@@ -64,8 +64,8 @@ const fetchRelatedTrips = async (typeName, tripId) => {
       type: {
         $eq: typeName,
       },
-      id: {
-        $ne: tripId,
+      slug: {
+        $ne: slug,
       },
     },
   });

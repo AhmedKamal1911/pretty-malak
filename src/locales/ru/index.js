@@ -1,5 +1,6 @@
 const RU_LANG = {
   global: {
+    toTopButtonLabel: "Наверх",
     loadingText: "Загрузка",
     timingSystem: {
       AM: "утром",

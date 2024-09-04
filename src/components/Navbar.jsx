@@ -1,6 +1,6 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import AsideDrawer from "./AsideDrawer";
-import { LanguageSelectMenu, NavLinks } from ".";
+import { LanguageSelectMenu, NavLinks, ScrollToTopButton } from ".";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useMatch } from "react-router-dom";
 import { cn } from "@/utils/cn";
@@ -18,7 +18,7 @@ const Navbar = () => {
     queryFn: fetchNavbarData,
   });
   const logo = data?.logoText;
-  console.log();
+
   useEffect(() => {
     if (!ref.current) return;
 
@@ -71,6 +71,7 @@ const Navbar = () => {
           </div>
         </div>
       </header>
+      <ScrollToTopButton />
     </>
   );
 };

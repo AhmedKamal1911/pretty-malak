@@ -1,5 +1,6 @@
 const EN_LANG = {
   global: {
+    toTopButtonLabel: "To Top",
     loadingText: "Loading",
     timingSystem: {
       AM: "AM",

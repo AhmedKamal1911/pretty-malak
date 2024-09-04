@@ -12,6 +12,7 @@ export { default as AboutInfoBox } from "@/components/AboutInfoBox";
 export { default as OurServiceBox } from "@/components/OurServiceBox";
 export { default as BookInput } from "@/components/BookInput";
 export { default as QuestionsAccordion } from "@/components/QuestionsAccordion";
+export { default as ScrollToTopButton } from "@/components/ScrollToTopButton";
 
 // Loaders
 export { default as Loading } from "@/components/Loading";

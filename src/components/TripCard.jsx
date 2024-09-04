@@ -2,17 +2,25 @@ import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 import { useTranslation } from "react-i18next";
-const TripCard = ({ title, offer, adultPrice, img, time, id, count }) => {
+
+const TripCard = ({ title, offer, adultPrice, img, time, id, count, i }) => {
   const imgUrl = getStrapiMediaURL(img);
   const { t } = useTranslation("global");
+
   return (
     <motion.div
       key={id}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ opacity: 0, y: 100 }}
+      animate={(i) => ({
+        opacity: 1,
+        y: 0,
+        transition: { delay: 0.2 * i },
+      })}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
-      layout
+      custom={i}
+      viewport={{
+        once: false,
+      }}
       className="h-full"
     >
       <NavLink

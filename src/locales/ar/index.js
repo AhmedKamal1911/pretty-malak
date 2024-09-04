@@ -1,5 +1,6 @@
 const AR_LANG = {
   global: {
+    toTopButtonLabel: "الي الاعلي",
     loadingText: "تحميل",
     timingSystem: {
       AM: "صباحًا",

@@ -13,6 +13,7 @@ import {
   TripReviewBox,
   TripSlider,
 } from "@/components";
+
 import { SkeletonLoaderCard } from "@/components/feedback";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
@@ -27,7 +28,6 @@ import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 import { format, isValid, parse } from "date-fns";
 import { useTranslation } from "react-i18next";
 
-import { IoWatchOutline } from "react-icons/io5";
 import { MdMap, MdOutlineWatchLater } from "react-icons/md";
 import { useParams } from "react-router-dom";
 
@@ -56,6 +56,7 @@ const Trip = () => {
     tourFrom,
     tourPlan,
     tripDays,
+    slug,
     // offer,
 
     type,
@@ -68,8 +69,8 @@ const Trip = () => {
     isFetching,
     error: relatedTripsError,
   } = useQueryWithLocale({
-    queryKey: ["relatedTrips", type, tripId], // Object form for query key
-    queryFn: async () => await fetchRelatedTrips(type, tripId), // Function to fetch data
+    queryKey: ["relatedTrips", type, slug], // Object form for query key
+    queryFn: async () => await fetchRelatedTrips(type, slug), // Function to fetch data
   });
   const allRelatedTrips = relatedTripsData?.data ?? [];
 
@@ -93,7 +94,7 @@ const Trip = () => {
       return "Invalid Time";
     }
   };
-  console.log(formatTime(departureTime));
+
   // Function to format time and return only the timing system (AM/PM)
   const getTimingSystem = (time) => {
     if (!time) return "N/A"; // Handle undefined or null time values

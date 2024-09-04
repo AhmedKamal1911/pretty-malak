@@ -96,7 +96,7 @@ export default {
         },
         infiniteSlideRTL: {
           to: {
-            transform: "translate(calc(50% - 25px))",
+            transform: "translate(calc(50% + 25px))",
           },
         },
         fadeDown: {

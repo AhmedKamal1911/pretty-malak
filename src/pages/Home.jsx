@@ -6,6 +6,7 @@ import {
   TripsSection,
   WhyChooseUsSection,
 } from "@/components";
+
 import useScrollToTop from "@/hooks/useScrollToTop";
 
 const Home = () => {

@@ -3,20 +3,23 @@ import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { Loading, SectionHeader, TripsSlider } from "..";
 import { fetchSpecialTrips } from "@/services/trips/queries";
 import { useTranslation } from "react-i18next";
+import useSectionInView from "@/hooks/useSectionInView";
 
 const SpecialOffersSection = () => {
   const { t } = useTranslation("global");
+  const { ref } = useSectionInView();
   const {
     data: tripsData,
     isFetching,
     error,
   } = useQueryWithLocale({
-    queryKey: ["trips"], // Object form for query key
+    queryKey: ["specialTrips"], // Object form for query key
     queryFn: fetchSpecialTrips, // Function to fetch data
   });
+  console.log(tripsData);
   const specialTrips = tripsData?.data ?? [];
   return (
-    <section className="py-10">
+    <section ref={ref} className="py-10">
       <div className="container">
         <SectionHeader
           className=""

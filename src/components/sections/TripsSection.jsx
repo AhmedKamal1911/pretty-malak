@@ -44,6 +44,7 @@ const TripsSection = () => {
                 <div key={trip.id} className="h-[300px] sm:h-[400px]">
                   <TripCard
                     {...trip}
+                    i={i}
                     img={trip?.imgs.data?.[0]?.url}
                     count={i + 1}
                   />

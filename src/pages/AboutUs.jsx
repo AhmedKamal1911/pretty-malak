@@ -1,5 +1,6 @@
 import { egyptImg } from "@/assets";
 import { AboutInfoBox, OurServiceBox, SectionHeader } from "@/components";
+
 import { aboutInfoList } from "@/data";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import useScrollToTop from "@/hooks/useScrollToTop";

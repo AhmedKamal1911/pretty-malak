@@ -16,7 +16,7 @@ const TripNavigation = () => {
   };
   return (
     <div className="bg-white rounded-md sticky start-0 end-0 top-[76px] w-full p-3 shadow-lg z-[800]">
-      <ul className="flex justify-center flex-col  items-center gap-3 min-[500px]:flex-row">
+      <ul className="flex justify-center flex-col  items-center  min-[500px]:flex-row">
         <li>
           <button
             onClick={() => scrollToSection("info")}

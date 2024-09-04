@@ -1,4 +1,5 @@
 import { Loading, SectionHeader, SelectError, TripCard } from "@/components";
+
 import { FetchTripsTypesLoader } from "@/components/feedback";
 import {
   Select,
@@ -31,7 +32,7 @@ const Trips = () => {
   });
 
   const allTrips = tripsData?.data ?? [];
-
+  console.log("all trips", allTrips);
   const {
     data: tripsTypes,
     isFetching: tripsTypesIsFetching,
@@ -41,10 +42,8 @@ const Trips = () => {
     queryKey: ["tripsTypes"], // Object form for query key
     queryFn: fetchTripTypes, // Function to fetch data
   });
-  console.log(tripsTypes?.sort((a, b) => a.localeCompare(b)));
-  const onTripValueChange = (value) => {
-    console.log("changed");
 
+  const onTripValueChange = (value) => {
     setTripType(value);
   };
 
@@ -97,6 +96,7 @@ const Trips = () => {
               {allTrips.map((trip, i) => (
                 <div key={trip.id} className="h-[300px] sm:h-[400px] ">
                   <TripCard
+                    i={i}
                     {...trip}
                     img={trip?.imgs.data[0]?.url}
                     count={i + 1}
