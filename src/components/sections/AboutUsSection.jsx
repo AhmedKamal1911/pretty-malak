@@ -13,11 +13,15 @@ const AboutUsSection = () => {
         <div className="rounded-lg relative p-4 md:p-12 min-[1400px]:ps-[350px] min-[1400px]:py-28 min-[1400px]:pe-[100px] min-[1400px]:pb-[89px] h-full border border-1 min-[1400px]:w-fit bg-[#f4efec] outline-offset-[-20px] outline-main outline-[10px] outline-none">
           <div className="relative z-10 p-2 md:p-0">
             <SectionHeader
-              className={"max-lg:text-center lg:w-[500px]"}
+              className={
+                "max-lg:text-center lg:w-[500px] lg:backdrop-blur-[2px] lg:bg-gradient-to-r lg:from-black/10 lg:to-white/20 lg:rounded-lg lg:p-5"
+              }
+              subTitleRevealClassName="max-lg:mx-auto"
+              introTextRevealClassName="max-lg:mx-auto"
               subTitle={t("homePage.aboutUsSection.subTitle")}
               introText={t("homePage.aboutUsSection.introText")}
               desc={t("homePage.aboutUsSection.aboutDesc")}
-              descProps="font-serif font-semibold text-[#FF9800]"
+              descClassName="text-black"
             />
 
             <Button

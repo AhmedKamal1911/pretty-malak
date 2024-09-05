@@ -7,7 +7,8 @@ import useSectionInView from "@/hooks/useSectionInView";
 
 const SpecialOffersSection = () => {
   const { t } = useTranslation("global");
-  const { ref } = useSectionInView();
+  const { ref, inView } = useSectionInView();
+
   const {
     data: tripsData,
     isFetching,
@@ -36,6 +37,7 @@ const SpecialOffersSection = () => {
             <TripsSlider
               className="h-[300px] sm:h-[400px]"
               tripsList={specialTrips}
+              inView={inView}
             />
           </Loading>
         </div>

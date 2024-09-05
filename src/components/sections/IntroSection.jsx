@@ -33,8 +33,10 @@ const IntroSection = () => {
           <div className="text-center flex-1 md:pe-[100px]">
             <SectionHeader
               className="lg:w-[400px] mx-auto"
+              subTitleRevealClassName="mx-auto"
               subTitle={t("homePage.introSection.subTitle")}
               introText={introHeading}
+              introTextRevealClassName="max-lg:mx-auto"
               desc={introDesc}
             />
             <div className="mt-16 space-y-10">

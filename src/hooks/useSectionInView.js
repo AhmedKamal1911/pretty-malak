@@ -7,10 +7,10 @@ const useSectionInView = () => {
 
   // useInView hook from framer-motion
   const inView = useInView(ref, {
-    amount: "all",
+    amount: 0.5,
     once: true,
   });
-  console.log(inView);
+
   return { ref, inView };
 };
 

@@ -36,7 +36,7 @@ const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
 
 const BookTripForm = () => {
   const { t } = useTranslation("global");
-  const formRef = useRef();
+  const formRef = useRef(null);
   const { toast } = useToast();
 
   const methods = useForm({

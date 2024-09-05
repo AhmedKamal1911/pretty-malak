@@ -102,7 +102,8 @@ const WhyChooseUsSection = () => {
               <div className="flex-1 w-full">
                 <SectionHeader
                   subTitle={t("homePage.whyChooseUsSection.subTitle")}
-                  subTitleProps={{ className: "text-2xl sm:text-6xl" }}
+                  subTitleClassName={{ className: "text-2xl sm:text-6xl" }}
+                  subTitleRevealClassName="mx-auto"
                   className="mb-8 text-center"
                 />
                 <Accordion type="single" collapsible>

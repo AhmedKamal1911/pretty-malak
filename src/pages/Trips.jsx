@@ -11,6 +11,7 @@ import {
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 import useScrollToTop from "@/hooks/useScrollToTop";
+import useSectionInView from "@/hooks/useSectionInView";
 import { fetchTrips, fetchTripTypes } from "@/services/trips/queries";
 
 import { useQuery } from "@tanstack/react-query";
@@ -20,6 +21,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const Trips = () => {
+  const { ref, inView } = useSectionInView();
   const [tripType, setTripType] = useState("all");
   const { t } = useTranslation("global");
   const {
@@ -49,7 +51,7 @@ const Trips = () => {
 
   useScrollToTop();
   return (
-    <div className="min-h-screen py-24">
+    <div ref={ref} className="min-h-screen py-24">
       <div className="container">
         <div className="flex flex-col gap-5 md:gap-0 md:flex-row justify-between">
           <SectionHeader
@@ -96,6 +98,7 @@ const Trips = () => {
               {allTrips.map((trip, i) => (
                 <div key={trip.id} className="h-[300px] sm:h-[400px] ">
                   <TripCard
+                    inView={inView}
                     i={i}
                     {...trip}
                     img={trip?.imgs.data[0]?.url}

@@ -53,7 +53,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center ">
             <div>
               <NavLink to="/">
-                <h2 className="text-3xl text-white font-logoFont uppercase">
+                <h2 className="text-2xl sm:text-3xl text-white font-logoFont uppercase">
                   {logo ?? "seacrew"}
                 </h2>
               </NavLink>

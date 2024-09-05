@@ -2,14 +2,16 @@
 import { Loading, SectionHeader, TripCard } from "..";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/Button";
-import { AnimatePresence } from "framer-motion";
 
 import { fetchTrips } from "@/services/trips/queries";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { useTranslation } from "react-i18next";
+import useSectionInView from "@/hooks/useSectionInView";
 
 const TripsSection = () => {
   const { t } = useTranslation("global");
+  const { ref, inView } = useSectionInView();
+  console.log(inView);
   const {
     data: tripsData,
     isFetching,
@@ -21,7 +23,7 @@ const TripsSection = () => {
   const allTrips = tripsData?.data ?? [];
 
   return (
-    <section className="py-20">
+    <section ref={ref} className="py-20">
       <div className="container h-full">
         <SectionHeader
           subTitle={t("homePage.tripsSection.subTitle")}
@@ -39,18 +41,17 @@ const TripsSection = () => {
           errorElementClassName="h-[20vh]"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
-            <AnimatePresence>
-              {allTrips.map((trip, i) => (
-                <div key={trip.id} className="h-[300px] sm:h-[400px]">
-                  <TripCard
-                    {...trip}
-                    i={i}
-                    img={trip?.imgs.data?.[0]?.url}
-                    count={i + 1}
-                  />
-                </div>
-              ))}
-            </AnimatePresence>
+            {allTrips.map((trip, i) => (
+              <div key={trip.id} className="h-[300px] sm:h-[400px]">
+                <TripCard
+                  inView={inView}
+                  {...trip}
+                  i={i}
+                  img={trip?.imgs.data?.[0]?.url}
+                  count={i + 1}
+                />
+              </div>
+            ))}
           </div>
         </Loading>
       </div>

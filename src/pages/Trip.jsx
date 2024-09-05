@@ -4,6 +4,7 @@ import {
   QuestionsAccordion,
   TourOverviewDetails,
   TourPlanBox,
+  TripBanner,
   TripCard,
   TripDetail,
   TripDetailsBox,
@@ -18,12 +19,12 @@ import { SkeletonLoaderCard } from "@/components/feedback";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 
 import useScrollToTop from "@/hooks/useScrollToTop";
+import useSectionInView from "@/hooks/useSectionInView";
 import {
   fetchClientQuestions,
   fetchRelatedTrips,
   fetchTripData,
 } from "@/services/trips/queries";
-import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
 import { format, isValid, parse } from "date-fns";
 import { useTranslation } from "react-i18next";
@@ -34,7 +35,8 @@ import { useParams } from "react-router-dom";
 const Trip = () => {
   const { id: tripId } = useParams();
   const { t } = useTranslation("global");
-  const { data, isLoading, error } = useQueryWithLocale({
+  const { ref, inView } = useSectionInView();
+  const { data } = useQueryWithLocale({
     queryKey: ["trip", tripId], // Object form for query key
     queryFn: async () => await fetchTripData(tripId), // Function to fetch data
   });
@@ -110,23 +112,12 @@ const Trip = () => {
 
   return (
     <div className="min-h-screen py-[72px] bg-light">
-      <div className="h-[300px] relative after:inset-0 after:bg-[#0c0c0c81] after:absolute">
-        <div className="h-full">
-          <img
-            src={getStrapiMediaURL(imagesList[0]?.url)}
-            alt=""
-            className="h-full w-full object-cover object-[0%,60%]"
-          />
-        </div>
-        <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-40 text-center w-full xl:w-[40%] px-2">
-          <h5 className="text-4xl text-main mb-5">
-            {t(`tripInfo.types.${type}`)}
-          </h5>
-          <h2 className="text-4xl lg:text-6xl text-white !leading-[1.4]">
-            {title}
-          </h2>
-        </div>
-      </div>
+      <TripBanner
+        t={t}
+        bannerImg={imagesList[0]?.url}
+        title={title}
+        type={type}
+      />
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-5 mt-16">
           <div className="lg:w-[70%]">
@@ -220,7 +211,10 @@ const Trip = () => {
           {/* Form AND RELATED TRIPS */}
           <div className="lg:w-[30%]">
             <BookTripForm />
-            <div className="mt-10 flex flex-col gap-3 overflow-hidden">
+            <div
+              ref={ref}
+              className="mt-10 flex flex-col gap-3 overflow-hidden"
+            >
               <h2 className="text-3xl text-main mb-10">
                 {t("tripInfo.relatedTripsSubTitle")}
               </h2>
@@ -238,6 +232,8 @@ const Trip = () => {
                       className="max-[300px]:h-[300px] h-[350px] "
                     >
                       <TripCard
+                        inView={inView}
+                        i={i}
                         {...trip}
                         img={trip?.imgs.data[0]?.url}
                         count={i + 1}

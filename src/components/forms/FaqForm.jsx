@@ -21,7 +21,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 const FaqForm = () => {
-  const formRef = useRef();
+  const formRef = useRef(null);
   const { toast } = useToast();
   const { t } = useTranslation("global");
   const serviceId = import.meta.env.VITE_EMAILJS_FAQ_FORM_SERVICE_ID;

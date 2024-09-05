@@ -25,7 +25,7 @@ import { useTranslation } from "react-i18next";
 
 const ContactForm = () => {
   const { t } = useTranslation("global");
-  const formRef = useRef();
+  const formRef = useRef(null);
   const { toast } = useToast();
 
   const serviceId = import.meta.env.VITE_EMAILJS_FAQ_FORM_SERVICE_ID;

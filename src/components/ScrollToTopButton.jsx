@@ -16,6 +16,7 @@ const ScrollToTopButton = () => {
     setProgress(latest * 100); // Convert to percentage
     setIsVisible(latest > 0.1); // Show button after scrolling 10% of the page
   });
+
   // Function to handle scrolling to the top
   const scrollToTop = () => {
     window.scrollTo({
@@ -30,11 +31,16 @@ const ScrollToTopButton = () => {
       style={{
         background: `conic-gradient(#bfa888 ${progress}%, #dfdfdf ${progress}%)`,
       }}
-      className={`fixed cursor-pointer transition-transform transform ${
-        isVisible
-          ? "end-2 translate-y-0 opacity-100"
-          : "translate-y-24 opacity-0 z-[-999]"
-      }  select-none overflow-hidden p-1 bottom-2 h-[160px] w-[50px] rounded-t-3xl rounded-b-3xl z-[999]`}
+      initial={{ opacity: 0, x: 100 }} // Hidden by default
+      animate={{
+        opacity: isVisible ? 1 : 0, // Animate opacity based on visibility
+        x: isVisible ? 0 : 100, // Slide up when visible, down when hidden
+      }}
+      transition={{
+        duration: 0.2, // Duration of the animation
+        ease: "easeInOut", // Easing function
+      }}
+      className={`fixed cursor-pointer end-2 select-none overflow-hidden p-1 bottom-4 h-[160px] w-[50px] rounded-t-3xl rounded-b-3xl z-[999]`}
     >
       <div className="flex flex-col justify-center items-center gap-8 h-full bg-white rounded-t-3xl rounded-b-3xl">
         <FaLongArrowAltUp className="h-6" />
@@ -51,4 +57,3 @@ const ScrollToTopButton = () => {
 };
 
 export default ScrollToTopButton;
-``;

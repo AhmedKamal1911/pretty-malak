@@ -50,7 +50,7 @@ const AboutUs = () => {
               subTitle={t("aboutUsPage.companyStory.introText")}
               desc={t("aboutUsPage.companyStory.desc")}
               className="max-w-[800px]"
-              subTitleProps={{ className: "text-black" }}
+              subTitleClassName={{ className: "text-black" }}
             />
           </div>
           <div className="flex-1">

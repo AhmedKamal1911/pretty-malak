@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { twMerge } from "tailwind-merge";
+import { NumberCounter } from ".";
 
 const AboutInfoBox = ({ aboutInfoList, className }) => {
   const { t } = useTranslation("global");
@@ -19,8 +20,9 @@ const AboutInfoBox = ({ aboutInfoList, className }) => {
             <img src={info.img} alt="" className="w-[100px]" />
           </div>
           <div className="flex flex-col">
-            <h3 className="text-4xl self-center flex items-center">
-              {info.count}
+            <h3 className="self-center flex items-center">
+              <NumberCounter to={info.count} />
+
               <span className="text-main text-6xl">+</span>
             </h3>
             <span className="text-xl">

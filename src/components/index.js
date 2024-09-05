@@ -13,6 +13,8 @@ export { default as OurServiceBox } from "@/components/OurServiceBox";
 export { default as BookInput } from "@/components/BookInput";
 export { default as QuestionsAccordion } from "@/components/QuestionsAccordion";
 export { default as ScrollToTopButton } from "@/components/ScrollToTopButton";
+export { default as NumberCounter } from "@/components/NumberCounter";
+export { default as Reveal } from "@/components/Reveal";
 
 // Loaders
 export { default as Loading } from "@/components/Loading";
@@ -30,6 +32,7 @@ export { default as TripDetailsBox } from "@/components/trip/TripDetailsBox";
 export { default as TourPlanBox } from "@/components/trip/TourPlanBox";
 export { default as TourOverviewDetails } from "@/components/trip/TourOverviewDetails";
 export { default as TripReviewBox } from "@/components/trip/TripReviewBox";
+export { default as TripBanner } from "@/components/trip/TripBanner";
 
 // Forms
 export { default as FaqForm } from "@/components/forms/FaqForm";

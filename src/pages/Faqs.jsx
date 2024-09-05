@@ -29,6 +29,7 @@ const Faqs = () => {
             <SectionHeader
               className="text-center mb-10"
               introText={t("faqsPage.formIntroText")}
+              introTextRevealClassName="mx-auto"
             />
             <FaqForm />
           </div>
