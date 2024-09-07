@@ -4,10 +4,7 @@ import Lottie from "lottie-react";
 const FetchTripsTypesLoader = () => {
   return (
     <div className="w-[100px]">
-      <Lottie
-        animationData={dotsLoader}
-        // speed={2}
-      />
+      <Lottie animationData={dotsLoader} />
     </div>
   );
 };

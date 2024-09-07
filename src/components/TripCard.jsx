@@ -47,7 +47,7 @@ const TripCard = ({
           {count < 10 ? `0${count}` : count}
         </span>
         <div className="z-50 absolute start-[1em] bottom-[1em] end-[1em] ">
-          <h3 className="text-2xl  absolute bottom-[110px]  group-hover:bottom-[180px] sm:bottom-[110px]  sm:group-hover:bottom-[180px] md:bottom-[120px]  md:group-hover:bottom-[180px]  lg:bottom-[120px]lg:group-hover:bottom-[180px] transition-all duration-300 delay-[60ms] text-white">
+          <h3 className="text-2xl mb-2 sm:mb-0 absolute bottom-[110px]  group-hover:bottom-[180px] sm:bottom-[110px]  sm:group-hover:bottom-[180px] md:bottom-[120px]  md:group-hover:bottom-[180px]  lg:bottom-[120px]lg:group-hover:bottom-[180px] transition-all duration-300 delay-[60ms] text-white">
             {adultPrice}$/ {t(`tripInfo.tripTime.${time}`)}
           </h3>
           <h4 className="absolute bottom-[30px] start-0 end-0 text-white text-3xl my-2 line-clamp-2 group-hover:bottom-[80px] transition-all duration-300 delay-[50ms] ">

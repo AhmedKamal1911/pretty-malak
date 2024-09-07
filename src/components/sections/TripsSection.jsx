@@ -1,4 +1,3 @@
-// import { allTrips } from "@/data";
 import { Loading, SectionHeader, TripCard } from "..";
 import { NavLink } from "react-router-dom";
 import { Button } from "../ui/Button";

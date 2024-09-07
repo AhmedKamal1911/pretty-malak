@@ -83,7 +83,7 @@ const ContactForm = () => {
       <form
         ref={formRef}
         onSubmit={handleSubmit(onSubmit)}
-        className="border-[#cac8c85d] border rounded-md shadow-md lg:h-[628px]"
+        className="border-[#cac8c85d] border rounded-md shadow-md"
       >
         <div className="flex flex-col gap-8  p-3 md:p-8">
           <div className="flex flex-col md:flex-row justify-between gap-6">

@@ -1,4 +1,3 @@
-// import { specialTrips } from "@/data";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { Loading, SectionHeader, TripsSlider } from "..";
 import { fetchSpecialTrips } from "@/services/trips/queries";

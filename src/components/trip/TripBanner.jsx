@@ -7,7 +7,7 @@ const TripBanner = ({ bannerImg, type, title, t }) => {
         <img
           src={getStrapiMediaURL(bannerImg)}
           alt=""
-          className="h-full w-full object-cover object-[0%,60%]"
+          className="h-full w-full object-cover object-[0%,55%]"
         />
       </div>
       <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 z-40 text-center w-full xl:w-[40%] px-2">

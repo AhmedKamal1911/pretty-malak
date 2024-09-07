@@ -1,4 +1,3 @@
-// import { features } from "@/data";
 import { SectionHeader } from "..";
 
 import FeaturesList from "../FeaturesList";

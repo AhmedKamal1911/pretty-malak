@@ -14,7 +14,7 @@ const ContactUs = () => {
         className="absolute inset-0 z-[-1] bg-cover blur-[5px]"
       />
       <div className="container">
-        <div className="flex flex-col items-stretch lg:flex-row bg-white rounded-xl lg:h-[810px]">
+        <div className="flex flex-col items-stretch lg:flex-row bg-white rounded-xl ">
           <div className="flex-1">
             <img
               src={slideImg1}

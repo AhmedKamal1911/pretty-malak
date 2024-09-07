@@ -31,23 +31,24 @@ const ScrollToTopButton = () => {
       style={{
         background: `conic-gradient(#bfa888 ${progress}%, #dfdfdf ${progress}%)`,
       }}
-      initial={{ opacity: 0, x: 100 }} // Hidden by default
+      initial={{ x: 100, opacity: 0, zIndex: 999 }} // Hidden by default
       animate={{
         opacity: isVisible ? 1 : 0, // Animate opacity based on visibility
+        zIndex: isVisible ? 999 : -9999,
         x: isVisible ? 0 : 100, // Slide up when visible, down when hidden
       }}
       transition={{
         duration: 0.2, // Duration of the animation
         ease: "easeInOut", // Easing function
       }}
-      className={`fixed cursor-pointer end-2 select-none overflow-hidden p-1 bottom-4 h-[160px] w-[50px] rounded-t-3xl rounded-b-3xl z-[999]`}
+      className={`fixed cursor-pointer  end-2 select-none overflow-hidden p-1 bottom-4 h-[150px] w-[40px] min-[376px]:h-[160px] min-[376px]:w-[50px] rounded-t-3xl rounded-b-3xl`}
     >
-      <div className="flex flex-col justify-center items-center gap-8 h-full bg-white rounded-t-3xl rounded-b-3xl">
-        <FaLongArrowAltUp className="h-6" />
+      <div className="flex flex-col justify-center items-center  gap-8 min-[376px]:gap-8 h-full bg-white rounded-t-3xl rounded-b-3xl">
+        <FaLongArrowAltUp className="h-5 w-5 min-[376px]:h-6 min-[376px]:w-6" />
         <span
           className={`${
             isRTL ? "rotate-90" : "-rotate-90"
-          } text-xl text-nowrap`}
+          } text-[17px] min-[376px]:text-xl text-nowrap`}
         >
           {t("global.toTopButtonLabel")}
         </span>

@@ -104,7 +104,7 @@ const AR_LANG = {
     },
     specialOffersSection: {
       subTitle: "العروض الخاصة",
-      introText: "احصل على عروض خاصة جدًا على الرحلات",
+      introText: "احصل على عروض خاصة على الرحلات",
     },
     whyChooseUsSection: {
       achievementsSection: {

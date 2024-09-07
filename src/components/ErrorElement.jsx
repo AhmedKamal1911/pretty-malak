@@ -1,5 +1,4 @@
 import { cn } from "@/utils/cn";
-// import { NetworkErrorAnimation } from "./animations";
 
 const ErrorElement = ({ error, errorElementClassName }) => {
   return (
@@ -9,7 +8,6 @@ const ErrorElement = ({ error, errorElementClassName }) => {
         errorElementClassName
       )}
     >
-      {/* <NetworkErrorAnimation /> */}
       <h3 className="font-bold text-4xl sm:text-6xl text-center error-stroke text-red-600">
         Failed to fetch due to {error}
       </h3>

@@ -244,7 +244,7 @@ const BookTripForm = () => {
           />
 
           <Button
-            className="py-6 px-9"
+            className="py-6 px-5"
             variant="primary"
             disabled={isSubmitting}
           >

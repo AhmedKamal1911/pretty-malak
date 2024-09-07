@@ -27,7 +27,7 @@ function FeatureListItem({ feature }) {
   const { t } = useTranslation("global");
   return (
     <div
-      className={`relative counter-increment group before:duration-500 before:text-6xl before:text-lightGray before:content-[counter(feature-counter,decimal-leading-zero)] hover:before:text-black py-8 flex flex-col sm:flex-row items-center gap-10 [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:bottom-0 [&:not(:last-child)]:after:end-0 [&:not(:last-child)]:after:h-[1px] [&:not(:last-child)]:after:bg-lightGray [&:not(:last-child)]:after:w-[100vw]`}
+      className={`relative counter-increment group before:duration-500 before:text-6xl before:text-lightGray before:content-[counter(feature-counter,decimal-leading-zero)] hover:before:text-black py-8 flex flex-col sm:flex-row items-center gap-10 sm:gap-5 [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:bottom-0 [&:not(:last-child)]:after:end-0 [&:not(:last-child)]:after:h-[1px] [&:not(:last-child)]:after:bg-lightGray [&:not(:last-child)]:after:w-[100vw]`}
     >
       {/* Dynamic number */}
 
@@ -38,7 +38,7 @@ function FeatureListItem({ feature }) {
           alt=""
         />
       </div>
-      <div className="relative flex md:flex-col flex-row gap-7 sm:gap-10 md:gap-4 items-center">
+      <div className="relative flex md:flex-col flex-row gap-7 sm:gap-3 md:gap-0 items-center">
         <div className="z-50">
           <h5 className="text-xl">{feature.title}</h5>
           <NavLink
@@ -49,7 +49,7 @@ function FeatureListItem({ feature }) {
           </NavLink>
         </div>
 
-        <div className="md:absolute start-[calc(100%+70px)] lg:start-[calc(100%+40px)] md:-top-2 w-[120px] h-[80px] ">
+        <div className="md:absolute start-[calc(100%+70px)] md:start-[calc(100%+10px)] lg:start-[calc(100%+30px)] md:-top-2 w-[120px] h-[80px] ">
           <img
             src={getStrapiMediaURL(feature.travelImg?.formats?.small?.url)}
             alt=""
