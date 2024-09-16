@@ -1,7 +1,6 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { AR_LANG, EN_LANG, RU_LANG } from "./locales";
-import { DEFAULT_LANG } from "./contexts/LanguageProvider";
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -11,7 +10,10 @@ const resources = {
   ar: { global: AR_LANG },
   ru: { global: RU_LANG },
 };
-
+export const DEFAULT_LANG = {
+  countryName: "US",
+  languageName: "en",
+};
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({

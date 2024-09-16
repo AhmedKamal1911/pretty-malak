@@ -1,12 +1,9 @@
-import i18n from "@/i18n";
+import i18n, { DEFAULT_LANG } from "@/i18n";
 import { createContext, useContext, useEffect, useState } from "react";
 
 // Creating the context with a default value
 const LanguageContext = createContext(null);
-export const DEFAULT_LANG = {
-  countryName: "US",
-  languageName: "en",
-};
+
 const LanguageProvider = ({ children }) => {
   const [selectedLanguage, setSelectedLanguage] = useState(
     () => JSON.parse(localStorage.getItem("lang")) ?? DEFAULT_LANG
