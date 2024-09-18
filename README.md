@@ -30,6 +30,7 @@ SeaCrow is an online Website With a large group of diverse, fun and exciting tri
 
 **Client (Front-End):** ReactJS, React Query, Tailwind CSS  
 **CMS:** Strapi
+
 Check out more dependencies at: 
 
 https://github.com/AhmedKamal1911/pretty-malak/blob/main/package.json
