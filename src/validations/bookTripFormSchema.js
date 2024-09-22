@@ -29,11 +29,11 @@ const bookTripFormSchema = (t) => {
       message: t("global.bookTripForm.validation.hotelNameRequired"),
     }),
 
-    adultNumber: z.coerce
+    adultCount: z.coerce
       .number()
       .gt(0, { message: t("global.bookTripForm.validation.adultNumberMin") }),
 
-    childNumber: z.coerce
+    childCount: z.coerce
       .number()
       .gt(-1, {
         message: t("global.bookTripForm.validation.childNumberNegative"),

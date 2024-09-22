@@ -49,7 +49,7 @@ const HeroSection = () => {
             to={heroButton?.url}
             className="p-3 text-xl bg-[#03030356] w-fit m-auto text-white rounded-sm hover:shadow-lighter transition-all"
           >
-            {heroButton?.text ?? "discover tours"}
+            {heroButton?.text ?? "Discover tours"}
           </NavLink>
         </div>
       </div>

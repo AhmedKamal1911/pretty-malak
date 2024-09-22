@@ -87,7 +87,7 @@ const EN_LANG = {
       subTitle: "About Us",
       introText: "Experience the Magic of Egypt",
       aboutDesc:
-        "Welcome to SeaCrew, your ultimate gateway to exploring the timeless wonders of Egypt. We are passionate about crafting unforgettable travel experiences that immerse you in the rich history, vibrant culture, and breathtaking landscapes of this ancient land!",
+        "Welcome to SeaCrow, your ultimate gateway to exploring the timeless wonders of Egypt. We are passionate about crafting unforgettable travel experiences that immerse you in the rich history, vibrant culture, and breathtaking landscapes of this ancient land!",
       aboutButtonLabel: "Read More",
       dateLabel: "Since year",
     },
@@ -136,8 +136,8 @@ const EN_LANG = {
   aboutUsPage: {
     introText: "ABOUT US",
     companyInfo: {
-      introText: "SeaCrew Team",
-      desc: "Welcome to SeaCrew, your ultimate gateway to exploring the timeless wonders of Egypt. We are passionate about crafting unforgettable travel experiences that immerse you in the rich history, vibrant culture, and breathtaking landscapes of this ancient land.",
+      introText: "SeaCrow Team",
+      desc: "Welcome to SeaCrow, your ultimate gateway to exploring the timeless wonders of Egypt. We are passionate about crafting unforgettable travel experiences that immerse you in the rich history, vibrant culture, and breathtaking landscapes of this ancient land.",
     },
     companyStory: {
       introText: "Our story",
@@ -217,7 +217,7 @@ const EN_LANG = {
       title: "Reach Us",
       desc: "You Can Reach Us By :",
     },
-    copyRightReference: "Copyrights reserved by SeaCrew",
+    copyRightReference: "Copyrights reserved by SeaCrow",
     poweredBy: "Powered By : ",
   },
 };

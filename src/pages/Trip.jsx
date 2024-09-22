@@ -226,7 +226,7 @@ const Trip = () => {
                 loadingElementClassName="h-[68vh] sm:h-[120vh] lg:h-[95vh]"
               >
                 {allRelatedTrips.length >= 1 ? (
-                  allRelatedTrips.map((trip, i) => (
+                  allRelatedTrips.slice(0, 5).map((trip, i) => (
                     <div
                       key={trip.id}
                       className="max-[300px]:h-[300px] h-[350px] "

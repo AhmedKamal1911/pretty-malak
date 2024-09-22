@@ -8,8 +8,15 @@
 html {
   scroll-behavior: "smooth";
 }
-body {
-  font-family: "Bebas Neue", "sans-serif";
+/* CSS for Arabic (when the language is set to 'ar') */
+html[lang="ar"] body {
+  font-family: "Cairo", sans-serif;
+}
+
+/* CSS for other languages (e.g., default to English or others) */
+html[lang="en"] body,
+html[lang="ru"] body {
+  font-family: "Bebas Neue", sans-serif;
 }
 
 .stroke-fill {

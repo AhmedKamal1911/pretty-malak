@@ -54,7 +54,7 @@ const Navbar = () => {
             <div>
               <NavLink to="/">
                 <h2 className="text-2xl sm:text-3xl text-white font-logoFont uppercase">
-                  {logo ?? "seacrew"}
+                  {logo ?? "SeaCrow"}
                 </h2>
               </NavLink>
             </div>

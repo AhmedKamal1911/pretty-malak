@@ -146,6 +146,16 @@ const fetchClientQuestions = async () => {
   return clientQuestions;
 };
 
+const tripOrders = async (data) => {
+  const response = await axiosInstance.post("/orders", { data: data });
+  return response.data;
+};
+
+const signIn = async (loginCredentials) => {
+  const response = await axiosInstance.post("/auth/local", loginCredentials);
+  return response.data;
+};
+
 export {
   fetchTrips,
   fetchSpecialTrips,
@@ -159,4 +169,6 @@ export {
   fetchFaqInfo,
   fetchIntroInfo,
   fetchClientQuestions,
+  tripOrders,
+  signIn,
 };

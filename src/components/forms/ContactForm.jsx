@@ -22,14 +22,15 @@ import { TbReload } from "react-icons/tb";
 import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
 import { useTranslation } from "react-i18next";
+import useLangAwareForm from "@/hooks/useLangAwareForm";
+import { FormSubmitButton } from "../index";
 
+const serviceId = import.meta.env.VITE_EMAILJS_FAQ_FORM_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_FAQ_FORM_TEMPLATE_ID;
 const ContactForm = () => {
   const { t } = useTranslation("global");
   const formRef = useRef(null);
   const { toast } = useToast();
-
-  const serviceId = import.meta.env.VITE_EMAILJS_FAQ_FORM_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_FAQ_FORM_TEMPLATE_ID;
 
   const methods = useForm({
     mode: "onBlur",
@@ -47,6 +48,8 @@ const ContactForm = () => {
     control,
     formState: { isSubmitting },
   } = methods;
+
+  useLangAwareForm(t, reset, questionFormSchema);
 
   const sendEmail = () => {
     return emailjs
@@ -83,9 +86,9 @@ const ContactForm = () => {
       <form
         ref={formRef}
         onSubmit={handleSubmit(onSubmit)}
-        className="border-[#cac8c85d] border rounded-md shadow-md"
+        className="border-[#cac8c85d] border rounded-md shadow-md flex-1"
       >
-        <div className="flex flex-col gap-8  p-3 md:p-8">
+        <div className="flex flex-col gap-8  p-3 md:p-8 h-full">
           <div className="flex flex-col md:flex-row justify-between gap-6">
             <FaqInput
               control={control}
@@ -128,20 +131,13 @@ const ContactForm = () => {
             )}
           />
 
-          <Button
-            className="py-6 px-9"
-            variant="primary"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <span className="flex items-center gap-2 text-xl text-white">
-                <TbReload className="h-5 w-5 animate-spin" />
-                {t("global.loadingText")}
-              </span>
-            ) : (
-              t("global.contactForm.contactFormButtonLabel")
+          <FormSubmitButton
+            isSubmitting={isSubmitting}
+            loadingTextTranslation={t("global.loadingText")}
+            submitTextTranslation={t(
+              "global.contactForm.contactFormButtonLabel"
             )}
-          </Button>
+          />
         </div>
       </form>
     </Form>

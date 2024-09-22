@@ -20,12 +20,15 @@ import { useToast } from "@/hooks/useToast";
 import { RxCrossCircled } from "react-icons/rx";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
+
+import useLangAwareForm from "@/hooks/useLangAwareForm";
+import { FormSubmitButton } from "../index";
+const serviceId = import.meta.env.VITE_EMAILJS_FAQ_FORM_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_FAQ_FORM_TEMPLATE_ID;
 const FaqForm = () => {
   const formRef = useRef(null);
   const { toast } = useToast();
   const { t } = useTranslation("global");
-  const serviceId = import.meta.env.VITE_EMAILJS_FAQ_FORM_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_FAQ_FORM_TEMPLATE_ID;
 
   const methods = useForm({
     mode: "onBlur",
@@ -43,6 +46,8 @@ const FaqForm = () => {
     control,
     formState: { isSubmitting },
   } = methods;
+  useLangAwareForm(t, reset, questionFormSchema);
+
   const sendEmail = () => {
     return emailjs
       .sendForm(serviceId, templateId, formRef.current, {
@@ -122,20 +127,13 @@ const FaqForm = () => {
             )}
           />
 
-          <Button
-            className="py-6 px-5"
-            variant="primary"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <span className="flex items-center gap-2 text-xl text-white">
-                <TbReload className="h-5 w-5 animate-spin" />
-                {t("global.loadingText")}
-              </span>
-            ) : (
-              t("global.contactForm.contactFormButtonLabel")
+          <FormSubmitButton
+            isSubmitting={isSubmitting}
+            loadingTextTranslation={t("global.loadingText")}
+            submitTextTranslation={t(
+              "global.contactForm.contactFormButtonLabel"
             )}
-          </Button>
+          />
         </div>
       </form>
     </Form>

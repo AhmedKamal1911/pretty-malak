@@ -13,6 +13,7 @@ export { default as egyptImg } from "@/assets/egypt.jpg";
 export { default as compassImg } from "@/assets/compass.png";
 export { default as waveyMapImg } from "@/assets/wavey-map.png";
 export { default as wavesWithBoat } from "@/assets/waves-with-boat.png";
+export { default as loginBackground } from "@/assets/login-background.jpg";
 
 export { default as whatsapp } from "@/assets/whatsapp.png";
 export { default as facebook } from "@/assets/facebook.png";

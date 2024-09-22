@@ -10,6 +10,7 @@ import { LanguageProvider } from "./contexts/LanguageProvider";
 import { I18nextProvider } from "react-i18next";
 
 import i18next from "./i18n";
+
 // Create a client
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(

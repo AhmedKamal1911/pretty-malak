@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,13 +12,6 @@ import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 const TripSlider = ({ imagesList }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const mainSwiperRef = useRef(null);
-
-  useEffect(() => {
-    if (mainSwiperRef.current && mainSwiperRef.current.swiper) {
-      // Update Swiper to make sure it's correctly initialized
-      mainSwiperRef.current.swiper.update();
-    }
-  }, [thumbsSwiper, imagesList]);
 
   return (
     <div className="select-none mb-10">
@@ -51,7 +44,7 @@ const TripSlider = ({ imagesList }) => {
       <div className="h-[70px] min-[367px]:h-[100px] min-[600px]:h-[150px] mt-2">
         <Swiper
           onSwiper={setThumbsSwiper}
-          loop={true}
+          loop
           spaceBetween={5}
           slidesPerView={3}
           breakpoints={{
@@ -61,8 +54,8 @@ const TripSlider = ({ imagesList }) => {
               spaceBetween: 5,
             },
           }}
-          freeMode={true}
-          watchSlidesProgress={true}
+          freeMode
+          watchSlidesProgress
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper h-full"
         >

@@ -15,12 +15,6 @@ const LanguageProvider = ({ children }) => {
       "lang",
       selectedLanguage.languageName
     );
-    // Set the font family based on the selected language
-    const fontFamily =
-      selectedLanguage.languageName === "ar"
-        ? "'Cairo', sans-serif"
-        : "'Bebas Neue', sans-serif";
-    document.body.style.fontFamily = fontFamily;
   }, [isRTL, selectedLanguage]);
   const onLanguageChange = (value) => {
     setSelectedLanguage(value);

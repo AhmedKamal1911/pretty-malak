@@ -14,10 +14,7 @@ import { IoMdCheckmarkCircleOutline, IoMdPhonePortrait } from "react-icons/io";
 
 import { BookInput } from "..";
 import { useRef } from "react";
-import emailjs from "@emailjs/browser";
 
-import { TbReload } from "react-icons/tb";
-import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
 import { FaHotel, FaPen } from "react-icons/fa";
 import { BsFillChatRightTextFill, BsPersonRaisedHand } from "react-icons/bs";
@@ -30,9 +27,10 @@ import { DatePickerWithPresets } from "../ui/datePicker";
 import { format } from "date-fns";
 import { ComboboxDemo } from "../ui/ComboBox";
 import { useTranslation } from "react-i18next";
+import useLangAwareForm from "@/hooks/useLangAwareForm";
 
-const serviceId = import.meta.env.VITE_EMAILJS_BOOK_FORM_SERVICE_ID;
-const templateId = import.meta.env.VITE_EMAILJS_BOOK_FORM_TEMPLATE_ID;
+import { tripOrders } from "@/services/trips/queries";
+import { FormSubmitButton } from "../index";
 
 const BookTripForm = () => {
   const { t } = useTranslation("global");
@@ -50,8 +48,8 @@ const BookTripForm = () => {
       phoneNumber: "",
       hotelName: "",
       checkDate: undefined, // Default value for check-in date
-      childNumber: 0,
-      adultNumber: 1,
+      childCount: 0,
+      adultCount: 1,
       country: "",
     },
   });
@@ -63,36 +61,55 @@ const BookTripForm = () => {
     formState: { isSubmitting },
   } = methods;
 
-  const sendEmail = () => {
-    return emailjs
-      .sendForm(serviceId, templateId, formRef.current, {
-        publicKey: import.meta.env.VITE_EMAILJS_FORM_PUBLIC_KEY,
-      })
-      .then(
-        () => {
-          toast({
-            description: t("global.toasts.messageToast.successMessage"),
-            variant: "success",
-            icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
-          });
-          setTimeout(() => {
-            reset();
-          }, 1000);
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-          toast({
-            description: t("global.toasts.messageToast.failedMessage"),
-            variant: "destructive",
-            icon: <RxCrossCircled className="w-6 h-6" />,
-          });
-        }
-      );
+  useLangAwareForm(t, reset, bookTripFormSchema);
+
+  const sendEmail = async (data) => {
+    const formattedDate = format(new Date(data.checkDate), "yyyy-MM-dd");
+    try {
+      await tripOrders({ ...data, checkDate: formattedDate });
+      toast({
+        description: t("global.toasts.messageToast.successMessage"),
+        variant: "success",
+        icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
+      });
+      setTimeout(() => {
+        reset();
+      }, 1000);
+    } catch (e) {
+      toast({
+        description: t("global.toasts.messageToast.failedMessage"),
+        variant: "destructive",
+        icon: <RxCrossCircled className="w-6 h-6" />,
+      });
+    }
+    // return emailjs
+    //   .sendForm(serviceId, templateId, formRef.current, {
+    //     publicKey: import.meta.env.VITE_EMAILJS_FORM_PUBLIC_KEY,
+    //   })
+    //   .then(
+    //     () => {
+    //       toast({
+    //         description: t("global.toasts.messageToast.successMessage"),
+    //         variant: "success",
+    //         icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
+    //       });
+    //       setTimeout(() => {
+    //         reset();
+    //       }, 1000);
+    //     },
+    //     (error) => {
+    //       console.log("FAILED...", error.text);
+    //       toast({
+    //         description: t("global.toasts.messageToast.failedMessage"),
+    //         variant: "destructive",
+    //         icon: <RxCrossCircled className="w-6 h-6" />,
+    //       });
+    //     }
+    //   );
   };
 
   const onSubmit = async (data) => {
-    console.log(data, "data");
-    await sendEmail();
+    await sendEmail(data);
   };
 
   return (
@@ -204,7 +221,7 @@ const BookTripForm = () => {
               <BookInput
                 icon={BsPersonRaisedHand}
                 control={control}
-                name="adultNumber"
+                name="adultCount"
                 type="number"
               />
             </div>
@@ -215,7 +232,7 @@ const BookTripForm = () => {
               <BookInput
                 icon={FaChildReaching}
                 control={control}
-                name="childNumber"
+                name="childCount"
                 type="number"
               />
             </div>
@@ -243,20 +260,13 @@ const BookTripForm = () => {
             )}
           />
 
-          <Button
-            className="py-6 px-5"
-            variant="primary"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? (
-              <span className="flex items-center gap-2 text-xl text-white">
-                <TbReload className="h-5 w-5 animate-spin" />
-                {t("global.loadingText")}
-              </span>
-            ) : (
-              t("global.bookTripForm.bookTripFormButtonLabel")
+          <FormSubmitButton
+            isSubmitting={isSubmitting}
+            loadingTextTranslation={t("global.loadingText")}
+            submitTextTranslation={t(
+              "global.bookTripForm.bookTripFormButtonLabel"
             )}
-          </Button>
+          />
         </div>
       </form>
     </Form>
