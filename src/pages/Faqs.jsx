@@ -1,4 +1,4 @@
-import { FaqForm, QuestionsAccordion, SectionHeader } from "@/components";
+import { FaqForm, QuestionsList, SectionHeader } from "@/components";
 
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import useScrollToTop from "@/hooks/useScrollToTop";
@@ -24,7 +24,7 @@ const Faqs = () => {
           desc={t("faqsPage.desc")}
         />
         <div className="flex flex-col gap-20">
-          <QuestionsAccordion questionsList={faqsList} />
+          <QuestionsList list={faqsList} />
           <div>
             <SectionHeader
               className="text-center mb-10"

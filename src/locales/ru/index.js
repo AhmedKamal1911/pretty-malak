@@ -176,6 +176,7 @@ const RU_LANG = {
     toursFrom: "Туры из",
     priceForAdultText: "Взрослый",
     priceForChildText: "Ребенок * До 11 лет",
+    priceForBabyText: "Младенцы * До 4 лет",
     tripDetails: {
       tourTitleText: "путешествие",
       tourFromText: "Тур из",

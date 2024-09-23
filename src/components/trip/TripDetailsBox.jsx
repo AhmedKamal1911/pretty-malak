@@ -1,3 +1,5 @@
+import { formatTime } from "@/utils/formatTime";
+import { getTimingSystem } from "@/utils/getTimingSystem";
 import { useTranslation } from "react-i18next";
 
 const TripDetailsBox = ({
@@ -35,8 +37,8 @@ const TripDetailsBox = ({
             {t("tripInfo.tripDetails.departureTimeText")} :
           </span>
           <span className="text-grayDesc flex-1 text-[16px] sm:text-[19px]">
-            {`${departureTime} ${t(
-              `global.timingSystem.${departureTimeSystem}`
+            {`${formatTime(departureTime)} ${t(
+              `global.timingSystem.${getTimingSystem(departureTimeSystem)}`
             )}`}
           </span>
         </li>
@@ -53,7 +55,9 @@ const TripDetailsBox = ({
             {t("tripInfo.tripDetails.returnTimeText")} :
           </span>
           <span className="text-grayDesc flex-1 text-[16px] sm:text-[19px]">
-            {`${returnTime} ${t(`global.timingSystem.${returnTimeSystem}`)}`}
+            {`${formatTime(returnTime)} ${t(
+              `global.timingSystem.${getTimingSystem(returnTimeSystem)}`
+            )}`}
           </span>
         </li>
         {maxGuests && (

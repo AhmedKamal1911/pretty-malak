@@ -175,6 +175,7 @@ const AR_LANG = {
     toursFrom: "الرحلة من",
     priceForAdultText: "البالغين",
     priceForChildText: "الاطفال * حتي 11 سنة",
+    priceForBabyText: "الرضع * حتي 4 سنوات",
     tripDetails: {
       tourTitleText: "الرحلة",
       tourFromText: "الرحلة من",

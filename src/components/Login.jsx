@@ -2,7 +2,7 @@ import { loginBackground } from "@/assets/index";
 import { LoginForm } from "@/components/index";
 const Login = ({ onSubmit }) => {
   return (
-    <div className="flex w-full max-w-[450px] md:max-w-[800px] md:min-h-[700px] bg-white rounded-lg overflow-hidden">
+    <div className="flex w-full max-w-[450px] border-[1px] border-main shadow-md md:max-w-[800px] md:min-h-[700px] bg-white rounded-lg overflow-hidden">
       <div className="flex-1 md:block hidden">
         <img
           src={loginBackground}

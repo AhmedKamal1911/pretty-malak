@@ -38,7 +38,6 @@ export function LoginForm({ onSubmit }) {
   } = methods;
   // ...
   const handleLogin = async (loginCredentials) => {
-    // TODO: Request to login here
     try {
       const user = await signIn({
         identifier: loginCredentials.username,

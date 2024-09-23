@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { IoMdCheckmarkCircleOutline, IoMdPhonePortrait } from "react-icons/io";
 
 import { BookInput } from "..";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { useToast } from "@/hooks/useToast";
 import { FaHotel, FaPen } from "react-icons/fa";
@@ -32,7 +32,8 @@ import useLangAwareForm from "@/hooks/useLangAwareForm";
 import { tripOrders } from "@/services/trips/queries";
 import { FormSubmitButton } from "../index";
 
-const BookTripForm = () => {
+const BookTripForm = ({ tripSlug }) => {
+  console.log({ tripSlug });
   const { t } = useTranslation("global");
   const formRef = useRef(null);
   const { toast } = useToast();
@@ -51,9 +52,10 @@ const BookTripForm = () => {
       childCount: 0,
       adultCount: 1,
       country: "",
+      tripSlug: tripSlug || "",
     },
   });
-
+  console.log(methods.getValues());
   const {
     reset,
     handleSubmit,
@@ -62,6 +64,16 @@ const BookTripForm = () => {
   } = methods;
 
   useLangAwareForm(t, reset, bookTripFormSchema);
+
+  // Use useEffect to update the form when tripSlug becomes available
+  useEffect(() => {
+    if (tripSlug) {
+      reset((prevValues) => ({
+        ...prevValues,
+        tripSlug, // Set tripSlug dynamically once it's available
+      }));
+    }
+  }, [tripSlug, reset]);
 
   const sendEmail = async (data) => {
     const formattedDate = format(new Date(data.checkDate), "yyyy-MM-dd");

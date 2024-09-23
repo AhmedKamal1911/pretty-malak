@@ -11,9 +11,7 @@ async function fetchTripData(tripId) {
   const response = await axiosInstance.get(`/trips/${tripId}?${queryAll}`);
 
   // Response data will contain the trip details
-  const tripData = response;
-  console.log(tripData);
-  return tripData;
+  return response.data;
 }
 
 // Function to fetch all trips
@@ -146,6 +144,15 @@ const fetchClientQuestions = async () => {
   return clientQuestions;
 };
 
+const fetchTripOrders = async (token) => {
+  const response = await axiosInstance.get("/orders", {
+    headers: {
+      Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+    },
+  });
+  return response.data;
+};
+
 const tripOrders = async (data) => {
   const response = await axiosInstance.post("/orders", { data: data });
   return response.data;
@@ -169,6 +176,7 @@ export {
   fetchFaqInfo,
   fetchIntroInfo,
   fetchClientQuestions,
+  fetchTripOrders,
   tripOrders,
   signIn,
 };

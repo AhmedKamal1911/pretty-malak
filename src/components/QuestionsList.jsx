@@ -4,11 +4,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/Accordion";
-
-const QuestionsAccordion = ({ questionsList }) => {
+// TODO: change QuestionsList
+const QuestionsList = ({ list }) => {
   return (
     <Accordion type="single" collapsible>
-      {questionsList?.map(({ question, answer, id }) => (
+      {list?.map(({ question, answer, id }) => (
         <AccordionItem
           value={`item-${id}`}
           key={id}
@@ -26,4 +26,4 @@ const QuestionsAccordion = ({ questionsList }) => {
   );
 };
 
-export default QuestionsAccordion;
+export default QuestionsList;

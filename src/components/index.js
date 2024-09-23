@@ -14,12 +14,13 @@ export { default as FormSubmitButton } from "@/components/FormSubmitButton";
 export { default as AboutInfoBox } from "@/components/AboutInfoBox";
 export { default as OurServiceBox } from "@/components/OurServiceBox";
 export { default as BookInput } from "@/components/BookInput";
-export { default as QuestionsAccordion } from "@/components/QuestionsAccordion";
+export { default as QuestionsList } from "@/components/QuestionsList";
 export { default as ScrollToTopButton } from "@/components/ScrollToTopButton";
 export { default as NumberCounter } from "@/components/NumberCounter";
 export { default as Reveal } from "@/components/Reveal";
 export { default as Login } from "@/components/Login";
 export { default as AdminTable } from "@/components/AdminTable";
+export { default as MessagesDialog } from "@/components/MessagesDialog";
 
 // Loaders
 export { default as Loading } from "@/components/Loading";
@@ -38,6 +39,7 @@ export { default as TourPlanBox } from "@/components/trip/TourPlanBox";
 export { default as TourOverviewDetails } from "@/components/trip/TourOverviewDetails";
 export { default as TripReviewBox } from "@/components/trip/TripReviewBox";
 export { default as TripBanner } from "@/components/trip/TripBanner";
+export { default as TripQuestions } from "@/components/sections/TripQuestions";
 
 // Forms
 export { default as FaqForm } from "@/components/forms/FaqForm";

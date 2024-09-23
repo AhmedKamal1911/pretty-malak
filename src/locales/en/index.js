@@ -176,6 +176,7 @@ const EN_LANG = {
     toursFrom: "Tours From",
     priceForAdultText: "Adult",
     priceForChildText: "Child * Til 11 years",
+    priceForBabyText: "Babies * Til 4 years",
     tripDetails: {
       tourTitleText: "Tour",
       tourFromText: "Tour From",

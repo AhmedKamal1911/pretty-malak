@@ -47,6 +47,8 @@ const bookTripFormSchema = (t) => {
     country: z
       .string()
       .min(1, { message: t("global.bookTripForm.validation.countryRequired") }),
+
+    tripSlug: z.string(),
   });
 };
 
