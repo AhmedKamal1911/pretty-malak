@@ -18,12 +18,10 @@ import { useTranslation } from "react-i18next";
 export function ComboboxDemo({ selectCountry, onSelectCountry }) {
   const { t } = useTranslation("global");
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(selectCountry);
   const handleSelectCountry = (country) => {
-    setValue(country);
     onSelectCountry(country);
   };
-  const country = countries.find((country) => country.name === value);
+  const country = countries.find((country) => country.name === selectCountry);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -36,7 +34,9 @@ export function ComboboxDemo({ selectCountry, onSelectCountry }) {
           <div className="flex items-center">
             <IoEarthSharp className="me-2 h-4 w-4 shrink-0 opacity-50 text-main" />
             <span className="text-grayDesc text-ellipsis overflow-hidden max-w-[160px] text-start">
-              {value ? country?.name : t("global.inputs.country.introText")}
+              {selectCountry
+                ? country?.name
+                : t("global.inputs.country.introText")}
             </span>
           </div>
           <ChevronsUpDown className="ms-2 h-4 w-4 shrink-0 opacity-50" />
@@ -55,7 +55,7 @@ export function ComboboxDemo({ selectCountry, onSelectCountry }) {
               {countries.map((country) => (
                 <CommandItem
                   className={`p-3 font-serif font-semibold hover:bg-[#dddcdc56] transition-all ${
-                    value === country.name ? "bg-gray-300" : ""
+                    selectCountry === country.name ? "bg-gray-300" : ""
                   }`}
                   key={country.code}
                   value={country.name}

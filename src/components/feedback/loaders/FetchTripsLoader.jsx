@@ -1,10 +1,10 @@
-import { loading } from "@/assets/animations";
+import { loadingAnimationData } from "@/assets/animations";
 import Lottie from "lottie-react";
 
 const FetchTripsLoader = () => {
   return (
     <div className="lg:w-[800px]">
-      <Lottie animationData={loading} />
+      <Lottie animationData={loadingAnimationData} />
     </div>
   );
 };

@@ -25,7 +25,20 @@ const router = createBrowserRouter(
       <Route path="/faqs" element={<Faqs />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/contact-us" element={<ContactUs />} />
-      <Route path="/trip/:id" element={<Trip />} />
+      <Route
+        path="/trip/:id"
+        element={<Trip />}
+        loader={(params) => {
+          console.log({ loader: params });
+          if (isNaN(+params.params.id)) {
+            console.log("string");
+            throw new Response("Trip not found", { status: 404 });
+          }
+          console.log("number");
+          // await checkTrip(request.params) // search for the trip for that id if exists proceed to the page, if not go to error page
+          return null;
+        }}
+      />
       <Route path="/admin" element={<Admin />} />
 
       <Route path="*" element={<NotFoundPage />} />

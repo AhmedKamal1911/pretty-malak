@@ -1,5 +1,4 @@
 // DatePickerWithPresets.jsx
-import { useState } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
 import { Button } from "./Button";
 import { cn } from "@/utils/cn";
@@ -20,13 +19,11 @@ export function DatePickerWithPresets({
   onDateChange,
   placeholder,
 }) {
-  const [date, setDate] = useState(selectedDate);
   const { t } = useTranslation("global");
   const in3Days = "in 3 days";
   const inAWeek = "in a week";
   const in15Days = "in 15 days";
   const handleDateChange = (newDate) => {
-    setDate(newDate);
     onDateChange(newDate);
   };
 
@@ -37,12 +34,12 @@ export function DatePickerWithPresets({
           variant={"outline"}
           className={cn(
             "w-full text-[16px] ps-0  border-t-0 border-l-0 group border-r-0 border-b-[2px] rounded-none shadow-none focus:border-b-main transition-[border] duration-500 justify-start",
-            !date && "text-muted-foreground"
+            !selectedDate && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="me-2 h-4 w-4 text-main" />
-          {date ? (
-            format(date, "PPP")
+          {selectedDate ? (
+            format(selectedDate, "PPP")
           ) : (
             <span className="group-focus:text-main text-gray-400">
               {placeholder}
@@ -82,7 +79,11 @@ export function DatePickerWithPresets({
           </SelectContent>
         </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" selected={date} onSelect={handleDateChange} />
+          <Calendar
+            mode="single"
+            selected={selectedDate}
+            onSelect={handleDateChange}
+          />
         </div>
       </PopoverContent>
     </Popover>

@@ -1,30 +1,21 @@
-"use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+
 import { Form } from "../ui/Form";
 
 import { signIn } from "@/services/trips/queries";
 import { FormSubmitButton, LoginInput } from "../index";
 
 import { useTranslation } from "react-i18next";
-
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-  password: z.string().min(8, {
-    message: "password must be at least 2 characters.",
-  }),
-});
+import loginFormSchema from "@/validations/loginFormSchema";
+import useLangAwareForm from "@/hooks/useLangAwareForm";
 
 export function LoginForm({ onSubmit }) {
   const { t } = useTranslation("global");
 
   const methods = useForm({
     mode: "onBlur",
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(loginFormSchema(t)),
     defaultValues: {
       username: "",
       password: "",
@@ -34,9 +25,13 @@ export function LoginForm({ onSubmit }) {
     handleSubmit,
     control,
     setError,
+    reset,
     formState: { isSubmitting },
   } = methods;
   // ...
+
+  useLangAwareForm(t, reset, loginFormSchema);
+
   const handleLogin = async (loginCredentials) => {
     try {
       const user = await signIn({
@@ -44,14 +39,11 @@ export function LoginForm({ onSubmit }) {
         password: loginCredentials.password,
       });
       onSubmit(user);
-      console.log(user);
-    } catch (error) {
-      const errorMessage = error.response.data.error.message;
+    } catch (e) {
       setError("username", {
         type: "manual",
-        message: errorMessage, // Assign the error message to the username field
+        message: t("global.loginForm.validation.invalidCredentials"), // Assign the error message to the username field
       });
-      console.log(errorMessage);
     }
   };
   return (
@@ -60,12 +52,12 @@ export function LoginForm({ onSubmit }) {
         <LoginInput
           control={control}
           name={"username"}
-          placeholder={"Enter Username :"}
+          placeholder={t("global.loginForm.userName")}
         />
         <LoginInput
           control={control}
           name={"password"}
-          placeholder={"Enter Password :"}
+          placeholder={t("global.loginForm.password")}
           type="password"
         />
 

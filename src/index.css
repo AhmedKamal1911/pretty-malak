@@ -93,3 +93,21 @@ html[lang="ru"] body {
     font-size: 17px;
   }
 }
+.recaptcha {
+  width: fit-content;
+}
+.recaptcha > div > div {
+  width: 100% !important;
+}
+
+.recaptcha iframe {
+  width: 200px !important;
+}
+@media (min-width: 1300px) {
+  .recaptcha div {
+    width: 100%;
+  }
+  .recaptcha iframe {
+    width: 300px !important;
+  }
+}

@@ -1,10 +1,10 @@
-import { error } from "@/assets/animations";
+import { errorAnimationData } from "@/assets/animations";
 import Lottie from "lottie-react";
 
 const ErrorAnimation = () => {
   return (
     <div>
-      <Lottie animationData={error} />
+      <Lottie animationData={errorAnimationData} />
     </div>
   );
 };

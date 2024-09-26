@@ -42,7 +42,6 @@ const Trip = () => {
   });
   const allRelatedTrips = relatedTripsData?.data ?? [];
 
-  console.log({ relatedTripsData });
   useScrollToTop();
 
   return (

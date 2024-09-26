@@ -74,6 +74,18 @@ const EN_LANG = {
         countryRequired: "Country is required",
       },
     },
+    loginForm: {
+      loginText: "Login",
+
+      userName: "Enter Username",
+      password: "Enter Password",
+
+      validation: {
+        invalidCredentials: "Invalid username or password",
+        userName: "Username must be at least 2 characters.",
+        password: "password must be at least 2 characters.",
+      },
+    },
   },
 
   homePage: {

@@ -54,7 +54,6 @@ const fetchSpecialTrips = async () => {
 };
 
 const fetchRelatedTrips = async (typeName, slug) => {
-  console.log({ typeName, slug });
   // Construct query parameters
   const relatedTripsQuery = qs.stringify({
     populate: "*",

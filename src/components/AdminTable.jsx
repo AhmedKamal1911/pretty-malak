@@ -33,25 +33,25 @@ const AdminTable = ({ data }) => {
             <TableCell className="p-1 text-center whitespace-nowrap text-main text-xl">
               {idx + 1}
             </TableCell>
-            <TableCell className="p-1 text-center whitespace-nowrap">
+            <TableCell className="p-1 pl-4  whitespace-nowrap">
               {order.tripSlug}
             </TableCell>
-            <TableCell className="p-2 whitespace-nowrap">
+            <TableCell className="pl-4 whitespace-nowrap">
               {order.email}
             </TableCell>
-            <TableCell className="p-2 whitespace-nowrap">
+            <TableCell className="pl-4 whitespace-nowrap">
               {`${order.firstName} ${order.lastName}`}
             </TableCell>
-            <TableCell className="p-2 whitespace-nowrap">
+            <TableCell className="pl-4 whitespace-nowrap">
               {order.hotelName}
             </TableCell>
-            <TableCell className="p-2 whitespace-nowrap">
+            <TableCell className="pl-4 whitespace-nowrap">
               {order.phoneNumber}
             </TableCell>
-            <TableCell className="p-2 whitespace-nowrap">
+            <TableCell className="pl-4 whitespace-nowrap">
               {order.checkDate}
             </TableCell>
-            <TableCell className="p-2 whitespace-nowrap">
+            <TableCell className="pl-4 whitespace-nowrap">
               {order.country}
             </TableCell>
             <TableCell className="p-2 text-center">
@@ -60,7 +60,7 @@ const AdminTable = ({ data }) => {
             <TableCell className="p-2 text-center">
               {order.adultCount}
             </TableCell>
-            <TableCell className="p-2">
+            <TableCell className="pl-4">
               <MessagesDialog
                 dialogTitle={"Customer Message"}
                 desc={order.message}

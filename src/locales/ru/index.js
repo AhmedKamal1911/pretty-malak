@@ -74,6 +74,17 @@ const RU_LANG = {
         countryRequired: "Страна обязательна",
       },
     },
+    loginForm: {
+      loginText: "Войти",
+      userName: "Введите имя пользователя",
+      password: "Введите пароль",
+
+      validation: {
+        invalidCredentials: "Неправильное имя пользователя или пароль.",
+        userName: "Имя пользователя должно содержать не менее 2 символов.",
+        password: "Пароль должен содержать не менее 2 символов.",
+      },
+    },
   },
 
   homePage: {

@@ -10,7 +10,7 @@ import useSectionInView from "@/hooks/useSectionInView";
 const TripsSection = () => {
   const { t } = useTranslation("global");
   const { ref, inView } = useSectionInView();
-  console.log(inView);
+
   const {
     data: tripsData,
     isFetching,

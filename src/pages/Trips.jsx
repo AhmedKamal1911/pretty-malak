@@ -34,7 +34,7 @@ const Trips = () => {
   });
 
   const allTrips = tripsData?.data ?? [];
-  console.log("all trips", allTrips);
+
   const {
     data: tripsTypes,
     isFetching: tripsTypesIsFetching,

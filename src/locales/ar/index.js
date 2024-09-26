@@ -73,6 +73,17 @@ const AR_LANG = {
         countryRequired: "الدولة مطلوبة",
       },
     },
+    loginForm: {
+      loginText: "تسجيل الدخول",
+      userName: "ادخل اسم المستخدم",
+      password: "ادخل كلمة المرور",
+
+      validation: {
+        invalidCredentials: "اسم المستخدم او كلمة المرور خاطئة.",
+        userName: "اسم المستخدم يجب ان يتكون من حرفين علي الاقل.",
+        password: "كلمة المرور يجب ان تتكون من حرفين علي الاقل.",
+      },
+    },
   },
 
   homePage: {

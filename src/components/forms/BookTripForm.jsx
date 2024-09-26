@@ -13,7 +13,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { IoMdCheckmarkCircleOutline, IoMdPhonePortrait } from "react-icons/io";
 
 import { BookInput } from "..";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useToast } from "@/hooks/useToast";
 import { FaHotel, FaPen } from "react-icons/fa";
@@ -31,13 +31,17 @@ import useLangAwareForm from "@/hooks/useLangAwareForm";
 
 import { tripOrders } from "@/services/trips/queries";
 import { FormSubmitButton } from "../index";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const BookTripForm = ({ tripSlug }) => {
-  console.log({ tripSlug });
   const { t } = useTranslation("global");
   const formRef = useRef(null);
   const { toast } = useToast();
-
+  const captcha = useRef(null);
+  const [isCaptchaSuccess, setIsCaptchaSuccess] = useState(false);
+  const onChange = () => {
+    setIsCaptchaSuccess(true);
+  };
   const methods = useForm({
     mode: "onSubmit",
     resolver: zodResolver(bookTripFormSchema(t)),
@@ -78,16 +82,23 @@ const BookTripForm = ({ tripSlug }) => {
   const sendEmail = async (data) => {
     const formattedDate = format(new Date(data.checkDate), "yyyy-MM-dd");
     try {
-      await tripOrders({ ...data, checkDate: formattedDate });
-      toast({
-        description: t("global.toasts.messageToast.successMessage"),
-        variant: "success",
-        icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
-      });
-      setTimeout(() => {
-        reset();
-      }, 1000);
+      if (isCaptchaSuccess) {
+        await tripOrders({ ...data, checkDate: formattedDate });
+        toast({
+          description: t("global.toasts.messageToast.successMessage"),
+          variant: "success",
+          icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
+        });
+        setTimeout(() => {
+          reset();
+          if (captcha.current) {
+            captcha.current.reset();
+            setIsCaptchaSuccess(false);
+          }
+        }, 1000);
+      }
     } catch (e) {
+      // captcha.current.reset();
       toast({
         description: t("global.toasts.messageToast.failedMessage"),
         variant: "destructive",
@@ -270,6 +281,13 @@ const BookTripForm = ({ tripSlug }) => {
                 <FormMessage className="text-red-600 text-[16px]" />
               </FormItem>
             )}
+          />
+
+          <ReCAPTCHA
+            className="recaptcha"
+            ref={captcha}
+            sitekey={import.meta.env.VITE_SITE_KEY}
+            onChange={onChange}
           />
 
           <FormSubmitButton
