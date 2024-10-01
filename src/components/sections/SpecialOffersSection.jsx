@@ -16,7 +16,7 @@ const SpecialOffersSection = () => {
     queryKey: ["specialTrips"], // Object form for query key
     queryFn: fetchSpecialTrips, // Function to fetch data
   });
-  console.log(tripsData);
+
   const specialTrips = tripsData?.data ?? [];
   return (
     <section ref={ref} className="py-10">

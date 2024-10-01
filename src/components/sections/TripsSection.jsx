@@ -42,13 +42,7 @@ const TripsSection = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5 relative z-10">
             {allTrips.map((trip, i) => (
               <div key={trip.id} className="h-[300px] sm:h-[400px]">
-                <TripCard
-                  inView={inView}
-                  {...trip}
-                  i={i}
-                  img={trip?.imgs.data?.[0]?.url}
-                  count={i + 1}
-                />
+                <TripCard inView={inView} i={i} trip={trip} />
               </div>
             ))}
           </div>

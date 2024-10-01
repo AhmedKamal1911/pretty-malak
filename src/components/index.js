@@ -24,6 +24,8 @@ export { default as MessagesDialog } from "@/components/MessagesDialog";
 
 // Loaders
 export { default as Loading } from "@/components/Loading";
+export { default as SuspenseWrapper } from "@/components/SuspenseWrapper";
+
 // Error
 export { default as ErrorElement } from "@/components/ErrorElement";
 export { default as SelectError } from "@/components/SelectError";

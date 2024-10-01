@@ -85,6 +85,20 @@ const RU_LANG = {
         password: "Пароль должен содержать не менее 2 символов.",
       },
     },
+    // adminTable: {
+    //   no: "№",
+    //   email: "Электронная почта",
+    //   tripName: "Название поездки",
+    //   fullName: "Полное имя",
+    //   hotelName: "Название отеля",
+    //   phoneNumber: "Номер телефона",
+    //   checkDate: "Дата прибытия",
+    //   country: "Страна",
+    //   child: "Количество детей",
+    //   adult: "Количество взрослых",
+    //   message: "Сообщение",
+    //   openMessageBtnLabel: "Показать сообщение",
+    // },
   },
 
   homePage: {

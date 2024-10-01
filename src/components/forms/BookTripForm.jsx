@@ -59,7 +59,7 @@ const BookTripForm = ({ tripSlug }) => {
       tripSlug: tripSlug || "",
     },
   });
-  console.log(methods.getValues());
+
   const {
     reset,
     handleSubmit,
@@ -98,37 +98,12 @@ const BookTripForm = ({ tripSlug }) => {
         }, 1000);
       }
     } catch (e) {
-      // captcha.current.reset();
       toast({
         description: t("global.toasts.messageToast.failedMessage"),
         variant: "destructive",
         icon: <RxCrossCircled className="w-6 h-6" />,
       });
     }
-    // return emailjs
-    //   .sendForm(serviceId, templateId, formRef.current, {
-    //     publicKey: import.meta.env.VITE_EMAILJS_FORM_PUBLIC_KEY,
-    //   })
-    //   .then(
-    //     () => {
-    //       toast({
-    //         description: t("global.toasts.messageToast.successMessage"),
-    //         variant: "success",
-    //         icon: <IoMdCheckmarkCircleOutline className="w-7 h-7" />,
-    //       });
-    //       setTimeout(() => {
-    //         reset();
-    //       }, 1000);
-    //     },
-    //     (error) => {
-    //       console.log("FAILED...", error.text);
-    //       toast({
-    //         description: t("global.toasts.messageToast.failedMessage"),
-    //         variant: "destructive",
-    //         icon: <RxCrossCircled className="w-6 h-6" />,
-    //       });
-    //     }
-    //   );
   };
 
   const onSubmit = async (data) => {

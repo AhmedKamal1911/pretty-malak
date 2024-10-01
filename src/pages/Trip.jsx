@@ -25,13 +25,14 @@ import useScrollToTop from "@/hooks/useScrollToTop";
 import useSectionInView from "@/hooks/useSectionInView";
 
 const Trip = () => {
-  const { id: tripId } = useParams();
+  const { slug } = useParams();
   const { t } = useTranslation("global");
   const { ref, inView } = useSectionInView();
   const { data: trip } = useQueryWithLocale({
-    queryKey: ["trip", tripId], // Object form for query key
-    queryFn: () => fetchTripData(tripId), // Function to fetch data
+    queryKey: ["trip", slug], // Object form for query key
+    queryFn: () => fetchTripData(slug), // Function to fetch data
   });
+
   const {
     data: relatedTripsData,
     isFetching,
@@ -167,13 +168,7 @@ const Trip = () => {
                       key={trip.id}
                       className="max-[300px]:h-[300px] h-[350px] "
                     >
-                      <TripCard
-                        inView={inView}
-                        i={i}
-                        {...trip}
-                        img={trip?.imgs.data[0]?.url}
-                        count={i + 1}
-                      />
+                      <TripCard i={i} inView={inView} trip={trip} />
                     </div>
                   ))
                 ) : (

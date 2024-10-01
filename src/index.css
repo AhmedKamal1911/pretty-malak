@@ -21,15 +21,33 @@ html[lang="ru"] body {
 
 .stroke-fill {
   -webkit-text-fill-color: white;
+  -moz-text-fill-color: white;
+  -ms-text-fill-color: white;
+  text-fill-color: white;
+
   -webkit-text-stroke: 1px rgb(84, 89, 95);
+  -moz-text-stroke: 1px rgb(84, 89, 95);
+  -ms-text-stroke: 1px rgb(84, 89, 95);
+  text-stroke: 1px rgb(84, 89, 95);
 }
+
 .error-stroke {
   -webkit-text-fill-color: rgb(0, 0, 0);
+  -moz-text-fill-color: rgb(0, 0, 0);
+  -ms-text-fill-color: rgb(0, 0, 0);
+  text-fill-color: rgb(0, 0, 0);
+
   -webkit-text-stroke: 0.1px rgb(218, 20, 20);
+  -moz-text-stroke: 0.1px rgb(218, 20, 20);
+  -ms-text-stroke: 0.1px rgb(218, 20, 20);
+  text-stroke: 0.1px rgb(218, 20, 20);
 }
 
 .stroke-fill::after {
   -webkit-text-fill-color: #bfa888;
+  -moz-text-fill-color: #bfa888;
+  -ms-text-fill-color: #bfa888;
+  text-fill-color: #bfa888;
 }
 .swiper-pagination {
   background-color: rgba(218, 218, 218, 0.493);
@@ -109,5 +127,19 @@ html[lang="ru"] body {
   }
   .recaptcha iframe {
     width: 300px !important;
+  }
+}
+
+.boat {
+  animation: sail 2s infinite alternate ease-in-out; /* Slower, smoother animation */
+}
+
+/* Keyframes for the smooth rocking motion */
+@keyframes sail {
+  0% {
+    transform: rotate(-4deg); /* Smaller rotation for a subtle effect */
+  }
+  100% {
+    transform: rotate(4deg); /* Smaller rotation to the other side */
   }
 }

@@ -3,9 +3,7 @@ import Lottie from "lottie-react";
 
 const FetchTripsLoader = () => {
   return (
-    <div className="lg:w-[800px]">
-      <Lottie animationData={loadingAnimationData} />
-    </div>
+    <Lottie className="max-w-[500px]" animationData={loadingAnimationData} />
   );
 };
 

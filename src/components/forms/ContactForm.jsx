@@ -18,8 +18,6 @@ import emailjs from "@emailjs/browser";
 
 import { RxCrossCircled } from "react-icons/rx";
 
-import { TbReload } from "react-icons/tb";
-import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
 import { useTranslation } from "react-i18next";
 import useLangAwareForm from "@/hooks/useLangAwareForm";
@@ -67,8 +65,7 @@ const ContactForm = () => {
             reset();
           }, 1000);
         },
-        (error) => {
-          console.log("FAILED...", error.text);
+        () => {
           toast({
             description: t("global.toasts.messageToast.failedMessage"),
             variant: "destructive",

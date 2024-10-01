@@ -10,12 +10,12 @@ import {
 const MessagesDialog = ({ buttonLabel = "open", dialogTitle, desc }) => {
   return (
     <Dialog>
-      <DialogTrigger className="bg-main text-white px-3 py-2 rounded-sm">
+      <DialogTrigger className="bg-main font-sans font-bold text-white px-3 py-3 rounded-sm">
         {buttonLabel}
       </DialogTrigger>
       <DialogContent className="bg-white">
-        <DialogHeader>
-          <DialogTitle>{dialogTitle}</DialogTitle>
+        <DialogHeader className="gap-4">
+          <DialogTitle className="text-main">{dialogTitle}</DialogTitle>
           <DialogDescription className="text-[17px]">{desc}</DialogDescription>
         </DialogHeader>
       </DialogContent>

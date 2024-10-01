@@ -8,7 +8,7 @@ const ErrorElement = ({ error, errorElementClassName }) => {
         errorElementClassName
       )}
     >
-      <h3 className="font-bold text-4xl sm:text-6xl text-center error-stroke text-red-600">
+      <h3 className="font-bold text-4xl font-mainFont sm:text-5xl text-center error-stroke text-red-600">
         Failed to fetch due to {error}
       </h3>
     </div>

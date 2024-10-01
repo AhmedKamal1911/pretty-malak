@@ -1,45 +1,99 @@
+import { SuspenseWrapper } from "@/components";
+import { lazy } from "react";
 import RootLayout from "@/layout/RootLayout";
-import AboutUs from "@/pages/AboutUs";
-import Admin from "@/pages/Admin";
-import ContactUs from "@/pages/ContactUs";
 
-import ErrorPage from "@/pages/ErrorPage";
-import Faqs from "@/pages/Faqs";
-import Home from "@/pages/Home";
+// Lazy load the pages
 
-import NotFoundPage from "@/pages/NotFoundPage";
-import Trip from "@/pages/Trip";
-import Trips from "@/pages/Trips";
+const AboutUs = lazy(() => import("@/pages/AboutUs"));
+const Admin = lazy(() => import("@/pages/Admin"));
+const ContactUs = lazy(() => import("@/pages/ContactUs"));
+const ErrorPage = lazy(() => import("@/pages/ErrorPage"));
+const Faqs = lazy(() => import("@/pages/Faqs"));
+const NotFoundPage = lazy(() => import("@/pages/NotFoundPage"));
+const Trip = lazy(() => import("@/pages/Trip"));
+const Trips = lazy(() => import("@/pages/Trips"));
+
+import { fetchTripData } from "@/services/trips/queries";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
+import Home from "@/pages/Home";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<RootLayout />} errorElement={<ErrorPage />}>
       <Route path="/" element={<Home />} />
-      <Route path="/trips" element={<Trips />} />
-      <Route path="/faqs" element={<Faqs />} />
-      <Route path="/about-us" element={<AboutUs />} />
-      <Route path="/contact-us" element={<ContactUs />} />
       <Route
-        path="/trip/:id"
-        element={<Trip />}
-        loader={(params) => {
-          console.log({ loader: params });
-          if (isNaN(+params.params.id)) {
-            console.log("string");
-            throw new Response("Trip not found", { status: 404 });
+        path="/trips"
+        element={
+          <SuspenseWrapper>
+            <Trips />
+          </SuspenseWrapper>
+        }
+      />
+      <Route
+        path="/faqs"
+        element={
+          <SuspenseWrapper>
+            <Faqs />
+          </SuspenseWrapper>
+        }
+      />
+      <Route
+        path="/about-us"
+        element={
+          <SuspenseWrapper>
+            <AboutUs />
+          </SuspenseWrapper>
+        }
+      />
+      <Route
+        path="/contact-us"
+        element={
+          <SuspenseWrapper>
+            <ContactUs />
+          </SuspenseWrapper>
+        }
+      />
+      <Route
+        path="/trips/:slug"
+        element={
+          <SuspenseWrapper>
+            <Trip />
+          </SuspenseWrapper>
+        }
+        loader={async (params) => {
+          const handleNotFoundTrip = () => {
+            throw new Response("trip", {
+              status: 404,
+              statusText: "Trip is not found",
+            });
+          };
+          if (!isNaN(+params.params.slug)) {
+            handleNotFoundTrip();
           }
-          console.log("number");
-          // await checkTrip(request.params) // search for the trip for that id if exists proceed to the page, if not go to error page
-          return null;
+
+          try {
+            const tripData = await fetchTripData(params.params.slug, false);
+
+            if (!tripData) handleNotFoundTrip();
+            return null;
+          } catch (e) {
+            handleNotFoundTrip();
+          }
         }}
       />
-      <Route path="/admin" element={<Admin />} />
+      <Route
+        path="/admin"
+        element={
+          <SuspenseWrapper>
+            <Admin />
+          </SuspenseWrapper>
+        }
+      />
 
       <Route path="*" element={<NotFoundPage />} />
     </Route>

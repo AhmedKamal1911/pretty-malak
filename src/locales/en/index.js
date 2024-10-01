@@ -86,6 +86,20 @@ const EN_LANG = {
         password: "password must be at least 2 characters.",
       },
     },
+    // adminTable: {
+    //   no: "No",
+    //   email: "Email",
+    //   tripName: "Trip Name",
+    //   fullName: "Full Name",
+    //   hotelName: "Hotel Name",
+    //   phoneNumber: "Phone Number",
+    //   checkDate: "Check Date",
+    //   country: "Country",
+    //   child: "Child",
+    //   adult: "Adult",
+    //   message: "Message",
+    //   openMessageBtnLabel: "Open Message",
+    // },
   },
 
   homePage: {

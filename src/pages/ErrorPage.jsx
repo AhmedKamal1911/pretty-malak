@@ -4,12 +4,12 @@ import { useRouteError } from "react-router-dom";
 
 const ErrorPage = () => {
   const error = useRouteError();
-  console.log(error);
+
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
-      <ErrorAnimation />
-      <h3 className="font-bold text-4xl sm:text-6xl text-center error-stroke text-red-600">
-        Oops! Something went wrong
+    <div className="h-screen flex flex-col gap-10 justify-center items-center">
+      <ErrorAnimation type={error.data} />
+      <h3 className="font-bold text-4xl sm:text-6xl text-center font-mainFont error-stroke text-red-600">
+        {error.statusText ?? "Oops! Something went wrong"}
       </h3>
     </div>
   );

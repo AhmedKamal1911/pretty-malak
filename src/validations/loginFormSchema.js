@@ -10,5 +10,4 @@ const loginFormSchema = (t) => {
     }),
   });
 };
-
 export default loginFormSchema;

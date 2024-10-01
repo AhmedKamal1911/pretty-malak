@@ -6,19 +6,27 @@ const queryAll = qs.stringify({
   populate: "*",
 });
 
-async function fetchTripData(tripId) {
+async function fetchTripData(slug, populateAll = true) {
+  const tripSlugQuery = qs.stringify({
+    ...(populateAll ? { populate: "*" } : {}),
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+  });
   // Construct the URL with the trip ID and query parameters
-  const response = await axiosInstance.get(`/trips/${tripId}?${queryAll}`);
-
+  const { data } = await axiosInstance.get(`/trips?${tripSlugQuery}`);
   // Response data will contain the trip details
-  return response.data;
+  return data.data[0];
 }
 
 // Function to fetch all trips
 const fetchTrips = async (typeName) => {
   // Make the API request with query parameters
-  const filters =
-    typeName !== "all"
+  const filteredQuery = qs.stringify({
+    populate: "*",
+    ...(typeName !== "all"
       ? {
           filters: {
             type: {
@@ -26,15 +34,11 @@ const fetchTrips = async (typeName) => {
             },
           },
         }
-      : {};
-
-  const filteredQuery = qs.stringify({
-    populate: "*",
-    ...filters,
+      : {}),
   });
 
-  const response = await axiosInstance.get(`/trips?${filteredQuery}`);
-  return response.data;
+  const { data } = await axiosInstance.get(`/trips?${filteredQuery}`);
+  return data;
 };
 
 const fetchSpecialTrips = async () => {
@@ -48,9 +52,9 @@ const fetchSpecialTrips = async () => {
     },
   });
   // Make the API request with query parameters
-  const response = await axiosInstance.get(`/trips?${specialOffersOnlyQuery}`);
+  const { data } = await axiosInstance.get(`/trips?${specialOffersOnlyQuery}`);
 
-  return response.data;
+  return data;
 };
 
 const fetchRelatedTrips = async (typeName, slug) => {
@@ -67,18 +71,16 @@ const fetchRelatedTrips = async (typeName, slug) => {
     },
   });
   // Make the API request with query parameters
-  const response = await axiosInstance.get(`/trips?${relatedTripsQuery}`);
+  const { data } = await axiosInstance.get(`/trips?${relatedTripsQuery}`);
 
-  return response.data;
+  return data;
 };
 
 const fetchTripTypes = async () => {
-  const trips = await axiosInstance.get(`/trips?${queryAll}`);
+  const { data } = await axiosInstance.get(`/trips?${queryAll}`);
   // Extract unique trip types from fetched trips
 
-  const uniqueTripTypes = [
-    ...new Set(trips.data.data?.map((trip) => trip.type)),
-  ];
+  const uniqueTripTypes = [...new Set(data.data?.map((trip) => trip.type))];
 
   return uniqueTripTypes;
 };
@@ -88,37 +90,34 @@ const fetchNavbarData = async () => {
   const navbarDataQuery = qs.stringify({
     populate: "logoText,navLinks",
   });
-  const response = await axiosInstance.get(`/global?${navbarDataQuery}`);
-  const navbarData = response?.data;
-
-  return navbarData;
+  const { data } = await axiosInstance.get(`/global?${navbarDataQuery}`);
+  return data;
 };
 const fetchFooterData = async () => {
   const footerDataQuery = qs.stringify({
     populate: "navLinks,contactLinks",
   });
-  const response = await axiosInstance.get(`/global?${footerDataQuery}`);
-  const footerData = response?.data;
+  const { data } = await axiosInstance.get(`/global?${footerDataQuery}`);
 
-  return footerData;
+  return data;
 };
 
 const fetchHeroSectionInfo = async () => {
-  const response = await axiosInstance.get(`/hero-section?${queryAll}`);
-  const heroInfo = response?.data;
-  return heroInfo;
+  const { data } = await axiosInstance.get(`/hero-section?${queryAll}`);
+
+  return data;
 };
 
 const fetchWhyUsInfo = async () => {
-  const response = await axiosInstance.get(`/why-us-section?${queryAll}`);
-  const whyUsInfo = response?.data;
-  return whyUsInfo;
+  const { data } = await axiosInstance.get(`/why-us-section?${queryAll}`);
+
+  return data;
 };
 
 const fetchFaqInfo = async () => {
-  const response = await axiosInstance.get(`/faq-page?${queryAll}`);
-  const faqsInfo = response?.data;
-  return faqsInfo;
+  const { data } = await axiosInstance.get(`/faq-page?${queryAll}`);
+
+  return data;
 };
 
 const fetchIntroInfo = async () => {
@@ -132,34 +131,34 @@ const fetchIntroInfo = async () => {
       },
     },
   });
-  const response = await axiosInstance.get(`/intro-section?${iconAndImgQuery}`);
-  const introInfo = response?.data;
-  return introInfo;
+  const { data } = await axiosInstance.get(`/intro-section?${iconAndImgQuery}`);
+
+  return data;
 };
 
 const fetchClientQuestions = async () => {
-  const response = await axiosInstance.get(`/trip-question?${queryAll}`);
-  const clientQuestions = response?.data;
-  return clientQuestions;
+  const { data } = await axiosInstance.get(`/trip-question?${queryAll}`);
+
+  return data;
 };
 
 const fetchTripOrders = async (token) => {
-  const response = await axiosInstance.get("/orders", {
+  const { data } = await axiosInstance.get("/orders", {
     headers: {
       Authorization: `Bearer ${token}`, // Add the token to the Authorization header
     },
   });
-  return response.data;
+  return data;
 };
 
-const tripOrders = async (data) => {
-  const response = await axiosInstance.post("/orders", { data: data });
-  return response.data;
+const tripOrders = async (body) => {
+  const { data } = await axiosInstance.post("/orders", { data: body });
+  return data;
 };
 
 const signIn = async (loginCredentials) => {
-  const response = await axiosInstance.post("/auth/local", loginCredentials);
-  return response.data;
+  const { data } = await axiosInstance.post("/auth/local", loginCredentials);
+  return data;
 };
 
 export {

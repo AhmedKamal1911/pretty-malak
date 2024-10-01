@@ -14,8 +14,6 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { FaqInput } from "..";
 import { useRef } from "react";
 
-import { TbReload } from "react-icons/tb";
-import { Button } from "../ui/Button";
 import { useToast } from "@/hooks/useToast";
 import { RxCrossCircled } from "react-icons/rx";
 import emailjs from "@emailjs/browser";
@@ -64,8 +62,7 @@ const FaqForm = () => {
             reset();
           }, 1000);
         },
-        (error) => {
-          console.log("FAILED...", error.text);
+        () => {
           toast({
             description: t("global.toasts.messageToast.failedMessage"),
             variant: "destructive",

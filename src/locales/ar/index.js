@@ -84,6 +84,20 @@ const AR_LANG = {
         password: "كلمة المرور يجب ان تتكون من حرفين علي الاقل.",
       },
     },
+    // adminTable: {
+    //   no: "الرقم",
+    //   email: "البريد الإلكتروني",
+    //   tripName: "اسم الرحلة",
+    //   fullName: "الاسم الكامل",
+    //   hotelName: "اسم الفندق",
+    //   phoneNumber: "رقم الهاتف",
+    //   checkDate: "تاريخ الوصول",
+    //   country: "البلد",
+    //   child: "عدد الأطفال",
+    //   adult: "عدد البالغين",
+    //   message: "الرسالة",
+    //   openMessageBtnLabel: "عرض الرسالة",
+    // },
   },
 
   homePage: {
