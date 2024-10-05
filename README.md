@@ -42,6 +42,7 @@ https://github.com/AhmedKamal1911/pretty-malak/blob/main/package.json
 - included 3 languages.
 - trips filteration.
 - Optimistic/Pessimistic updates.
+- Authentication system for admin to view the trips order
 
 
 ## Environment Variables
