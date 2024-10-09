@@ -14,13 +14,14 @@ export const DEFAULT_LANG = {
   countryName: "US",
   languageName: "en",
 };
+export const CURRENT_LANGUAGE_NAME =
+  JSON.parse(localStorage.getItem("lang"))?.languageName ??
+  DEFAULT_LANG.languageName;
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng:
-      JSON.parse(localStorage.getItem("lang"))?.languageName ??
-      DEFAULT_LANG.languageName, // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
+    lng: CURRENT_LANGUAGE_NAME, // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
     // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
     // if you're using a language detector, do not define the lng option
 
