@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { AR_LANG, EN_LANG, RU_LANG } from "./locales";
+import { getCurrentLang } from "./utils/getCurrentLang";
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -14,9 +15,8 @@ export const DEFAULT_LANG = {
   countryName: "US",
   languageName: "en",
 };
-export const CURRENT_LANGUAGE_NAME =
-  JSON.parse(localStorage.getItem("lang"))?.languageName ??
-  DEFAULT_LANG.languageName;
+export const CURRENT_LANGUAGE_NAME = getCurrentLang();
+
 i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({

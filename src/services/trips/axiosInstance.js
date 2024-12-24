@@ -1,5 +1,5 @@
-import { CURRENT_LANGUAGE_NAME } from "@/i18n";
 import { flattenAttributes } from "@/utils/flattenAttributes";
+import { getCurrentLang } from "@/utils/getCurrentLang";
 
 import axios from "axios";
 
@@ -16,7 +16,7 @@ axiosInstance.interceptors.request.use(
   function (config) {
     config.params = {
       ...config.params,
-      locale: CURRENT_LANGUAGE_NAME,
+      locale: getCurrentLang(),
     };
     // Do something before request is sent
 
