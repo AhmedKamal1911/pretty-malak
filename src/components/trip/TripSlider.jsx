@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {  useState } from "react";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,23 +11,24 @@ import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 
 const TripSlider = ({ imagesList }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const mainSwiperRef = useRef(null);
 
+  console.log({active:thumbsSwiper?.activeIndex})
   return (
     <div className="select-none mb-10">
-      <div className="h-[150px] min-[367px]:h-[250px] min-[600px]:h-[500px]">
+      <div className="aspect-[6/3.8]">
         <Swiper
           style={{
             "--swiper-navigation-color": "#fff",
             "--swiper-pagination-color": "#fff",
           }}
-          loop={true}
+          loop
           spaceBetween={10}
-          navigation={true}
-          thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : undefined}
+          navigation
+          
+          thumbs={{ swiper: thumbsSwiper } }
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2 h-full"
-          ref={mainSwiperRef}
+
           lazy={"true"}
         >
           {imagesList.map(({ url, id }) => (
@@ -41,7 +42,7 @@ const TripSlider = ({ imagesList }) => {
           ))}
         </Swiper>
       </div>
-      <div className="h-[70px] min-[367px]:h-[100px] min-[600px]:h-[150px] mt-2">
+      <div className="aspect-[4/0.8] mt-2">
         <Swiper
           onSwiper={setThumbsSwiper}
           loop

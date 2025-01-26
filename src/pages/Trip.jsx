@@ -53,6 +53,7 @@ const Trip = () => {
         title={trip?.title}
         type={trip?.type}
       />
+
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-5 mt-16">
           <div className="lg:w-[70%]">
@@ -85,7 +86,8 @@ const Trip = () => {
                   />
                 </div>
               </div>
-              <TripSlider imagesList={trip?.imgs.data ?? []} />
+              {trip?.imgs.data && <TripSlider imagesList={trip?.imgs.data} />}
+
               <TripOverview desc={trip?.desc} title={trip?.title} />
               {/* Info Box */}
               <div className="border divide-y-2 mb-10" id="info">

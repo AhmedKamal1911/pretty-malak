@@ -15,10 +15,12 @@ export { default as waveyMapImg } from "@/assets/wavey-map.png";
 export { default as wavesWithBoat } from "@/assets/waves-with-boat.png";
 export { default as loginBackground } from "@/assets/login-background.jpg";
 export { default as boatIcon } from "@/assets/boatIcon.svg";
+export { default as telegram } from "@/assets/telegram.svg";
 
-export { default as whatsapp } from "@/assets/whatsapp.png";
-export { default as facebook } from "@/assets/facebook.png";
+export { default as whatsapp } from "@/assets/whatsapp.svg";
+export { default as facebook } from "@/assets/facebook.svg";
 export { default as instgram } from "@/assets/instagram.png";
+export { default as viber } from "@/assets/viber.svg";
 
 // HeroSlider
 export { default as slideImg1 } from "@/assets/slide-1.jpg";

@@ -21,6 +21,7 @@ export { default as Reveal } from "@/components/Reveal";
 export { default as Login } from "@/components/Login";
 export { default as AdminTable } from "@/components/AdminTable";
 export { default as MessagesDialog } from "@/components/MessagesDialog";
+export { default as SocialContainer } from "@/components/SocialContainer";
 
 // Loaders
 export { default as Loading } from "@/components/Loading";

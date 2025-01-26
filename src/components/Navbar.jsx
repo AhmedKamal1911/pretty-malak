@@ -1,6 +1,11 @@
 import useMediaQuery from "@/hooks/useMediaQuery";
 import AsideDrawer from "./AsideDrawer";
-import { LanguageSelectMenu, NavLinks, ScrollToTopButton } from ".";
+import {
+  LanguageSelectMenu,
+  NavLinks,
+  ScrollToTopButton,
+  SocialContainer,
+} from ".";
 import { useEffect, useRef, useState } from "react";
 import { NavLink, useMatch } from "react-router-dom";
 import { cn } from "@/utils/cn";
@@ -72,6 +77,7 @@ const Navbar = () => {
         </div>
       </header>
       <ScrollToTopButton />
+      <SocialContainer />
     </>
   );
 };
