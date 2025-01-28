@@ -93,6 +93,7 @@ const fetchNavbarData = async () => {
   const { data } = await axiosInstance.get(`/global?${navbarDataQuery}`);
   return data;
 };
+
 const fetchFooterData = async () => {
   const footerDataQuery = qs.stringify({
     populate: "navLinks,contactLinks",

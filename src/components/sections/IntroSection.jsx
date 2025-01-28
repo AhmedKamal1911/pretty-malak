@@ -12,6 +12,7 @@ const IntroSection = () => {
     queryKey: ["introInfo"], // Object form for query key
     queryFn: fetchIntroInfo,
   });
+  console.log("introSectionData", { data });
   const featuresList = data?.featuresBox ?? [];
   const introHeading =
     data?.heading ?? "We are here to help you have the best trip";

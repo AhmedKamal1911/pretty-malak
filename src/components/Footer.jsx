@@ -21,7 +21,7 @@ const Footer = () => {
     queryKey: ["footer"],
     queryFn: fetchFooterData,
   });
-
+  console.log("footerData", { data });
   const linksList = data?.navLinks ?? [];
   const contactLinks = data?.contactLinks ?? [];
   return (

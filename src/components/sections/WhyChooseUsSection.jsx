@@ -37,6 +37,7 @@ const WhyChooseUsSection = () => {
     queryKey: ["whyUs"], // Object form for query key
     queryFn: fetchWhyUsInfo,
   });
+  console.log("whyus", { data });
   const services = data?.services ?? [];
   const imagesList = data?.images.data ?? [];
 

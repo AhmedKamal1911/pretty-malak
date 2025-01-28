@@ -77,6 +77,10 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(100%)" },
         },
+        "slide-left": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
         "bouncing-left-right": {
           "0%": { transform: "translateX(10px)" },
           "100%": { transform: "translateX(-10px)" },
@@ -115,6 +119,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-in": "slide-in 0.2s ease-out",
         "slide-out": "slide-out 0.1s ease-in",
+        "slide-left": "slide-left 0.3s ease-in ",
         "bouncing-left-right":
           "bouncing-left-right 2s linear infinite alternate",
         smoothScale: "smoothScale 25s linear infinite alternate",

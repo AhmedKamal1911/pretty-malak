@@ -44,6 +44,7 @@ const Navbar = () => {
       observer.disconnect();
     };
   }, []);
+  console.log({ data });
   return (
     <>
       <div ref={ref} />

@@ -13,6 +13,7 @@ const HeroSection = () => {
     queryKey: ["heroSection"],
     queryFn: fetchHeroSectionInfo,
   });
+  console.log("herodata", { data });
   const { selectedLanguage } = useLanguage();
 
   const heroButton = data?.heroButton;

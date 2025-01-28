@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 const TripCard = ({ trip, i, inView }) => {
   const imgUrl = getStrapiMediaURL(trip?.imgs.data[0]?.url);
   const { t } = useTranslation("global");
-
+  console.log({ trip });
   return (
     <motion.div
       key={trip?.id}
