@@ -5,19 +5,14 @@ import { aboutInfoList } from "@/data";
 import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import useScrollToTop from "@/hooks/useScrollToTop";
 import { fetchWhyUsInfo } from "@/services/trips/queries";
+import { BookOpen, Compass, HeartHandshake, Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import {
-  FaBookOpen,
-  FaHandsHelping,
-  FaRegCompass,
-  FaStar,
-} from "react-icons/fa";
 const iconMap = {
-  FaBookOpen: FaBookOpen,
-  FaHandsHelping: FaHandsHelping,
-  FaRegCompass: FaRegCompass,
-  FaStar: FaStar,
+  BookOpen: BookOpen,
+  HeartHandshake: HeartHandshake,
+  Compass: Compass,
+  Star: Star,
   // Add more icons as needed
 };
 const AboutUs = () => {

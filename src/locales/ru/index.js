@@ -36,6 +36,9 @@ const RU_LANG = {
       contactFormButtonLabel: "Подтверждать",
       validation: {
         emailRequired: "Введите свой адрес электронной почты.",
+        fullNameRequierd: "Введите Ваше полное имя.",
+        subjectRequierd: "Тема обязательна",
+
         emailInvalid: "Укажите действующий адрес электронной почты.",
         messageRequired: "Пожалуйста, введите ваше сообщение.",
         nameMin: "Ваше имя должно быть длиной не менее 2 символов.",
@@ -52,9 +55,9 @@ const RU_LANG = {
       phoneNumber: "Введите свой номер телефона :",
       hotelName: "Введите название вашего отеля :",
       checkDate: "Выберите дату",
-
       adult: "количество взрослых",
       child: "количество детей",
+      babies: "младенцы",
       message: "Введите здесь свое сообщение.",
       bookTripFormButtonLabel: "Подтверждать",
       validation: {
@@ -70,6 +73,8 @@ const RU_LANG = {
         hotelNameRequired: "Название отеля обязательно",
         adultNumberMin: "Количество взрослых должно быть не менее 1",
         childNumberNegative: "Номер ребенка должен быть не менее 0 или более",
+        babiesNumberNegative:
+          "младенцы ребенка должен быть не менее 0 или более",
         checkDateRequired: "Укажите дату заезда.",
         countryRequired: "Страна обязательна",
       },
@@ -85,20 +90,6 @@ const RU_LANG = {
         password: "Пароль должен содержать не менее 2 символов.",
       },
     },
-    // adminTable: {
-    //   no: "№",
-    //   email: "Электронная почта",
-    //   tripName: "Название поездки",
-    //   fullName: "Полное имя",
-    //   hotelName: "Название отеля",
-    //   phoneNumber: "Номер телефона",
-    //   checkDate: "Дата прибытия",
-    //   country: "Страна",
-    //   child: "Количество детей",
-    //   adult: "Количество взрослых",
-    //   message: "Сообщение",
-    //   openMessageBtnLabel: "Показать сообщение",
-    // },
   },
 
   homePage: {
@@ -179,6 +170,7 @@ const RU_LANG = {
         activities: "Деятельность",
         safari: "Сафари",
         sea: "Море",
+        all: "Все",
       },
     },
   },

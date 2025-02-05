@@ -1,16 +1,11 @@
 import { mapBackground, wavesWithBoat, waveyMapImg } from "@/assets";
-import {
-  FaBookOpen,
-  FaHandsHelping,
-  FaRegCompass,
-  FaStar,
-} from "react-icons/fa";
+
 // Map of icon names to their respective components
 const iconMap = {
-  FaBookOpen: FaBookOpen,
-  FaHandsHelping: FaHandsHelping,
-  FaRegCompass: FaRegCompass,
-  FaStar: FaStar,
+  BookOpen: BookOpen,
+  HeartHandshake: HeartHandshake,
+  Compass: Compass,
+  Star: Star,
   // Add more icons as needed
 };
 import { AboutInfoBox, SectionHeader } from "..";
@@ -28,6 +23,7 @@ import useQueryWithLocale from "@/hooks/useQueryWithLocale";
 import { useLanguage } from "@/contexts/LanguageProvider";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/utils/cn";
+import { BookOpen, Compass, HeartHandshake, Star } from "lucide-react";
 
 const WhyChooseUsSection = () => {
   const { isRTL, selectedLanguage } = useLanguage();

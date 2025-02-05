@@ -36,6 +36,8 @@ const AR_LANG = {
       contactFormButtonLabel: "تأكيد",
       validation: {
         emailRequired: "من فضلك قم بأدخال البريد الالكتروني.",
+        fullNameRequierd: "من فضلك قم بأدخال الاسم كاملا.",
+        subjectRequierd: "من فضلك قم بأدخال الموضوع.",
         emailInvalid: "يرجى ادخال عنوان بريد إلكتروني صالح.",
         messageRequired: "من فضلك أدخل رسالتك.",
         nameMin: "يجب أن يتكون اسمك من حرفين على الأقل.",
@@ -54,6 +56,7 @@ const AR_LANG = {
 
       adult: "عدد البالغين",
       child: "عدد الاطفال",
+      babies: "عدد الرضع",
       message: "اكتب رسالتك هنا.",
       bookTripFormButtonLabel: "تأكيد",
       validation: {
@@ -69,6 +72,7 @@ const AR_LANG = {
         hotelNameRequired: "اسم الفندق مطلوب",
         adultNumberMin: "يجب أن يكون عدد البالغين 1 على الأقل",
         childNumberNegative: "يجب أن يكون عدد الاطفال 0 علي الاقل ",
+        babiesNumberNegative: "يجب أن يكون عدد الرضع 0 علي الاقل ",
         checkDateRequired: "تاريخ تسجيل الوصول مطلوب",
         countryRequired: "الدولة مطلوبة",
       },
@@ -84,20 +88,6 @@ const AR_LANG = {
         password: "كلمة المرور يجب ان تتكون من حرفين علي الاقل.",
       },
     },
-    // adminTable: {
-    //   no: "الرقم",
-    //   email: "البريد الإلكتروني",
-    //   tripName: "اسم الرحلة",
-    //   fullName: "الاسم الكامل",
-    //   hotelName: "اسم الفندق",
-    //   phoneNumber: "رقم الهاتف",
-    //   checkDate: "تاريخ الوصول",
-    //   country: "البلد",
-    //   child: "عدد الأطفال",
-    //   adult: "عدد البالغين",
-    //   message: "الرسالة",
-    //   openMessageBtnLabel: "عرض الرسالة",
-    // },
   },
 
   homePage: {
@@ -178,6 +168,7 @@ const AR_LANG = {
         activities: "نشاطات",
         safari: "سفاري",
         sea: "بحر",
+        all: "الكل",
       },
     },
   },

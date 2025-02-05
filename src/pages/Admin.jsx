@@ -16,7 +16,7 @@ const Admin = () => {
     enabled: Boolean(user), // Only run query when the user is set
   });
   const orders = ordersResponse?.data;
-
+  console.log("orders", user);
   const onSubmit = (data) => {
     setUser(data);
   };

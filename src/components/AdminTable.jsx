@@ -18,12 +18,13 @@ const tableHeaders = [
   { headTitle: "البلد" },
   { headTitle: "عدد الأطفال" },
   { headTitle: "عدد البالغين" },
+  { headTitle: "عدد الرضع" },
   { headTitle: "الرسالة" },
 ];
 
 const AdminTable = ({ data }) => {
   return (
-    <Table className="max-w-[900px] mx-auto border-2">
+    <Table className="max-w-[900px]  mx-auto border-2">
       <TableHeader className="bg-black text-white">
         <TableRow>
           {tableHeaders.map(({ headTitle }, i) => (
@@ -68,6 +69,9 @@ const AdminTable = ({ data }) => {
             </TableCell>
             <TableCell className="p-2 text-center">
               {order.adultCount}
+            </TableCell>
+            <TableCell className="p-2 text-center">
+              {order.babiesCount}
             </TableCell>
             <TableCell className="pl-4">
               <MessagesDialog

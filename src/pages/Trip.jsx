@@ -32,7 +32,7 @@ const Trip = () => {
     queryKey: ["trip", slug], // Object form for query key
     queryFn: () => fetchTripData(slug), // Function to fetch data
   });
-
+  console.log({ slugfromparam: slug, slugTrip: trip?.slug });
   const {
     data: relatedTripsData,
     isFetching,
@@ -50,7 +50,7 @@ const Trip = () => {
       <TripBanner
         t={t}
         bannerImg={trip?.imgs.data[0]?.url}
-        title={trip?.title}
+        title={trip?.name}
         type={trip?.type}
       />
 
@@ -88,7 +88,7 @@ const Trip = () => {
               </div>
               {trip?.imgs.data && <TripSlider imagesList={trip?.imgs.data} />}
 
-              <TripOverview desc={trip?.desc} title={trip?.title} />
+              <TripOverview desc={trip?.desc} title={trip?.name} />
               {/* Info Box */}
               <div className="border divide-y-2 mb-10" id="info">
                 <TripDetailsBox
@@ -149,7 +149,7 @@ const Trip = () => {
           </div>
           {/* Form AND RELATED TRIPS */}
           <div className="lg:w-[30%]">
-            <BookTripForm tripSlug={trip?.slug} />
+            <BookTripForm tripSlug={slug} />
             <div
               ref={ref}
               className="mt-10 flex flex-col gap-3 overflow-hidden"

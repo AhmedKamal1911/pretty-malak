@@ -59,7 +59,7 @@ const Trips = () => {
             subTitle={t("tripsPage.subTitle")}
             introText={t("tripsPage.introText")}
           />
-          <Select onValueChange={onTripValueChange}>
+          <Select value={tripType} onValueChange={onTripValueChange}>
             <SelectTrigger
               disabled={tripsTypesIsFetching ? true : Boolean(tripsTypesError)}
               className="w-[180px] text-[17px]"

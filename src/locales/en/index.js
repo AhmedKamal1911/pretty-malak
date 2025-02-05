@@ -36,6 +36,8 @@ const EN_LANG = {
       contactFormButtonLabel: "Submit",
       validation: {
         emailRequired: "Please enter your email address.",
+        fullNameRequierd: "Please enter your full name.",
+        subjectRequierd: "Subject is Requierd",
         emailInvalid: "Please provide a valid email address.",
         messageRequired: "Please enter your message.",
         nameMin: "Your name must be at least 2 characters long.",
@@ -55,6 +57,7 @@ const EN_LANG = {
 
       adult: "Adult",
       child: "Child",
+      babies: "Babies",
       message: "Type Your Message Here.",
       bookTripFormButtonLabel: "Submit",
       validation: {
@@ -70,6 +73,7 @@ const EN_LANG = {
         hotelNameRequired: "Hotel Name Is Required",
         adultNumberMin: "Adult number must be at least 1",
         childNumberNegative: "Child number must be at least 0 or more",
+        babiesNumberNegative: "Babies number must be at least 0 or more",
         checkDateRequired: "Check-in date is required",
         countryRequired: "Country is required",
       },
@@ -86,20 +90,6 @@ const EN_LANG = {
         password: "password must be at least 2 characters.",
       },
     },
-    // adminTable: {
-    //   no: "No",
-    //   email: "Email",
-    //   tripName: "Trip Name",
-    //   fullName: "Full Name",
-    //   hotelName: "Hotel Name",
-    //   phoneNumber: "Phone Number",
-    //   checkDate: "Check Date",
-    //   country: "Country",
-    //   child: "Child",
-    //   adult: "Adult",
-    //   message: "Message",
-    //   openMessageBtnLabel: "Open Message",
-    // },
   },
 
   homePage: {
@@ -180,6 +170,7 @@ const EN_LANG = {
         activities: "Activities",
         safari: "Safari",
         sea: "Sea",
+        all: "All",
       },
     },
   },

@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 // import required modules
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +12,7 @@ import { getStrapiMediaURL } from "@/utils/getStrapiMediaUrl";
 const TripSlider = ({ imagesList }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  console.log({active:thumbsSwiper?.activeIndex})
+  console.log({ active: thumbsSwiper?.activeIndex });
   return (
     <div className="select-none mb-10">
       <div className="aspect-[6/3.8]">
@@ -24,11 +24,9 @@ const TripSlider = ({ imagesList }) => {
           loop
           spaceBetween={10}
           navigation
-          
-          thumbs={{ swiper: thumbsSwiper } }
+          thumbs={{ swiper: thumbsSwiper }}
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2 h-full"
-
           lazy={"true"}
         >
           {imagesList.map(({ url, id }) => (

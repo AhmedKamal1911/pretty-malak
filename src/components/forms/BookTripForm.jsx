@@ -56,9 +56,10 @@ const BookTripForm = ({ tripSlug }) => {
       childCount: 0,
       adultCount: 1,
       country: "",
-      tripSlug: tripSlug || "",
+      tripSlug: tripSlug,
     },
   });
+  console.log("from form", { tripSlug });
 
   const {
     reset,
@@ -68,16 +69,6 @@ const BookTripForm = ({ tripSlug }) => {
   } = methods;
 
   useLangAwareForm(t, reset, bookTripFormSchema);
-
-  // Use useEffect to update the form when tripSlug becomes available
-  useEffect(() => {
-    if (tripSlug) {
-      reset((prevValues) => ({
-        ...prevValues,
-        tripSlug, // Set tripSlug dynamically once it's available
-      }));
-    }
-  }, [tripSlug, reset]);
 
   const sendEmail = async (data) => {
     const formattedDate = format(new Date(data.checkDate), "yyyy-MM-dd");

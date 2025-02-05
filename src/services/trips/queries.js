@@ -80,7 +80,10 @@ const fetchTripTypes = async () => {
   const { data } = await axiosInstance.get(`/trips?${queryAll}`);
   // Extract unique trip types from fetched trips
 
-  const uniqueTripTypes = [...new Set(data.data?.map((trip) => trip.type))];
+  const uniqueTripTypes = [
+    ...new Set(data.data?.map((trip) => trip.type)),
+    "all",
+  ];
 
   return uniqueTripTypes;
 };
